@@ -1,6 +1,6 @@
 # Paraglide JS issue tracker & discussions. 
 
-The source code is in our [monorepo/inlang/source-code/paraglide](https://github.com/opral/monorepo/tree/main/inlang/source-code/paraglide)
+The source code is in our [monorepo/inlang/packages/paraglide-js](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide-js)
 
 ---
 
