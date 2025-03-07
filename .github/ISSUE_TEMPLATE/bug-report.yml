@@ -1,15 +1,14 @@
-name: "\U0001F41B 🐛 Bug Report"
+name: "\U0001F41B Bug Report"
 description: Report an issue or possible bug
 labels: [bug]
 assignees: []
 body:
-  - type: markdown
+   - type: checkboxes
     attributes:
-      value: |
-        ##  Quick Checklist
-        Thank you for taking the time to file a bug report! Please fill out this form as completely as possible.
-
-        ✅ I am using the **latest version of Paraglide JS** and all plugins.
+      label: Checklist
+      options:
+        - label:  I am willing to submit a pull request for this issue.
+          required: true
   - type: textarea
     id: bug-description
     attributes:
