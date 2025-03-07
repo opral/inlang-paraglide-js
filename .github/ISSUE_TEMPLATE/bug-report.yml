@@ -10,6 +10,8 @@ body:
       options:
         - label: I have searched for existing issues to avoid duplicates.
           required: true
+        - label: The bug is reproducible in the latest version of Paraglide JS.
+          required: true
         - label: I am willing to submit a pull request for this issue.
           required: false
 
@@ -37,15 +39,6 @@ body:
       placeholder: "https://github.com/user/paraglide-repro"
     validations:
       required: true
-
-  - type: input
-    id: paraglide-version
-    attributes:
-      label: Paraglide.js Version
-      description: "Specify the version of Paraglide.js you are using (e.g., 1.2.3)"
-      placeholder: "e.g., 1.2.3"
-    validations:
-      required: false
 
   - type: textarea
     id: additional-info
