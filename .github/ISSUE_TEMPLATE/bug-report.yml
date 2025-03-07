@@ -8,8 +8,10 @@ body:
     attributes:
       label: Checklist
       options:
-        - label: I am using the latest version of Paraglide JS.
+        - label: I have searched for existing issues to avoid duplicates.
           required: true
+        - label: I am willing to submit a pull request for this issue.
+          required: false
 
   - type: textarea
     id: bug-description
@@ -36,10 +38,19 @@ body:
     validations:
       required: true
 
-  - type: checkboxes
-    id: will-pr
+  - type: input
+    id: paraglide-version
     attributes:
-      label: Participation
-      options:
-        - label: I am willing to submit a pull request for this issue.
-          required: false
+      label: Paraglide.js Version
+      description: "Specify the version of Paraglide.js you are using (e.g., 1.2.3)"
+      placeholder: "e.g., 1.2.3"
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: "Provide any other relevant details, logs, or context about the issue."
+    validations:
+      required: false
