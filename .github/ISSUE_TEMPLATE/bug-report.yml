@@ -4,7 +4,7 @@ labels: [bug]
 assignees: []
 body:
    - type: checkboxes
-    attributes:
+     attributes:
       label: Checklist
       options:
         - label:  I am willing to submit a pull request for this issue.
