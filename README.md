@@ -1,5 +1,5 @@
 > [!NOTE]
-> This repository serves as an issue tracker. The readme is mirrored from, and the source code is at [monorepo/inlang/packages/paraglide/paraglide-js](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js). Make pull requests to the monorepo.
+> The repo is mirrored from [opral/monorepo](https://github.com/opral/monorepo). This repo serves as an issue tracker.
 
 [![Inlang-ecosystem compatibility badge](https://cdn.jsdelivr.net/gh/opral/monorepo@main/inlang/assets/md-badges/inlang.svg)](https://inlang.com)
 
