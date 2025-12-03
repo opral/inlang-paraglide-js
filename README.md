@@ -1,5 +1,5 @@
 > [!NOTE]
-> The repo is mirrored from [opral/monorepo](https://github.com/opral/monorepo). This repo serves as an issue tracker.
+> This repo is mirrored from [opral/monorepo](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js). Use this mirrored repo as the issue tracker.
 
 [![Inlang-ecosystem compatibility badge](https://cdn.jsdelivr.net/gh/opral/monorepo@main/inlang/assets/md-badges/inlang.svg)](https://inlang.com)
 
