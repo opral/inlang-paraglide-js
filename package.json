@@ -38,7 +38,7 @@
 		"clean": "rm -rf ./dist ./node_modules"
 	},
 	"dependencies": {
-		"@inlang/recommend-sherlock": "workspace:*",
+		"@inlang/recommend-sherlock": "^0.2.1",
 		"@inlang/sdk": "2.4.10",
 		"commander": "11.1.0",
 		"consola": "3.4.0",
@@ -47,7 +47,7 @@
 		"urlpattern-polyfill": "^10.0.0"
 	},
 	"devDependencies": {
-		"@inlang/plugin-message-format": "workspace:*",
+		"@inlang/plugin-message-format": "^4.0.0",
 		"@rollup/plugin-virtual": "3.0.2",
 		"@ts-morph/bootstrap": "0.26.0",
 		"@types/node": "^22.10.6",
