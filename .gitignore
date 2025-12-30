@@ -1,0 +1,17 @@
+node_modules/
+.pnpm-store/
+.turbo/
+.cache/
+.eslintcache
+
+dist/
+coverage/
+*.log
+
+.env
+.env.*
+
+.DS_Store
+Thumbs.db
+
+tsconfig.tsbuildinfo
