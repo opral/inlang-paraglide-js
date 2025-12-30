@@ -1,18 +1,29 @@
 {
-	"extends": "@opral/tsconfig/default",
 	"include": ["src/**/*.js", "src/**/*.ts", "src/compiler/runtime/ambient.d.ts"],
 	"compilerOptions": {
 		"outDir": "./dist",
 		"rootDir": "./src",
+		"sourceMap": true,
+		"module": "Node16",
+		"moduleResolution": "Node16",
+		"target": "ES2022",
+		"allowSyntheticDefaultImports": true,
+		"resolveJsonModule": false,
 		"declaration": true,
-		"sourceMap": false,
-		"checkJs": true,
-		"allowJs": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
 		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"checkJs": true,
+		"verbatimModuleSyntax": true,
+		"noUncheckedIndexedAccess": true,
+		"declarationMap": true,
 		"noImplicitAny": true,
-		"noImplicitOverride": true,
 		"noImplicitReturns": true,
-		"noUnusedLocals": true,
-		"noUncheckedIndexedAccess": true
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"allowUnreachableCode": false,
+		"allowJs": true,
+		"noUnusedLocals": true
 	}
 }

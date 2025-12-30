@@ -48,7 +48,6 @@
 	},
 	"devDependencies": {
 		"@inlang/plugin-message-format": "workspace:*",
-		"@opral/tsconfig": "workspace:*",
 		"@rollup/plugin-virtual": "3.0.2",
 		"@ts-morph/bootstrap": "0.26.0",
 		"@types/node": "^22.10.6",
