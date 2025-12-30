@@ -28,9 +28,14 @@
 	"scripts": {
 		"dev": "tsc --watch",
 		"bench": "vitest bench --run",
+		"build:examples": "pnpm -r --filter \"./examples/**\" --if-present build",
 		"build": "npm run env-variables && tsc --build && npm run generate-api-docs",
+		"changeset": "changeset",
+		"version-packages": "changeset version",
 		"generate-api-docs": "typedoc",
+		"test:examples": "pnpm -r --filter \"./examples/**\" --if-present test",
 		"test": "npm run env-variables && tsc --noEmit && vitest run --coverage ./src/**/*",
+		"ci": "pnpm run build && pnpm run build:examples && pnpm run test && pnpm run test:examples",
 		"test:watch": "npm run env-variables && vitest --watch ./src/**/*",
 		"env-variables": "node ./src/services/env-variables/create-index-file.js",
 		"lint": "oxlint --config .oxlintrc.json --fix",
@@ -38,7 +43,7 @@
 		"clean": "rm -rf ./dist ./node_modules"
 	},
 	"dependencies": {
-		"@inlang/recommend-sherlock": "workspace:*",
+		"@inlang/recommend-sherlock": "^0.2.1",
 		"@inlang/sdk": "2.4.10",
 		"commander": "11.1.0",
 		"consola": "3.4.0",
@@ -47,8 +52,8 @@
 		"urlpattern-polyfill": "^10.0.0"
 	},
 	"devDependencies": {
-		"@inlang/plugin-message-format": "workspace:*",
-		"@opral/tsconfig": "workspace:*",
+		"@changesets/cli": "^2.29.7",
+		"@inlang/plugin-message-format": "^4.0.0",
 		"@rollup/plugin-virtual": "3.0.2",
 		"@ts-morph/bootstrap": "0.26.0",
 		"@types/node": "^22.10.6",

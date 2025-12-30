@@ -1,6 +1,6 @@
 ## ShouldRedirectClientInput
 
-Defined in: [runtime/should-redirect.js:14](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:14](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 ### Properties
 
@@ -8,25 +8,25 @@ Defined in: [runtime/should-redirect.js:14](https://github.com/opral/monorepo/tr
 
 > `optional` **locale**: `any`
 
-Defined in: [runtime/should-redirect.js:17](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:17](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 #### request?
 
 > `optional` **request**: `undefined`
 
-Defined in: [runtime/should-redirect.js:15](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:15](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 #### url?
 
 > `optional` **url**: `string` \| `URL`
 
-Defined in: [runtime/should-redirect.js:16](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:16](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 ***
 
 ## ShouldRedirectResult
 
-Defined in: [runtime/should-redirect.js:21](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:21](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 ### Properties
 
@@ -34,13 +34,13 @@ Defined in: [runtime/should-redirect.js:21](https://github.com/opral/monorepo/tr
 
 > **locale**: `any`
 
-Defined in: [runtime/should-redirect.js:23](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:23](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 #### redirectUrl
 
 > **redirectUrl**: `undefined` \| `URL`
 
-Defined in: [runtime/should-redirect.js:24](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:24](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 Destination URL when a redirect is required.
 
@@ -48,7 +48,7 @@ Destination URL when a redirect is required.
 
 > **shouldRedirect**: `boolean`
 
-Defined in: [runtime/should-redirect.js:22](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:22](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 Indicates whether the consumer should perform a redirect.
 
@@ -56,7 +56,7 @@ Indicates whether the consumer should perform a redirect.
 
 ## ShouldRedirectServerInput
 
-Defined in: [runtime/should-redirect.js:9](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:9](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 ### Properties
 
@@ -64,19 +64,19 @@ Defined in: [runtime/should-redirect.js:9](https://github.com/opral/monorepo/tre
 
 > `optional` **locale**: `any`
 
-Defined in: [runtime/should-redirect.js:12](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:12](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 #### request
 
 > **request**: `Request`
 
-Defined in: [runtime/should-redirect.js:10](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:10](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 #### url?
 
 > `optional` **url**: `string` \| `URL`
 
-Defined in: [runtime/should-redirect.js:11](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:11](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 ***
 
@@ -84,7 +84,7 @@ Defined in: [runtime/should-redirect.js:11](https://github.com/opral/monorepo/tr
 
 > **CustomClientStrategyHandler**\<\> = `object`
 
-Defined in: [runtime/strategy.js:22](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/strategy.js)
+Defined in: [runtime/strategy.js:22](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/strategy.js)
 
 ### Type Parameters
 
@@ -118,7 +118,7 @@ Defined in: [runtime/strategy.js:22](https://github.com/opral/monorepo/tree/main
 
 > **CustomServerStrategyHandler**\<\> = `object`
 
-Defined in: [runtime/strategy.js:18](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/strategy.js)
+Defined in: [runtime/strategy.js:18](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/strategy.js)
 
 ### Type Parameters
 
@@ -144,7 +144,7 @@ Defined in: [runtime/strategy.js:18](https://github.com/opral/monorepo/tree/main
 
 > **Locale** = `any`
 
-Defined in: [runtime/ambient.d.ts:10](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/ambient.d.ts)
+Defined in: [runtime/ambient.d.ts:10](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/ambient.d.ts)
 
 ***
 
@@ -152,7 +152,7 @@ Defined in: [runtime/ambient.d.ts:10](https://github.com/opral/monorepo/tree/mai
 
 > **ParaglideAsyncLocalStorage**\<\> = `object`
 
-Defined in: [runtime/variables.js:54](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:54](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/variables.js)
 
 ### Type Parameters
 
@@ -200,7 +200,7 @@ Defined in: [runtime/variables.js:54](https://github.com/opral/monorepo/tree/mai
 
 > **SetLocaleFn**\<\> = (`newLocale`, `options?`) => `void` \| `Promise`\<`void`\>
 
-Defined in: [runtime/set-locale.js:34](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/set-locale.js)
+Defined in: [runtime/set-locale.js:34](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/set-locale.js)
 
 ### Type Parameters
 
@@ -226,7 +226,7 @@ Defined in: [runtime/set-locale.js:34](https://github.com/opral/monorepo/tree/ma
 
 > **ShouldRedirectInput**\<\> = [`ShouldRedirectServerInput`](#shouldredirectserverinput) \| [`ShouldRedirectClientInput`](#shouldredirectclientinput)
 
-Defined in: [runtime/should-redirect.js:19](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:19](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 ### Type Parameters
 
@@ -236,7 +236,7 @@ Defined in: [runtime/should-redirect.js:19](https://github.com/opral/monorepo/tr
 
 > `const` **baseLocale**: `"en"` = `"en"`
 
-Defined in: [runtime/variables.js:9](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:9](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/variables.js)
 
 The project's base locale.
 
@@ -254,7 +254,7 @@ if (locale === baseLocale) {
 
 > `const` **cookieMaxAge**: `number`
 
-Defined in: [runtime/variables.js:25](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:25](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/variables.js)
 
 ***
 
@@ -262,7 +262,7 @@ Defined in: [runtime/variables.js:25](https://github.com/opral/monorepo/tree/mai
 
 > `const` **cookieName**: `string` = `"<cookie-name>"`
 
-Defined in: [runtime/variables.js:22](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:22](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/variables.js)
 
 ***
 
@@ -270,7 +270,7 @@ Defined in: [runtime/variables.js:22](https://github.com/opral/monorepo/tree/mai
 
 > `const` **disableAsyncLocalStorage**: `false` = `false`
 
-Defined in: [runtime/variables.js:67](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:67](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/variables.js)
 
 ***
 
@@ -278,7 +278,7 @@ Defined in: [runtime/variables.js:67](https://github.com/opral/monorepo/tree/mai
 
 > `const` **experimentalMiddlewareLocaleSplitting**: `false` = `false`
 
-Defined in: [runtime/variables.js:69](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:69](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/variables.js)
 
 ***
 
@@ -286,7 +286,7 @@ Defined in: [runtime/variables.js:69](https://github.com/opral/monorepo/tree/mai
 
 > `const` **isServer**: `boolean`
 
-Defined in: [runtime/variables.js:71](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:71](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/variables.js)
 
 ***
 
@@ -294,7 +294,7 @@ Defined in: [runtime/variables.js:71](https://github.com/opral/monorepo/tree/mai
 
 > `const` **locales**: readonly \[`"en"`, `"de"`\]
 
-Defined in: [runtime/variables.js:19](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:19](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/variables.js)
 
 The project's locales that have been specified in the settings.
 
@@ -312,7 +312,7 @@ if (locales.includes(userSelectedLocale) === false) {
 
 > **serverAsyncLocalStorage**: `undefined` \| [`ParaglideAsyncLocalStorage`](#paraglideasynclocalstorage) = `undefined`
 
-Defined in: [runtime/variables.js:65](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:65](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/variables.js)
 
 Server side async local storage that is set by `serverMiddleware()`.
 
@@ -325,7 +325,7 @@ rendering context without effecting other requests.
 
 > `const` **strategy**: (`` `custom-${string}` `` \| `"cookie"` \| `"baseLocale"` \| `"globalVariable"` \| `"url"` \| `"preferredLanguage"` \| `"localStorage"`)[]
 
-Defined in: [runtime/variables.js:36](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:36](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/variables.js)
 
 ***
 
@@ -333,7 +333,7 @@ Defined in: [runtime/variables.js:36](https://github.com/opral/monorepo/tree/mai
 
 > `const` **urlPatterns**: `object`[] = `[]`
 
-Defined in: [runtime/variables.js:43](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:43](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/variables.js)
 
 The used URL patterns.
 
@@ -353,7 +353,7 @@ The used URL patterns.
 
 > **assertIsLocale**(`input`): `any`
 
-Defined in: [runtime/assert-is-locale.js:10](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/assert-is-locale.js)
+Defined in: [runtime/assert-is-locale.js:10](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/assert-is-locale.js)
 
 Asserts that the input is a locale.
 
@@ -381,7 +381,7 @@ If the input is not a locale.
 
 > **defineCustomClientStrategy**(`strategy`, `handler`): `void`
 
-Defined in: [runtime/strategy.js:69](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/strategy.js)
+Defined in: [runtime/strategy.js:69](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/strategy.js)
 
 Defines a custom strategy that is executed on the client.
 
@@ -410,7 +410,7 @@ methods getLocale and setLocale.
 
 > **defineCustomServerStrategy**(`strategy`, `handler`): `void`
 
-Defined in: [runtime/strategy.js:51](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/strategy.js)
+Defined in: [runtime/strategy.js:51](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/strategy.js)
 
 Defines a custom strategy that is executed on the server.
 
@@ -439,7 +439,7 @@ the method getLocale.
 
 > **deLocalizeHref**(`href`): `string`
 
-Defined in: [runtime/localize-href.js:107](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/localize-href.js)
+Defined in: [runtime/localize-href.js:107](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/localize-href.js)
 
 High-level URL de-localization function optimized for client-side UI usage.
 
@@ -500,7 +500,7 @@ deLocalizeUrl - For low-level URL de-localization in server contexts
 
 > **deLocalizeUrl**(`url`): `URL`
 
-Defined in: [runtime/localize-url.js:184](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/localize-url.js)
+Defined in: [runtime/localize-url.js:184](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/localize-url.js)
 
 Low-level URL de-localization function, primarily used in server contexts.
 
@@ -555,7 +555,7 @@ deLocalizeUrl(url); // => URL("https://example.com/store")
 
 > **extractLocaleFromCookie**(): `undefined` \| `string`
 
-Defined in: [runtime/extract-locale-from-cookie.js:12](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/extract-locale-from-cookie.js)
+Defined in: [runtime/extract-locale-from-cookie.js:12](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/extract-locale-from-cookie.js)
 
 Extracts a cookie from the document.
 
@@ -572,7 +572,7 @@ The `document` object is not available in server-side rendering, so this functio
 
 > **extractLocaleFromHeader**(`request`): `any`
 
-Defined in: [runtime/extract-locale-from-header.js:12](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/extract-locale-from-header.js)
+Defined in: [runtime/extract-locale-from-header.js:12](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/extract-locale-from-header.js)
 
 ### Parameters
 
@@ -590,7 +590,7 @@ Defined in: [runtime/extract-locale-from-header.js:12](https://github.com/opral/
 
 > **extractLocaleFromNavigator**(): `any`
 
-Defined in: [runtime/extract-locale-from-navigator.js:12](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/extract-locale-from-navigator.js)
+Defined in: [runtime/extract-locale-from-navigator.js:12](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/extract-locale-from-navigator.js)
 
 ### Returns
 
@@ -602,7 +602,7 @@ Defined in: [runtime/extract-locale-from-navigator.js:12](https://github.com/opr
 
 > **extractLocaleFromRequest**(`request`): `any`
 
-Defined in: [runtime/extract-locale-from-request.js:33](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/extract-locale-from-request.js)
+Defined in: [runtime/extract-locale-from-request.js:33](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/extract-locale-from-request.js)
 
 Extracts a locale from a request.
 
@@ -638,7 +638,7 @@ const locale = extractLocaleFromRequest(request);
 
 > **extractLocaleFromRequestAsync**(`request`): `Promise`\<`any`\>
 
-Defined in: [runtime/extract-locale-from-request-async.js:36](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/extract-locale-from-request-async.js)
+Defined in: [runtime/extract-locale-from-request-async.js:36](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/extract-locale-from-request-async.js)
 
 Asynchronously extracts a locale from a request.
 
@@ -688,7 +688,7 @@ to the synchronous `extractLocaleFromRequest` for all other strategies.
 
 > **extractLocaleFromUrl**(`url`): `any`
 
-Defined in: [runtime/extract-locale-from-url.js:26](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/extract-locale-from-url.js)
+Defined in: [runtime/extract-locale-from-url.js:26](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/extract-locale-from-url.js)
 
 Extracts the locale from a given URL using native URLPattern.
 
@@ -712,7 +712,7 @@ The extracted locale, or undefined if no locale is found.
 
 > **generateStaticLocalizedUrls**(`urls`): `URL`[]
 
-Defined in: [runtime/generate-static-localized-urls.js:31](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/generate-static-localized-urls.js)
+Defined in: [runtime/generate-static-localized-urls.js:31](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/generate-static-localized-urls.js)
 
 Generates a list of localized URLs for all provided URLs.
 
@@ -753,7 +753,7 @@ urls[3].href // => "https://example.com/de/blog"
 
 > **getLocale**(): `any`
 
-Defined in: [runtime/get-locale.js:45](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/get-locale.js)
+Defined in: [runtime/get-locale.js:45](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/get-locale.js)
 
 Get the current locale.
 
@@ -777,7 +777,7 @@ if (getLocale() === 'de') {
 
 > **getUrlOrigin**(): `string`
 
-Defined in: [runtime/get-url-origin.js:12](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/get-url-origin.js)
+Defined in: [runtime/get-url-origin.js:12](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/get-url-origin.js)
 
 The origin of the current URL.
 
@@ -795,7 +795,7 @@ by `overwriteGetUrlOrigin()`.
 
 > **isLocale**(`locale`): `locale is any`
 
-Defined in: [runtime/is-locale.js:16](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/is-locale.js)
+Defined in: [runtime/is-locale.js:16](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/is-locale.js)
 
 Check if something is an available locale.
 
@@ -825,7 +825,7 @@ if (isLocale(params.locale)) {
 
 > **localizeHref**(`href`, `options?`): `string`
 
-Defined in: [runtime/localize-href.js:43](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/localize-href.js)
+Defined in: [runtime/localize-href.js:43](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/localize-href.js)
 
 High-level URL localization function optimized for client-side UI usage.
 
@@ -890,7 +890,7 @@ which provides more precise control over URL handling.
 
 > **localizeUrl**(`url`, `options?`): `URL`
 
-Defined in: [runtime/localize-url.js:53](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/localize-url.js)
+Defined in: [runtime/localize-url.js:53](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/localize-url.js)
 
 Lower-level URL localization function, primarily used in server contexts.
 
@@ -958,7 +958,7 @@ localizeUrl(url, { locale: "de" });
 
 > **overwriteGetLocale**(`fn`): `void`
 
-Defined in: [runtime/get-locale.js:133](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/get-locale.js)
+Defined in: [runtime/get-locale.js:133](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/get-locale.js)
 
 Overwrite the `getLocale()` function.
 
@@ -991,7 +991,7 @@ overwriteGetLocale(() => {
 
 > **overwriteGetUrlOrigin**(`fn`): `void`
 
-Defined in: [runtime/get-url-origin.js:29](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/get-url-origin.js)
+Defined in: [runtime/get-url-origin.js:29](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/get-url-origin.js)
 
 Overwrite the getUrlOrigin function.
 
@@ -1014,7 +1014,7 @@ define how the URL origin is resolved.
 
 > **overwriteServerAsyncLocalStorage**(`value`): `void`
 
-Defined in: [runtime/variables.js:83](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:83](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/variables.js)
 
 Sets the server side async local storage.
 
@@ -1039,7 +1039,7 @@ avoid a circular import between `runtime.js` and
 
 > **overwriteSetLocale**(`fn`): `void`
 
-Defined in: [runtime/set-locale.js:175](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/set-locale.js)
+Defined in: [runtime/set-locale.js:175](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/set-locale.js)
 
 Overwrite the `setLocale()` function.
 
@@ -1071,7 +1071,7 @@ overwriteSetLocale((newLocale) => {
 
 > **setLocale**(`newLocale`, `options?`): `void` \| `Promise`\<`void`\>
 
-Defined in: [runtime/set-locale.js:56](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/set-locale.js)
+Defined in: [runtime/set-locale.js:56](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/set-locale.js)
 
 Set the locale.
 
@@ -1115,7 +1115,7 @@ setLocale('en', { reload: false });
 
 > **shouldRedirect**(`input?`): `Promise`\<[`ShouldRedirectResult`](#shouldredirectresult)\>
 
-Defined in: [runtime/should-redirect.js:61](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/should-redirect.js)
+Defined in: [runtime/should-redirect.js:61](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/should-redirect.js)
 
 Determines whether a redirect is required to align the current URL with the active locale.
 
@@ -1167,7 +1167,7 @@ export async function handle(request) {
 
 > **trackMessageCall**(`safeModuleId`, `locale`): `void`
 
-Defined in: [runtime/track-message-call.js:7](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/src/compiler/runtime/track-message-call.js)
+Defined in: [runtime/track-message-call.js:7](https://github.com/opral/monorepo/tree/main/src/compiler/runtime/track-message-call.js)
 
 ### Parameters
 
