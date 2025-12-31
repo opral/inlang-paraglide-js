@@ -1,14 +1,5 @@
 # Contributing
 
-<a href="https://youtu.be/A5x4FALiOUg" target="_blank">
-  <img src="https://cdn.jsdelivr.net/gh/opral/monorepo/inlang/packages/paraglide/paraglide-js/assets/contributing-youtube.png"
-  alt="video tutorial on how to contribute" />
-</a>
-
-
-> [!NOTE]
-> This is based on the [monorepo's CONTRIBUTING.md](https://github.com/opral/monorepo/blob/main/CONTRIBUTING.md). If something is unclear, please refer to the monorepo's CONTRIBUTING.md and then open a PR to update this file.
-
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/en/) (v20 or higher)
@@ -21,19 +12,9 @@
 
 ### Getting started
 
-1. Clone the monorepo.
-2. `pnpm i`
-
-> [!IMPORTANT]  
-> The three dots `...` are important to build the dependencies. [Here](https://pnpm.io/filtering#--filter-package_name-1) is the pnpm documentation for filtering.
-
-3. `pnpm --filter @inlang/paraglide-js... build`
-
-### Making changes
-
-1. Choose an [example](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/examples) to try out your changes.
-
-2. Write a unit test for the change
+1. Clone the repo.
+2. Run `pnpm i`
+3. Run `pnpm dev`, `pnpm build`, and `pnpm test`.
 
 ## Opening a PR
 
