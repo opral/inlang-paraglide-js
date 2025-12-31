@@ -17,7 +17,7 @@
 	},
 	"pages": {
 		"": {
-			"/": "./docs/introduction.md",
+			"/": "./README.md",
 			"/comparison": "./docs/comparison.md",
 			"/benchmark": "./benchmark/README.md",
 			"/changelog": "./CHANGELOG.md"
