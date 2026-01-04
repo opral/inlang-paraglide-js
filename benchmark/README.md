@@ -1,6 +1,6 @@
 ---
 imports:
-  - https://cdn.jsdelivr.net/gh/opral/monorepo@main/inlang/packages/paraglide/paraglide-js/benchmark/benchmark-visualization.js
+  - https://cdn.jsdelivr.net/gh/opral/paraglide-js@main/benchmark/benchmark-visualization.js
 ---
 
 # Benchmark
