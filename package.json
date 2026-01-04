@@ -11,7 +11,7 @@
 	"homepage": "https://inlang.com/m/gerre34r/library-inlang-paraglideJs",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/opral/inlang-paraglide-js"
+		"url": "https://github.com/opral/paraglide-js"
 	},
 	"bin": {
 		"paraglide-js": "./bin/run.js"
@@ -88,6 +88,10 @@
 		"astro i18n",
 		"solid",
 		"solidstart",
+		"tanstack",
+		"tanstack router",
+		"tanstack start",
+		"rolldown",
 		"vite",
 		"vite-plugin",
 		"rollup-plugin"
