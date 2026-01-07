@@ -857,6 +857,41 @@ test("middleware handles async custom strategy errors gracefully", async () => {
 	).rejects.toThrow("Database connection failed");
 });
 
+// https://github.com/opral/paraglide-js/issues/573
+test("falls back to original request when cloning fails (e.g., TanStack Start custom Request)", async () => {
+	const runtime = await createParaglide({
+		blob: await newProject({
+			settings: {
+				baseLocale: "en",
+				locales: ["en", "de"],
+			},
+		}),
+		// Using a strategy that doesn't include "url" to trigger the clone path
+		strategy: ["globalVariable", "baseLocale"],
+	});
+
+	// Create a custom request-like object that cannot be cloned
+	// This simulates TanStack Start's custom Request implementation
+	const customRequest = {
+		url: "https://example.com/page",
+		headers: new Headers({ "Sec-Fetch-Dest": "document" }),
+		method: "GET",
+		// Missing other required properties that would cause `new Request(request)` to fail
+	} as unknown as Request;
+
+	let middlewareResolveWasCalled = false;
+	const response = await runtime.paraglideMiddleware(customRequest, (args) => {
+		middlewareResolveWasCalled = true;
+		expect(args.locale).toBe("en");
+		// The request should be the original custom request since cloning failed
+		expect(args.request).toBe(customRequest);
+		return new Response("Success");
+	});
+
+	expect(middlewareResolveWasCalled).toBe(true);
+	expect(await response.text()).toBe("Success");
+});
+
 test("middleware works with multiple async custom strategies", async () => {
 	const runtime = await createParaglide({
 		blob: await newProject({

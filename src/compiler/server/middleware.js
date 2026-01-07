@@ -105,11 +105,22 @@ export async function paraglideMiddleware(request, resolve, callbacks) {
 	// The middleware is responsible for mapping a localized URL to the
 	// de-localized URL e.g. `/en/about` to `/about`. Otherwise,
 	// the server can't render the correct page.
-	const newRequest = runtime.strategy.includes("url")
-		? new Request(runtime.deLocalizeUrl(request.url), request)
-		: // need to create a new request object because some metaframeworks (nextjs!) throw otherwise
-			// https://github.com/opral/inlang-paraglide-js/issues/411
-			new Request(request);
+	let newRequest;
+	if (runtime.strategy.includes("url")) {
+		newRequest = new Request(runtime.deLocalizeUrl(request.url), request);
+	} else {
+		// Some metaframeworks (NextJS) require a new Request object
+		// https://github.com/opral/inlang-paraglide-js/issues/411
+		// However, some frameworks (TanStack Start 1.143+) use custom Request
+		// implementations that cannot be cloned with `new Request(request)`
+		// https://github.com/opral/paraglide-js/issues/573
+		// Try to clone the request, but fall back to the original if cloning fails
+		try {
+			newRequest = new Request(request);
+		} catch {
+			newRequest = request;
+		}
+	}
 
 	// the message functions that have been called in this request
 	/** @type {Set<string>} */
