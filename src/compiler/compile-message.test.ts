@@ -30,6 +30,34 @@ test("compiles a message with a single variant", async () => {
 	expect(some_message()).toBe("Hello");
 });
 
+// https://github.com/opral/paraglide-js/issues/571
+test("compiles a message that can be parsed as JSON", async () => {
+	const declarations: Declaration[] = [];
+	const message: Message = {
+		locale: "en",
+		bundleId: "json_message",
+		id: "json-message-id",
+		selectors: [],
+	};
+	const variants: Variant[] = [
+		{
+			id: "1",
+			messageId: "json-message-id",
+			matches: [],
+			pattern: [{ type: "text", value: '["a","b","c"]' }],
+		},
+	];
+
+	const compiled = compileMessage(declarations, message, variants);
+
+	const { json_message } = await import(
+		"data:text/javascript;base64," +
+			btoa("export const json_message = " + compiled.code)
+	);
+
+	expect(JSON.parse(json_message())).toEqual(["a", "b", "c"]);
+});
+
 test("compiles a message with variants", async () => {
 	const declarations: Declaration[] = [
 		{ type: "input-variable", name: "fistInput" },
