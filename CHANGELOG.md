@@ -1,10 +1,16 @@
 # @inlang/paraglide-js
 
+## 2.7.2
+
+### Patch Changes
+
+- 983d893: Added a defensive try catch request cloning in `paraglideMiddleware` for runtimes with custom `Request` wrappers (TanStack Start 1.143+: https://github.com/TanStack/router/issues/6089, https://github.com/opral/paraglide-js/issues/573).
+
 ## 2.7.1
 
 ### Patch Changes
 
-- update `@inlang/sdk` to `2.4.10` which contains a fix for dynamically loading plugins in bun https://github.com/opral/monorepo/pull/3787. 
+- update `@inlang/sdk` to `2.4.10` which contains a fix for dynamically loading plugins in bun https://github.com/opral/monorepo/pull/3787.
 
 ## 2.7.0
 
@@ -22,13 +28,13 @@
   import { paraglideVitePlugin } from "@inlang/paraglide-js";
 
   export default defineConfig({
-    plugins: [
-      paraglideVitePlugin({
-        project: "./project.inlang",
-        outdir: "./src/paraglide",
-        emitTsDeclarations: true,
-      }),
-    ],
+  	plugins: [
+  		paraglideVitePlugin({
+  			project: "./project.inlang",
+  			outdir: "./src/paraglide",
+  			emitTsDeclarations: true,
+  		}),
+  	],
   });
   ```
 
