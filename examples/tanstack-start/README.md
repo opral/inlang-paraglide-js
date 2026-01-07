@@ -21,7 +21,7 @@ npx gitpick TanStack/router/tree/main/examples/react/start-i18n-paraglide start-
 npx @inlang/paraglide-js@latest init
 ```
 
-2. Add the vite plugin to your `vite.config.ts`:
+2. Add the Vite plugin to your `vite.config.ts`:
 
 ```diff
 import { defineConfig } from 'vite'
@@ -76,17 +76,21 @@ const router = createRouter({
 
 In `server.ts` intercept the request with the paraglideMiddleware.
 
+> **Important:** Since TanStack Router handles URL localization/delocalization via its `rewrite` option, you must pass the original `req` to the handler instead of the modified `request` from the callback. Using the modified request would cause a redirect loop because both the middleware and the router would attempt to delocalize the URL. The middleware still handles locale detection, cookies, and AsyncLocalStorage context.
+
 ```ts
 import { paraglideMiddleware } from './paraglide/server.js'
 import handler from '@tanstack/react-start/server-entry'
 export default {
   fetch(req: Request): Promise<Response> {
+    // Pass original `req` - NOT the modified `request` from the callback
+    // TanStack Router handles URL rewriting via deLocalizeUrl/localizeUrl
     return paraglideMiddleware(req, () => handler.fetch(req))
   },
 }
 ```
 
-In `__root.tsx` change the html lang attribute to the current locale.
+In `__root.tsx` change the HTML lang attribute to the current locale.
 
 ```tsx
 import { getLocale } from '../paraglide/runtime.js'
@@ -125,7 +129,7 @@ export const Route = createRootRoute({
 });
 ```
 
-## Typesafe translated pathnames
+## Type-safe translated pathnames
 
 If you don't want to miss any translated path, you can create a `createTranslatedPathnames` function and pass it to the vite plugin.
 
