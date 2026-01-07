@@ -22,7 +22,7 @@ import { paraglideMiddleware } from './paraglide/server.js';
 app.get("*", async (request) => {
   return paraglideMiddleware(request, async ({ request, locale }) => {
     // Your request handling logic here
-    return Response(html(request));
+    return new Response(html(request));
   });
 });
 ```
@@ -33,11 +33,11 @@ Key features:
 - Handles URL localization/delocalization
 - Ensures locale state isolation between requests
 
-### Automatic re-directs
+### Automatic redirects
 
-The `paraglideMiddleware()` automatically re-directs requests to the appropriate localized URL.
+The `paraglideMiddleware()` automatically redirects requests to the appropriate localized URL.
 
-For example, assume that the cookie strategy preceeds the url strategy. If a request from a client is made where the client's locale cookie is set to `de`, the `paraglideMiddleware()` will re-direct the request from `https://example.com/page` to `https://example.com/de/seite`. 
+For example, assume that the cookie strategy precedes the url strategy. If a request from a client is made where the client's locale cookie is set to `de`, the `paraglideMiddleware()` will redirect the request from `https://example.com/page` to `https://example.com/de/seite`. 
 
 ```diff
 await compile({
@@ -169,18 +169,20 @@ import { locales, localizeHref } from "./paraglide/runtime.js";
 // in the root layout
 function Layout({ children }) {
   return (
-    <div>{children}</div>
-    // add invisible anchor tags for the currently visible page in each locale
-    <div style="display: none">
-      {locales.map((locale) => (
-        <a href={localizeHref(`/about`, { locale })}></a>
-      ))}
-    </div>
+    <>
+      <div>{children}</div>
+      {/* add invisible anchor tags for the currently visible page in each locale */}
+      <div style="display: none">
+        {locales.map((locale) => (
+          <a href={localizeHref(`/about`, { locale })}></a>
+        ))}
+      </div>
+    </>
   )
 }
 ```
 
-The rendered HTML of the page will include the invisible anchor tags, ensuring they are generated during build time. The framwork will crawl the HTML and follow the anchor tags to discover all pages.
+The rendered HTML of the page will include the invisible anchor tags, ensuring they are generated during build time. The framework will crawl the HTML and follow the anchor tags to discover all pages.
 
 ```diff
 <div>
@@ -203,7 +205,7 @@ If invisible anchor tags are not an option, some frameworks provide APIs to disc
 
 ### `getLocale()` returns a different locale than expected
 
-This can happen if `getLocale()` is called outside of the scope of `paraglideMiddleware()`. 
+This can happen if `getLocale()` is called outside of the scope of `paraglideMiddleware()`.
 
 The `paraglideMiddleware()` ensures that the locale is set correctly for each request. If you call `getLocale()` outside of the scope of `paraglideMiddleware()`, you will get the locale of the server which is not the expected locale.
 
@@ -211,12 +213,51 @@ The `paraglideMiddleware()` ensures that the locale is set correctly for each re
 app.get("*", async (request) => {
   // ❌ don't call `getLocale()` outside of `paraglideMiddleware`
   const locale = getLocale()
-  
+
   return paraglideMiddleware(request, async ({ request, locale }) => {
     // ✅ call `getLocale()` inside of `paraglideMiddleware`
     const locale = getLocale()
-    
+
     // Your request handling logic here
-    return Response(html(request));
+    return new Response(html(request));
   });
 });
+```
+
+### Redirect loops with frameworks that handle URL localization themselves
+
+Some frameworks like TanStack Router handle URL localization and delocalization themselves via their own rewrite APIs. When this is the case, using the modified `request` from `paraglideMiddleware()` will cause a redirect loop.
+
+**Why this happens:**
+
+The `paraglideMiddleware()` de-localizes URLs when the URL strategy is used (e.g., `/en/about` → `/about`). If your framework also delocalizes the URL, you get a conflict:
+
+```
+Request (/en) → Middleware (delocalizes to /) → Framework (localizes to /en) → Middleware → ...
+```
+
+**Solution:**
+
+Pass the original request to your framework instead of the modified one. The middleware still handles locale detection, cookies, and AsyncLocalStorage context - only the URL delocalization is bypassed.
+
+```ts
+import { paraglideMiddleware } from './paraglide/server.js'
+import handler from '@tanstack/react-start/server-entry'
+
+export default {
+  fetch(req: Request): Promise<Response> {
+    // ❌ WRONG - causes redirect loop when framework handles URL rewriting:
+    // return paraglideMiddleware(req, ({ request }) => handler.fetch(request))
+
+    // ✅ CORRECT - pass the original request when framework handles URL localization:
+    return paraglideMiddleware(req, () => handler.fetch(req))
+  },
+}
+```
+
+**Which frameworks handle URL localization themselves?**
+
+- **TanStack Router/Start**: Uses `rewrite.input`/`rewrite.output` with `deLocalizeUrl`/`localizeUrl`
+- Other frameworks with built-in i18n URL rewriting capabilities
+
+If your framework does not handle URL localization, use the modified `request` from the callback as normal.
