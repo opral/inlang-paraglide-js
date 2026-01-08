@@ -3,5 +3,7 @@
 	"greeting": "Welcome {name}!",
 	"unused": "This is an unused message",
 	"Unused": "This is the second unused message with a capital U to test case sensitivity",
-	"non_existent_in_de": "This is a new message"
+	"non_existent_in_de": "This is a new message",
+	"json_array": "[\"a\", \"b\", \"c\"]",
+	"json_object": "{\"a\": \"b\", \"c\": \"d\"}"
 }

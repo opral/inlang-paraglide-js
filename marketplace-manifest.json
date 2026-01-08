@@ -37,6 +37,7 @@
 			"/message-keys": "./docs/message-keys.md",
 			"/strategy": "./docs/strategy.md",
 			"/variants": "./docs/variants.md",
+			"/objects-and-arrays": "./docs/objects-and-arrays.md",
 			"/file-formats": "./docs/file-formats.md",
 			"/multi-tenancy": "./docs/multi-tenancy.md",
 			"/server-side-rendering": "./docs/server-side-rendering.md",
