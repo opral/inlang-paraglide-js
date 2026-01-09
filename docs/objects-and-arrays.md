@@ -39,16 +39,31 @@ const features: string[] = JSON.parse(m.features());
 // de -> ["Schnell", "Sicher", "Einfach", "Zuverlässig"]
 ```
 
-The same approach works for objects:
+Objects are supported with the `inlang-message-format` plugin as of the brace-escaping update. Escape literal `{` and `}` as `\{` and `\}`, and escape backslashes as `\\`. Because this is JSON, you must double-escape backslashes.
 
 ```json
 {
-  "pricing": "{\"basic\": \"$9/mo\", \"pro\": \"$29/mo\"}"
+  "pricing": "\\{\"basic\": \"$9/mo\", \"pro\": \"$29/mo\"\\}"
 }
 ```
 
 ```ts
 const pricing = JSON.parse(m.pricing());
+// -> { basic: "$9/mo", pro: "$29/mo" }
+```
+
+If you need a format that's easier for translators to edit, encode objects as arrays of entries instead:
+
+```json
+{
+  "pricing_entries": "[[\"basic\", \"$9/mo\"], [\"pro\", \"$29/mo\"]]"
+}
+```
+
+```ts
+const pricing = Object.fromEntries(
+  JSON.parse(m.pricing_entries()) as Array<[string, string]>
+);
 // -> { basic: "$9/mo", pro: "$29/mo" }
 ```
 
