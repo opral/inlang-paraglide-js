@@ -8,7 +8,10 @@ import {
 	defaultCompilerOptions,
 	type CompilerOptions,
 } from "../../../compiler/compiler-options.js";
-import { createTrackedFs } from "../../../services/file-watching/tracked-fs.js";
+import {
+	createTrackedFs,
+	getWatchTargets,
+} from "../../../services/file-watching/tracked-fs.js";
 
 export const compileCommand = new Command()
 	.name("compile")
@@ -77,26 +80,36 @@ export const compileCommand = new Command()
 			}
 
 			const { fs: trackedFs, readFiles, clearReadFiles } = createTrackedFs();
-			const watchers = new Map<string, fs.FSWatcher>();
+			const fileWatchers = new Map<string, fs.FSWatcher>();
+			const directoryWatchers = new Map<string, fs.FSWatcher>();
 			let previousCompilation: CompilationResult | undefined;
 			let compileTimer: NodeJS.Timeout | undefined;
 			let compileInProgress = false;
 			let compileRequested = false;
 
 			const updateWatchers = (files: Set<string>) => {
-				const nextFiles = new Set(
-					Array.from(files).filter((filePath) => !filePath.includes("cache"))
-				);
+				const {
+					files: nextFiles,
+					directories: nextDirectories,
+					isIgnoredPath,
+				} = getWatchTargets(files, { outdir: options.outdir });
 
-				for (const [filePath, watcher] of watchers) {
+				for (const [filePath, watcher] of fileWatchers) {
 					if (!nextFiles.has(filePath)) {
 						watcher.close();
-						watchers.delete(filePath);
+						fileWatchers.delete(filePath);
+					}
+				}
+
+				for (const [directoryPath, watcher] of directoryWatchers) {
+					if (!nextDirectories.has(directoryPath)) {
+						watcher.close();
+						directoryWatchers.delete(directoryPath);
 					}
 				}
 
 				for (const filePath of nextFiles) {
-					if (watchers.has(filePath)) {
+					if (fileWatchers.has(filePath)) {
 						continue;
 					}
 
@@ -104,9 +117,33 @@ export const compileCommand = new Command()
 						const watcher = fs.watch(filePath, () => {
 							scheduleCompile(filePath);
 						});
-						watchers.set(filePath, watcher);
+						fileWatchers.set(filePath, watcher);
 					} catch (error) {
 						logger.warn(`Failed to watch file: ${filePath}`);
+					}
+				}
+
+				for (const directoryPath of nextDirectories) {
+					if (directoryWatchers.has(directoryPath)) {
+						continue;
+					}
+
+					try {
+						const watcher = fs.watch(directoryPath, (eventType, filename) => {
+							if (!filename) {
+								scheduleCompile(directoryPath);
+								return;
+							}
+
+							const changedPath = resolve(directoryPath, filename.toString());
+							if (isIgnoredPath(changedPath)) {
+								return;
+							}
+							scheduleCompile(changedPath);
+						});
+						directoryWatchers.set(directoryPath, watcher);
+					} catch (error) {
+						logger.warn(`Failed to watch directory: ${directoryPath}`);
 					}
 				}
 			};
@@ -170,10 +207,14 @@ export const compileCommand = new Command()
 			};
 
 			const closeWatchers = () => {
-				for (const watcher of watchers.values()) {
+				for (const watcher of fileWatchers.values()) {
 					watcher.close();
 				}
-				watchers.clear();
+				for (const watcher of directoryWatchers.values()) {
+					watcher.close();
+				}
+				fileWatchers.clear();
+				directoryWatchers.clear();
 			};
 
 			process.on("SIGINT", () => {

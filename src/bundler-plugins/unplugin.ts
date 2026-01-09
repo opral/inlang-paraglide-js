@@ -3,7 +3,12 @@ import { compile, type CompilationResult } from "../compiler/compile.js";
 import { relative } from "node:path";
 import { Logger } from "../services/logger/index.js";
 import type { CompilerOptions } from "../compiler/compiler-options.js";
-import { createTrackedFs } from "../services/file-watching/tracked-fs.js";
+import {
+	createTrackedFs,
+	getWatchTargets,
+	isPathWithinDirectories,
+} from "../services/file-watching/tracked-fs.js";
+import { nodeNormalizePath } from "../utilities/node-normalize-path.js";
 
 const PLUGIN_NAME = "unplugin-paraglide-js";
 
@@ -46,13 +51,24 @@ export const unpluginFactory: UnpluginFactory<CompilerOptions> = (args) => ({
 			if (isProduction) throw error;
 		} finally {
 			// in any case add the files to watch
-			for (const filePath of Array.from(readFiles)) {
+			const targets = getWatchTargets(readFiles, { outdir: args.outdir });
+			for (const filePath of targets.files) {
 				this.addWatchFile(filePath);
+			}
+			for (const directoryPath of targets.directories) {
+				this.addWatchFile(directoryPath);
 			}
 		}
 	},
 	async watchChange(path) {
-		const shouldCompile = readFiles.has(path) && !path.includes("cache");
+		const normalizedPath = nodeNormalizePath(path);
+		const targets = getWatchTargets(readFiles, { outdir: args.outdir });
+		if (targets.isIgnoredPath(normalizedPath)) {
+			return;
+		}
+		const shouldCompile =
+			targets.files.has(normalizedPath) ||
+			isPathWithinDirectories(normalizedPath, targets.directories);
 		if (shouldCompile === false) {
 			return;
 		}
@@ -87,8 +103,12 @@ export const unpluginFactory: UnpluginFactory<CompilerOptions> = (args) => ({
 			logger.success(`Re-compilation complete (${outputStructure})`);
 
 			// Add any new files to watch
-			for (const filePath of Array.from(readFiles)) {
+			const nextTargets = getWatchTargets(readFiles, { outdir: args.outdir });
+			for (const filePath of nextTargets.files) {
 				this.addWatchFile(filePath);
+			}
+			for (const directoryPath of nextTargets.directories) {
+				this.addWatchFile(directoryPath);
 			}
 		} catch (e) {
 			clearReadFiles();
