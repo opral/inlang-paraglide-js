@@ -1,6 +1,6 @@
 ---
-imports:
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
+title: Message Keys
+description: Message key structures and best practices - flat keys vs nested keys.
 ---
 
 # Message Keys and Structure
@@ -9,9 +9,8 @@ imports:
 
 Paraglide JS supports nested keys through bracket notation syntax `m["something.nested"]()`, which simulates nesting without actually creating nested JavaScript objects. This approach leverages TypeScript's template literal types to provide type safety while maintaining the flat structure that enables tree-shaking.
 
-<doc-callout type="warning">
-  While nested keys are supported, we still recommend using flat keys. Flat keys align better with how databases, applications, and compilers naturally work — even though the bracket notation keeps the generated modules tree-shakeable.
-</doc-callout>
+> [!WARNING]
+> While nested keys are supported, we still recommend using flat keys. Flat keys align better with how databases, applications, and compilers naturally work — even though the bracket notation keeps the generated modules tree-shakeable.
 
 ## Why we recommend flat keys
 
@@ -56,9 +55,8 @@ const key: NavKey = "nav.home";
 console.log(m[key]());
 ```
 
-<doc-callout type="info">
-  The bracket notation uses TypeScript's template literal types feature to maintain type safety while keeping the underlying structure flat. This is purely a TypeScript compile-time feature - at runtime, these are still individual functions.
-</doc-callout>
+> [!NOTE]
+> The bracket notation uses TypeScript's template literal types feature to maintain type safety while keeping the underlying structure flat. This is purely a TypeScript compile-time feature - at runtime, these are still individual functions.
 
 ## Recommended approach: Flat keys
 

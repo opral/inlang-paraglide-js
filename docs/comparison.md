@@ -1,10 +1,16 @@
+---
+title: Comparison
+description: How Paraglide JS compares to i18next, React-Intl, and other i18n libraries.
+---
+
 # Comparison
 
 Paraglide's compiler approach enables optimizations that are not possible with runtime libraries. Below is a comparison of Paraglide JS with other popular i18n libraries.
 
 If you are looking for a benchmark, check out the [interactive benchmark](/m/gerre34r/library-inlang-paraglideJs/benchmark).
 
-<doc-callout type="info">Please open a pull request if the comparison is outdated, incorrect, or can be improved.</doc-callout>
+> [!NOTE]
+> Please open a pull request if the comparison is outdated, incorrect, or can be improved.
 
 ## Basic Features
 

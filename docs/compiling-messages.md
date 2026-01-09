@@ -1,6 +1,6 @@
 ---
-imports:
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
+title: Compiling Messages
+description: How to compile Paraglide messages - CLI, bundler plugins, and programmatic compilation.
 ---
 
 # Compiling Messages
@@ -11,9 +11,8 @@ There are three ways to invoke the Paraglide JS compiler:
 2. Via a bundler plugin
 3. Programatically
 
-<doc-callout type="tip">
-	Bundler plugins are the recommend approach. They are more flexible and can be integrated into your build pipeline.
-</doc-callout>
+> [!TIP]
+> Bundler plugins are the recommended approach. They are more flexible and can be integrated into your build pipeline.
 
 ## Via the Paraglide CLI
 

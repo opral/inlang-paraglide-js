@@ -1,6 +1,6 @@
 ---
-imports:
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
+title: Strategy
+description: Configure locale detection strategies - URL, cookie, localStorage, and custom strategies.
 ---
 
 # Strategy
@@ -150,26 +150,24 @@ compile({
 
 The URL-based strategy uses the web standard [URLPattern](https://developer.mozilla.org/en-US/docs/Web/API/URL_Pattern_API) to match and localize URLs based on your `urlPatterns` configuration. See [URL Patterns configuration below](#locale-prefixing) for detailed examples.
 
-<doc-callout type="info">
-**Default URL Patterns**: If you don't specify `urlPatterns`, Paraglide uses a default pattern with a wildcard `/:path(.*)?` that matches any path. For paths without a locale prefix, this resolves to your base locale. This is why the `url` strategy always finds a match by default.
-</doc-callout>
+> [!NOTE]
+> **Default URL Patterns**: If you don't specify `urlPatterns`, Paraglide uses a default pattern with a wildcard `/:path(.*)?` that matches any path. For paths without a locale prefix, this resolves to your base locale. This is why the `url` strategy always finds a match by default.
 
-<doc-callout type="tip">Use https://urlpattern.com/ to test your URL patterns.</doc-callout>
+> [!TIP]
+> Use https://urlpattern.com/ to test your URL patterns.
 
-<doc-callout type="warning">
-**URL Strategy with Wildcards**: When using wildcard patterns like `/:path(.*)?` (which is the default), the URL strategy will **always** resolve to a locale (typically the base locale for paths without a locale prefix). This makes it act as an "end condition" in your strategy array - any strategies placed after it will never be evaluated.
-
-If you want to prioritize user preferences (from localStorage, cookies, etc.) over the URL, place those strategies **before** the URL strategy in your array:
-
-```js
-// ✅ User preference is checked first
-strategy: ["localStorage", "preferredLanguage", "url"];
-
-// ❌ localStorage will never be checked because URL always resolves
-strategy: ["url", "localStorage", "preferredLanguage"];
-```
-
-</doc-callout>
+> [!WARNING]
+> **URL Strategy with Wildcards**: When using wildcard patterns like `/:path(.*)?` (which is the default), the URL strategy will **always** resolve to a locale (typically the base locale for paths without a locale prefix). This makes it act as an "end condition" in your strategy array - any strategies placed after it will never be evaluated.
+>
+> If you want to prioritize user preferences (from localStorage, cookies, etc.) over the URL, place those strategies **before** the URL strategy in your array:
+>
+> ```js
+> // ✅ User preference is checked first
+> strategy: ["localStorage", "preferredLanguage", "url"];
+>
+> // ❌ localStorage will never be checked because URL always resolves
+> strategy: ["url", "localStorage", "preferredLanguage"];
+> ```
 
 #### Client-side redirects
 

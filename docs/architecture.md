@@ -1,6 +1,6 @@
 ---
 title: Architecture
-description: "Paraglide isn't like other i18n libraries. It uses a compiler to generate translations. Learn more about it here."
+description: Paraglide uses a compiler to generate translations - learn how it works.
 imports:
   - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-video.js
 ---

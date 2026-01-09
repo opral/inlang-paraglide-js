@@ -49,7 +49,7 @@ For a feature comparison, see the [comparison table](/m/gerre34r/library-inlang-
 
 Explore the full benchmark data with different configurations:
 
-<benchmark-visualization src="https://cdn.jsdelivr.net/gh/opral/monorepo@main/inlang/packages/paraglide/paraglide-js/benchmark/benchmark-results.json"></benchmark-visualization>
+<benchmark-visualization src="https://cdn.jsdelivr.net/gh/opral/paraglide-js@main/benchmark/benchmark-results.json"></benchmark-visualization>
 
 ## Methodology
 

@@ -1,4 +1,6 @@
 ---
+title: Paraglide JS
+description: Dead simple i18n - typesafe, small footprint, tree-shakeable, framework agnostic.
 imports:
   - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-feature.js
   - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-features.js
@@ -6,14 +8,13 @@ imports:
   - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-links.js
   - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-comment.js
   - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-comments.js
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
 ---
 
 [![NPM Downloads](https://img.shields.io/npm/dw/%40inlang%2Fparaglide-js?logo=npm&logoColor=red&label=npm%20downloads)](https://www.npmjs.com/package/@inlang/paraglide-js)
 [![Closed github issues](https://img.shields.io/github/issues-closed/opral/paraglide-js?logo=github&color=purple)](https://github.com/opral/inlang-paraglide-js/issues)
 [![Monorepo contributors](https://img.shields.io/github/contributors/opral/monorepo?logo=github)](https://github.com/opral/monorepo/graphs/contributors)
 
-[<img src="https://cdn.jsdelivr.net/gh/opral/monorepo@latest/inlang/packages/paraglide/paraglide-js/assets/header.png" alt="Dead Simple i18n. Typesafe, Small Footprint, Tree-shakeable Messages, IDE Integration, Framework Agnostic" width="10000000px" />](https://www.youtube.com/watch?v=-YES3CCAG90)
+[<img src="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/assets/header.png" alt="Dead Simple i18n. Typesafe, Small Footprint, Tree-shakeable Messages, IDE Integration, Framework Agnostic" width="10000000px" />](https://www.youtube.com/watch?v=-YES3CCAG90)
 
 # Why Paraglide?
 
@@ -22,10 +23,10 @@ Paraglide is a compiler-based i18n library that emits tree-shakable message func
 If you use a bundler like [Vite](/m/gerre34r/library-inlang-paraglideJs/vite) in your project, Paraglide JS is almost certainly the best fit. 
 
 <doc-features>
-  <doc-feature title="Tiny Runtime" image="https://cdn.jsdelivr.net/gh/opral/monorepo@latest/inlang/packages/paraglide/paraglide-js/assets/bundlesize-feature.png"></doc-feature>
-  <doc-feature title="Fully Typesafe" image="https://cdn.jsdelivr.net/gh/opral/monorepo@latest/inlang/packages/paraglide/paraglide-js/assets/typesafety-feature.png"></doc-feature>
-  <doc-feature title="Only Ship Used Messages" image="https://cdn.jsdelivr.net/gh/opral/monorepo@latest/inlang/packages/paraglide/paraglide-js/assets/unused-translations.png"></doc-feature>
-   <doc-feature title="Sherlock VS Code Extension" image="https://cdn.jsdelivr.net/gh/opral/monorepo@latest/inlang/packages/paraglide/paraglide-js/assets/sherlock-preview.png"></doc-feature>
+  <doc-feature title="Tiny Runtime" image="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/assets/bundlesize-feature.png"></doc-feature>
+  <doc-feature title="Fully Typesafe" image="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/assets/typesafety-feature.png"></doc-feature>
+  <doc-feature title="Only Ship Used Messages" image="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/assets/unused-translations.png"></doc-feature>
+   <doc-feature title="Sherlock VS Code Extension" image="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/assets/sherlock-preview.png"></doc-feature>
 </doc-features>
 
 ## People Love It

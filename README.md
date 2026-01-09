@@ -1,10 +1,10 @@
 [![NPM Downloads](https://img.shields.io/npm/dw/%40inlang%2Fparaglide-js?logo=npm&logoColor=red&label=npm%20downloads)](https://www.npmjs.com/package/@inlang/paraglide-js)
-[![GitHub Issues](https://img.shields.io/github/issues-closed/opral/inlang-paraglide-js?logo=github&color=purple)](https://github.com/opral/inlang-paraglide-js/issues)
+[![GitHub Issues](https://img.shields.io/github/issues-closed/opral/paraglide-js?logo=github&color=purple)](https://github.com/opral/paraglide-js/issues)
+[![Contributors](https://img.shields.io/github/contributors/opral/paraglide-js?logo=github)](https://github.com/opral/paraglide-js/graphs/contributors)
 [![Discord](https://img.shields.io/discord/897438559458430986?logo=discord&logoColor=white&label=discord)](https://discord.gg/gdMPPWy57R)
-[![License](https://img.shields.io/github/license/opral/inlang-paraglide-js)](https://github.com/opral/inlang-paraglide-js/blob/main/LICENSE)
 
 <p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/opral/monorepo@latest/inlang/packages/paraglide/paraglide-js/assets/header.png" alt="Paraglide JS" width="600" />
+  <img src="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/assets/header.png" alt="Paraglide JS" width="600" />
 </p>
 
 <h1 align="center">🪂 Paraglide JS</h1>
@@ -47,23 +47,23 @@
 ```
 
 ```js
-import { m } from "./paraglide/messages.js"
+import { m } from "./paraglide/messages.js";
 
-m.greeting({ name: "World" })  // "Hello World!" — fully typesafe
+m.greeting({ name: "World" }); // "Hello World!" — fully typesafe
 ```
 
 The compiler generates typed message functions. Your bundler tree-shakes unused messages. Expect **~75% smaller bundles** (47 KB vs 205 KB) compared to runtime i18n libraries. [See benchmarks →](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/benchmark)
 
 ## Why Paraglide?
 
-| | |
-|---|---|
-| **Tiny Runtime** | ~300 bytes. No async loading. No waterfalls. |
-| **Tree-Shakable** | Unused messages are eliminated by your bundler. |
-| **Fully Typesafe** | Autocomplete for message keys and parameters. Typos become compile errors. |
-| **Framework Agnostic** | Works with React, Vue, Svelte, Solid, TanStack, or vanilla JS/TS. |
-| **Built-in i18n Routing** | URL-based locale detection and localized paths out of the box. |
-| **Inlang Ecosystem** | VS Code extension, CLI, translation editor — all work out of the box. |
+|                           |                                                                            |
+| ------------------------- | -------------------------------------------------------------------------- |
+| **Tiny Runtime**          | ~300 bytes. No async loading. No waterfalls.                               |
+| **Tree-Shakable**         | Unused messages are eliminated by your bundler.                            |
+| **Fully Typesafe**        | Autocomplete for message keys and parameters. Typos become compile errors. |
+| **Framework Agnostic**    | Works with React, Vue, Svelte, Solid, TanStack, or vanilla JS/TS.          |
+| **Built-in i18n Routing** | URL-based locale detection and localized paths out of the box.             |
+| **Inlang Ecosystem**      | VS Code extension, CLI, translation editor — all work out of the box.      |
 
 ## Works With Your Stack
 
@@ -84,6 +84,7 @@ npx @inlang/paraglide-js init
 ```
 
 The CLI sets up everything:
+
 - Creates your message files
 - Configures your bundler (Vite, Webpack, etc.)
 - Generates typesafe message functions
@@ -91,16 +92,16 @@ The CLI sets up everything:
 Then use your messages:
 
 ```js
-import { m } from "./paraglide/messages.js"
-import { setLocale, getLocale } from "./paraglide/runtime.js"
+import { m } from "./paraglide/messages.js";
+import { setLocale, getLocale } from "./paraglide/runtime.js";
 
 // Use messages (typesafe, with autocomplete)
-m.hello_world()
-m.greeting({ name: "Ada" })
+m.hello_world();
+m.greeting({ name: "Ada" });
 
 // Get/set locale
-getLocale()      // "en"
-setLocale("de")  // switches to German
+getLocale(); // "en"
+setLocale("de"); // switches to German
 ```
 
 **[Full Getting Started Guide →](https://inlang.com/m/gerre34r/library-inlang-paraglideJs)**
@@ -124,8 +125,8 @@ Paraglide uses `Intl.PluralRules` for locale-aware pluralization, supporting all
 
 ```js
 // Pluralization example
-m.items_in_cart({ count: 1 })  // "1 item in cart"
-m.items_in_cart({ count: 5 })  // "5 items in cart"
+m.items_in_cart({ count: 1 }); // "1 item in cart"
+m.items_in_cart({ count: 5 }); // "5 items in cart"
 
 // Works correctly for complex locales (Russian, Arabic, etc.)
 ```
@@ -136,13 +137,13 @@ Message format is **plugin-based** — use the default inlang format, or switch 
 
 ## Comparison
 
-| Feature | Paraglide | i18next | react-intl |
-|---------|-----------|---------|------------|
-| **Runtime size** | ~300B | 10kB+ | 8kB+ |
-| **Tree-shakable** | ✅ | ❌ | ❌ |
-| **Typesafe** | ✅ | Partial | ❌ |
-| **Framework agnostic** | ✅ | Wrappers needed | React only |
-| **i18n routing** | ✅ Built-in | ❌ | ❌ |
+| Feature                | Paraglide   | i18next         | react-intl |
+| ---------------------- | ----------- | --------------- | ---------- |
+| **Runtime size**       | ~300B       | 10kB+           | 8kB+       |
+| **Tree-shakable**      | ✅          | ❌              | ❌         |
+| **Typesafe**           | ✅          | Partial         | ❌         |
+| **Framework agnostic** | ✅          | Wrappers needed | React only |
+| **i18n routing**       | ✅ Built-in | ❌              | ❌         |
 
 **[Full Comparison →](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/comparison)**
 
@@ -169,12 +170,12 @@ Message format is **plugin-based** — use the default inlang format, or switch 
 
 Paraglide is built on the [open inlang format](https://github.com/opral/inlang-sdk). Works with:
 
-| Tool | Description |
-|------|-------------|
-| [Sherlock](https://inlang.com/m/r7kp499g/app-inlang-ideExtension) | VS Code extension for inline translation editing |
-| [CLI](https://inlang.com/m/2qj2w8pu/app-inlang-cli) | Machine translate from the terminal |
-| [Fink](https://inlang.com/m/tdozzpar/app-inlang-finkLocalizationEditor) | Translation editor for non-developers |
-| [Parrot](https://inlang.com/m/gkrpgoir/app-parrot-figmaPlugin) | Manage translations in Figma |
+| Tool                                                                    | Description                                      |
+| ----------------------------------------------------------------------- | ------------------------------------------------ |
+| [Sherlock](https://inlang.com/m/r7kp499g/app-inlang-ideExtension)       | VS Code extension for inline translation editing |
+| [CLI](https://inlang.com/m/2qj2w8pu/app-inlang-cli)                     | Machine translate from the terminal              |
+| [Fink](https://inlang.com/m/tdozzpar/app-inlang-finkLocalizationEditor) | Translation editor for non-developers            |
+| [Parrot](https://inlang.com/m/gkrpgoir/app-parrot-figmaPlugin)          | Manage translations in Figma                     |
 
 **[Explore the inlang ecosystem →](https://inlang.com/c/apps)**
 

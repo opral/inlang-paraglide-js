@@ -1,7 +1,6 @@
 ---
-imports: 
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/doc-callout.js
-
+title: Variants
+description: Pluralization, gendering, A/B testing, and conditional messages in Paraglide.
 ---
 
 # Variants
@@ -18,9 +17,8 @@ The message below will match the following conditions:
 | ios      | female      | {username} has to download the app on her iPhone from the App Store.    |
 | *        | *           | The person has to download the app.                                     |
 
-<doc-callout type="info">
-  The example below uses the inlang message format plugin for illustrative purposes. The syntax may differ depending on the plugin you are using.
-</doc-callout>
+> [!NOTE]
+> The example below uses the inlang message format plugin for illustrative purposes. The syntax may differ depending on the plugin you are using.
 
 ```json
 {
@@ -43,9 +41,8 @@ You can define a variable in your message and then use it in the selector. Parag
 | count=1 | countPlural=one   | There is one cat.      |
 | count>1 | countPlural=other | There are many cats.   |
 
-<doc-callout type="tip">
-  Read the `local countPlural = count: plural` syntax as "create a local variable `countPlural` that equals `plural(count)`".
-</doc-callout>
+> [!TIP]
+> Read the `local countPlural = count: plural` syntax as "create a local variable `countPlural` that equals `plural(count)`".
 
 ```json
 {
@@ -82,6 +79,5 @@ You can define a variable in your message and then use it in the selector. Parag
 }
 ```
 
-<doc-callout type="tip">
-  Ordinal category names (`one`, `two`, `few`, `other`, etc.) follow <code>Intl.PluralRules</code> for the active locale.
-</doc-callout>
+> [!TIP]
+> Ordinal category names (`one`, `two`, `few`, `other`, etc.) follow `Intl.PluralRules` for the active locale.
