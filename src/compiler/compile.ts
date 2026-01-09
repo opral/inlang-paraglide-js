@@ -72,6 +72,7 @@ export async function compile(
 			const output = await compileProject({
 				compilerOptions: withDefaultOptions,
 				project,
+				projectPath: withDefaultOptions.project,
 			});
 
 			const outputHashes = await writeOutput({

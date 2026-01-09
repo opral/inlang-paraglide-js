@@ -87,6 +87,70 @@ test("emitPrettierIgnore", async () => {
 	expect(_false).not.toHaveProperty(".prettierignore");
 });
 
+test("emitReadme", async () => {
+	const project = await loadProjectInMemory({
+		blob: await newProject({
+			settings: {
+				locales: ["en", "de"],
+				baseLocale: "en",
+			},
+		}),
+	});
+
+	const projectPath = "./project.inlang";
+
+	const _default = await compileProject({
+		project,
+		projectPath,
+	});
+
+	const _true = await compileProject({
+		project,
+		projectPath,
+		compilerOptions: { emitReadme: true },
+	});
+
+	const _false = await compileProject({
+		project,
+		projectPath,
+		compilerOptions: { emitReadme: false },
+	});
+
+	const _noProjectPath = await compileProject({
+		project,
+	});
+
+	expect(_default).toHaveProperty("README.md");
+	expect(_true).toHaveProperty("README.md");
+	expect(_false).not.toHaveProperty("README.md");
+	// README should still be emitted even without projectPath
+	expect(_noProjectPath).toHaveProperty("README.md");
+	// but should not contain the "Compiled from:" line
+	expect(_noProjectPath["README.md"]).not.toContain("Compiled from:");
+});
+
+test("emitReadme includes project path", async () => {
+	const project = await loadProjectInMemory({
+		blob: await newProject({
+			settings: {
+				locales: ["en", "de"],
+				baseLocale: "en",
+			},
+		}),
+	});
+
+	const projectPath = "./my-custom-project.inlang";
+
+	const output = await compileProject({
+		project,
+		projectPath,
+	});
+
+	expect(output["README.md"]).toContain(projectPath);
+	expect(output["README.md"]).toContain("Compiled from:");
+	expect(output["README.md"]).toContain("Paraglide JS");
+});
+
 test("emitTsDeclarations generates declaration files", async () => {
 	const output = await compileProject({
 		project,
