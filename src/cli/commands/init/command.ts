@@ -85,7 +85,7 @@ const addParaglideJsToDevDependencies: CliStep<
 	const ctx1 = await updatePackageJson({
 		devDependencies: async (devDeps) => ({
 			...devDeps,
-			"@inlang/paraglide-js": ENV_VARIABLES.PARJS_PACKAGE_VERSION,
+			"@inlang/paraglide-js": `^${ENV_VARIABLES.PARJS_PACKAGE_VERSION}`,
 		}),
 	})(ctx);
 	ctx.logger.success(
