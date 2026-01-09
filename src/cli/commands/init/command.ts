@@ -61,14 +61,11 @@ export const initCommand = new Command()
 		}
 
 		const successMessage = [
-			`inlang Paraglide-JS has been set up sucessfully.`,
+			"Setup complete! Run `npm install` and then `npm run build`.",
+			`Docs: https://inlang.com/m/gerre34r/library-inlang-paraglideJs/basics`,
 			"\n",
-			`1. Run your install command (npm i, yarn install, etc)`,
-			`2. Run the build script (npm run build, or similar.)`,
-			`3. Visit https://inlang.com/m/gerre34r/library-inlang-paraglideJs/basics to get started.`,
-			"\n",
-			`For questions and feedback, visit`,
-			`https://github.com/opral/inlang-paraglide-js/issues`,
+			"For questions and feedback, visit",
+			"https://github.com/opral/paraglide-js/issues",
 		].join("\n");
 		ctx.logger.box(successMessage);
 		process.exit(0);
