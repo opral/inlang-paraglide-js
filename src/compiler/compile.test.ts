@@ -138,6 +138,38 @@ test("cleans the output directory", async () => {
 	expect(outputSubDir).toBe(false);
 });
 
+// Regression coverage for https://github.com/opral/paraglide-js/issues/581
+test("runtime output strips sourcemap references", async () => {
+	const fs = memfs().fs as unknown as typeof import("node:fs");
+
+	const project = await loadProjectInMemory({
+		blob: await newProject({
+			settings: {
+				baseLocale: "en",
+				locales: ["en", "de"],
+			},
+		}),
+	});
+
+	await saveProjectToDirectory({
+		project,
+		path: "/project.inlang",
+		fs: fs.promises,
+	});
+
+	await compile({
+		project: "/project.inlang",
+		outdir: "/output",
+		fs: fs,
+	});
+
+	const runtimeFile = await fs.promises.readFile("/output/runtime.js", "utf8");
+	const serverFile = await fs.promises.readFile("/output/server.js", "utf8");
+
+	expect(runtimeFile).not.toMatch(/sourceMappingURL=/);
+	expect(serverFile).not.toMatch(/sourceMappingURL=/);
+});
+
 test("doesn't clean the output directory if option is set to false", async () => {
 	const fs = memfs().fs as unknown as typeof import("node:fs");
 
