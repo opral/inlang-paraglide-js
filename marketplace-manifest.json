@@ -39,6 +39,7 @@
 			"/strategy": "./docs/strategy.md",
 			"/middleware": "./docs/middleware-guide.md",
 			"/variants": "./docs/variants.md",
+			"/objects-and-arrays": "./docs/objects-and-arrays.md",
 			"/file-formats": "./docs/file-formats.md",
 			"/monorepo": "./docs/monorepo.md",
 			"/multi-tenancy": "./docs/multi-tenancy.md",
