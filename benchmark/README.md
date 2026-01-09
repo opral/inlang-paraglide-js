@@ -38,7 +38,6 @@ Runtime libraries like i18next rely on manual namespacing to reduce bundle size,
 | Aspect | Paraglide (Compiler) | i18next (Runtime) |
 |--------|----------------------|-------------------|
 | **Unused messages** | Tree-shaken away | Shipped in bundle |
-| **Runtime overhead** | ~300 bytes | ~8-10 KB |
 | **Message format** | Compiled to functions | JSON dictionary |
 
 ---

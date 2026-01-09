@@ -1,6 +1,6 @@
 ---
 title: Scaling
-description: Paraglide's bundle size starts at 300 bytes and stays smaller than i18next up to 500+ messages per page.
+description: Paraglide delivers up to 70% smaller bundle sizes than runtime i18n libraries through tree-shaking.
 ---
 
 # Scaling
@@ -15,7 +15,7 @@ We are working hard on getting per-language splitting to work, but in the meanti
 
 Most pages don't use many messages. Many just use one or two. Thus, one of the most important metrics for an i18n library is how well it scales _down_. What's the bundle size impact with just one message?
 
-Paraglide scales down very very well. The runtime can get as small as 300 bytes.
+Paraglide scales down very well because unused messages are tree-shaken away. Only the messages you actually use end up in your bundle.
 
 ### Scaling _Up_
 

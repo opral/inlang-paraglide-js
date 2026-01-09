@@ -1,6 +1,6 @@
 ---
 title: Paraglide JS
-description: Dead simple i18n - typesafe, small footprint, tree-shakeable, framework agnostic.
+description: Compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes.
 imports:
   - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-feature.js
   - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-features.js
@@ -18,12 +18,12 @@ imports:
 
 # Why Paraglide?
 
-Paraglide is a compiler-based i18n library that emits tree-shakable message functions. Small bundle sizes, no async waterfalls, full type-safety, and more. Check out the [comparison page](/m/gerre34r/library-inlang-paraglideJs/comparison). 
+Paraglide is a compiler-based i18n library that emits tree-shakable message functions, leading to [up to 70% smaller bundle sizes](/m/gerre34r/library-inlang-paraglideJs/benchmark) (e.g. 47 KB vs 205 KB). Full type-safety, no async waterfalls, and more. Check out the [comparison page](/m/gerre34r/library-inlang-paraglideJs/comparison). 
 
 If you use a bundler like [Vite](/m/gerre34r/library-inlang-paraglideJs/vite) in your project, Paraglide JS is almost certainly the best fit. 
 
 <doc-features>
-  <doc-feature title="Tiny Runtime" image="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/assets/bundlesize-feature.png"></doc-feature>
+  <doc-feature title="Smaller Bundle Sizes" image="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/assets/bundlesize-feature.png"></doc-feature>
   <doc-feature title="Fully Typesafe" image="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/assets/typesafety-feature.png"></doc-feature>
   <doc-feature title="Only Ship Used Messages" image="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/assets/unused-translations.png"></doc-feature>
    <doc-feature title="Sherlock VS Code Extension" image="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/assets/sherlock-preview.png"></doc-feature>

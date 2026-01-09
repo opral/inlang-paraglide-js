@@ -9,11 +9,7 @@
 
 <h1 align="center">🪂 Paraglide JS</h1>
 <p align="center">
-  <strong>Compiler-based i18n library with tree-shaking, full typesafety, and near zero runtime</strong>
-</p>
-<p align="center">
-  Paraglide JS compiles your translations into tree-shakable message functions.<br/>
-  Unused translations are eliminated, and what remains is a fully typesafe API with autocomplete.
+  <strong>Compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes.</strong>
 </p>
 
 <p align="center">
@@ -52,18 +48,18 @@ import { m } from "./paraglide/messages.js";
 m.greeting({ name: "World" }); // "Hello World!" — fully typesafe
 ```
 
-The compiler generates typed message functions. Your bundler tree-shakes unused messages. Expect **~75% smaller bundles** (47 KB vs 205 KB) compared to runtime i18n libraries. [See benchmarks →](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/benchmark)
+The compiler generates typed message functions. Your bundler tree-shakes unused messages. Expect [**up to 70% smaller bundle sizes**](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/benchmark) compared to runtime i18n libraries (e.g. 47 KB vs 205 KB).
 
 ## Why Paraglide?
 
 |                           |                                                                            |
 | ------------------------- | -------------------------------------------------------------------------- |
-| **Tiny Runtime**          | ~300 bytes. No async loading. No waterfalls.                               |
+| **Smaller Bundle Sizes**  | Up to 70% smaller than runtime i18n libraries.                             |
 | **Tree-Shakable**         | Unused messages are eliminated by your bundler.                            |
 | **Fully Typesafe**        | Autocomplete for message keys and parameters. Typos become compile errors. |
 | **Framework Agnostic**    | Works with React, Vue, Svelte, Solid, TanStack, or vanilla JS/TS.          |
 | **Built-in i18n Routing** | URL-based locale detection and localized paths out of the box.             |
-| **Inlang Ecosystem**      | VS Code extension, CLI, translation editor — all work out of the box.      |
+| **Built on inlang**       | Integrates with VS Code extension, CLI, and translation editor.            |
 
 ## Works With Your Stack
 
@@ -109,15 +105,13 @@ setLocale("de"); // switches to German
 ## How It Works
 
 ```
-messages/en.json  ──┐
-messages/de.json  ──┼──→  Compiler  ──→  ./paraglide/messages.js
-messages/fr.json  ──┘                    ./paraglide/runtime.js
+┌────────────────┐      ┌────────────────────┐      ┌──────────────────────────┐
+│ Inlang Project │ ───▶ │ Paraglide Compiler │ ───▶ │ ./paraglide/messages.js  │
+└────────────────┘      └────────────────────┘      │ ./paraglide/runtime.js   │
+                                                    └──────────────────────────┘
 ```
 
-1. You write messages in JSON (or any supported format)
-2. The compiler generates typed functions
-3. Your bundler tree-shakes unused messages
-4. Result: tiny, typesafe, fast
+Paraglide compiles an [inlang project](https://inlang.com/docs/introduction#how-it-works) into tree-shakable message functions. Your bundler eliminates unused messages at build time.
 
 ## Message Format
 
@@ -139,7 +133,7 @@ Message format is **plugin-based** — use the default inlang format, or switch 
 
 | Feature                | Paraglide   | i18next         | react-intl |
 | ---------------------- | ----------- | --------------- | ---------- |
-| **Runtime size**       | ~300B       | 10kB+           | 8kB+       |
+| **Bundle size**        | Up to 70% smaller via tree-shaking | ❌ Ships all messages | ❌ Ships all messages |
 | **Tree-shakable**      | ✅          | ❌              | ❌         |
 | **Typesafe**           | ✅          | Partial         | ❌         |
 | **Framework agnostic** | ✅          | Wrappers needed | React only |
