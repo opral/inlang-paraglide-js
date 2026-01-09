@@ -263,6 +263,44 @@ Adding the dedicated root pattern ensures the homepage resolves directly to the
 correct locale prefix without an extra redirect loop, while the wildcard keeps
 handling every other route.
 
+#### Routes without locale prefix
+
+Some routes (like `/dashboard` or `/app`) may need i18n but shouldn't have a locale prefix in the URL. Configure these by using the same path for all locales:
+
+```js
+compile({
+	project: "./project.inlang",
+	outdir: "./src/paraglide",
+	strategy: ["url", "cookie", "baseLocale"],
+	urlPatterns: [
+		// Dashboard routes - no locale prefix
+		{
+			pattern: "/dashboard/:path(.*)?",
+			localized: [
+				["en", "/dashboard/:path(.*)?"],
+				["de", "/dashboard/:path(.*)?"],  // Same path for all locales
+			],
+		},
+		// Other routes - use locale prefix
+		{
+			pattern: "/:path(.*)?",
+			localized: [
+				["de", "/de/:path(.*)?"],
+				["en", "/:path(.*)?"],
+			],
+		},
+	],
+});
+```
+
+With this setup:
+- `/dashboard/*` URLs stay the same regardless of locale
+- Locale is determined by cookie or other fallback strategies
+- Other routes like `/about` use URL-based locale (`/de/about`)
+
+> [!TIP]
+> For routes that don't need i18n at all (like `/api`), bypass the middleware entirely instead. See [Excluding Routes from Middleware](./middleware-guide.md#excluding-routes-from-middleware).
+
 #### Translated pathnames
 
 For pathnames where you want to localize the structure and path segments of the URL, you can use different patterns for each locale. This approach enables language-specific routes like `/about` in English and `/ueber-uns` in German.
