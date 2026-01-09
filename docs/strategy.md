@@ -7,6 +7,9 @@ imports:
 
 Paraglide JS comes with various strategies to determine the locale out of the box.
 
+> [!TIP]
+> For server-side integration details and framework examples, see the [Middleware Guide](./middleware-guide.md).
+
 The strategy is defined with the `strategy` option. **Strategies are evaluated in order** - the first strategy that successfully returns a locale will be used, and subsequent strategies won't be checked. Think of the array as a simple fallback chain: each strategy is attempted until one succeeds, keeping the API predictable.
 
 In the example below, the `cookie` strategy first determines the locale. If no cookie is found (returns `undefined`), the `baseLocale` is used as a fallback.
