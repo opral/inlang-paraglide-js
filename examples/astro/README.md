@@ -1,11 +1,11 @@
 ---
-imports:
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
+title: Astro
+description: Set up Paraglide JS with Astro for SSR.
 ---
 
-<img src="https://cdn.jsdelivr.net/gh/opral/monorepo@latest/inlang/packages/paraglide/paraglide-js/examples/astro/assets/banner.png" alt="i18n library for astro" width="10000000px" />
+<img src="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/astro/assets/banner.png" alt="i18n library for astro" width="10000000px" />
 
-This example demonstrates how to use Paraglide JS with Astro in SSR mode. The source code can be found [here](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/examples/astro).
+This example demonstrates how to use Paraglide JS with Astro in SSR mode. The source code can be found [here](https://github.com/opral/paraglide-js/tree/main/examples/astro).
 
 
 | Feature      | Supported |
@@ -16,7 +16,8 @@ This example demonstrates how to use Paraglide JS with Astro in SSR mode. The so
 | URLPattern   | ✅        |
 | Any Strategy | ✅        |
 
-<doc-callout type="info">You can integrate Paraglide JS yourself to achieve SSG. PR with an example is welcome.</doc-callout>
+> [!NOTE]
+> You can integrate Paraglide JS yourself to achieve SSG. PR with an example is welcome.
 
 ## Setup
 
@@ -68,7 +69,8 @@ See the [basics documentation](/m/gerre34r/library-inlang-paraglideJs/basics) fo
 
 You can disable async local storage in serverless environments by using the `disableAsyncLocalStorage` option.
 
-<doc-callout type="warning">This is only safe in serverless environments where each request gets its own isolated runtime context. Using it in multi-request server environments could lead to data leakage between concurrent requests.</doc-callout>
+> [!WARNING]
+> This is only safe in serverless environments where each request gets its own isolated runtime context. Using it in multi-request server environments could lead to data leakage between concurrent requests.
 
 
 ```diff

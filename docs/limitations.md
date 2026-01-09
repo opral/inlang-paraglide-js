@@ -1,3 +1,8 @@
+---
+title: Limitations
+description: Current limitations of Paraglide JS and known workarounds.
+---
+
 # Limitations
 
 ## Per language splitting is not implemented yet

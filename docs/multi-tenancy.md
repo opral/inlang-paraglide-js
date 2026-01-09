@@ -1,3 +1,8 @@
+---
+title: Multi-Tenancy
+description: Serve different localization configurations per tenant, domain, or customer.
+---
+
 # Multi-Tenancy
 ```
 https://customer1.com/about -> de

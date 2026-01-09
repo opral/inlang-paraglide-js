@@ -1,5 +1,6 @@
 ---
-imports: 
+title: Scaling
+description: Paraglide delivers up to 70% smaller bundle sizes than runtime i18n libraries through tree-shaking.
 ---
 
 # Scaling
@@ -14,7 +15,7 @@ We are working hard on getting per-language splitting to work, but in the meanti
 
 Most pages don't use many messages. Many just use one or two. Thus, one of the most important metrics for an i18n library is how well it scales _down_. What's the bundle size impact with just one message?
 
-Paraglide scales down very very well. The runtime can get as small as 300 bytes.
+Paraglide scales down very well because unused messages are tree-shaken away. Only the messages you actually use end up in your bundle.
 
 ### Scaling _Up_
 
@@ -29,6 +30,6 @@ Given that most Projects have between two and four languages you can expect Para
 
 This chart shows Paraglide's bundle size with a different number of languages compared to `i18next` loading a single language.
 
-![Chart showing Paraglide starting out way smaller than i18next and then gradually overtaking it. With one language Paraglide never overtakes i18next. With two it overtakes it at 1250 messages. With five languages it overtakes it at about 400 messages](https://cdn.jsdelivr.net/gh/opral/monorepo@main/inlang/packages/paraglide/paraglide-js/docs/benchmark.png)
+![Chart showing Paraglide starting out way smaller than i18next and then gradually overtaking it. With one language Paraglide never overtakes i18next. With two it overtakes it at 1250 messages. With five languages it overtakes it at about 400 messages](https://cdn.jsdelivr.net/gh/opral/paraglide-js@main/docs/benchmark.png)
 
 **Per-Language Splitting is a long-term goal for Paraglide**. Once Per-Language splitting works Paraglide's bundle will scale about 30% slower than other i18n libraries thanks to minified messageIDs. Keep track of progress in [this issue](https://github.com/opral/inlang-paraglide-js/issues/88).

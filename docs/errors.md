@@ -1,3 +1,8 @@
+---
+title: Errors
+description: Common Paraglide errors and how to fix them.
+---
+
 # Errors
 
 ## No locale found
@@ -47,9 +52,8 @@ console.log(m.hello());
 
 Make sure to call messages within a request context that is set by the paraglideMiddleware:
 
-<doc-callout type="info">
-  Dependent on your framework, what runs in a request context can differ. In SvelteKit, for example, you can use the `load` function in your routes to ensure that messages are called within a request context.
-</doc-callout>
+> [!NOTE]
+> Dependent on your framework, what runs in a request context can differ. In SvelteKit, for example, you can use the `load` function in your routes to ensure that messages are called within a request context.
 
 ```tsx
 // hello.ts

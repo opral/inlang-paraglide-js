@@ -30,14 +30,17 @@
 			"/next-js": "./docs/getting-started/next-js.md",
 			"/astro": "./examples/astro/README.md",
 			"/vite": "./examples/vite/README.md",
-			"/vanilla-js-ts": "./docs/getting-started/vanilla-js-ts.md"
+			"/vanilla-js-ts": "./docs/getting-started/vanilla-js-ts.md",
+			"/standalone-servers": "./docs/getting-started/standalone-servers.md"
 		},
 		"Usage": {
 			"/basics": "./docs/basics.md",
 			"/message-keys": "./docs/message-keys.md",
 			"/strategy": "./docs/strategy.md",
+			"/middleware": "./docs/middleware-guide.md",
 			"/variants": "./docs/variants.md",
 			"/file-formats": "./docs/file-formats.md",
+			"/monorepo": "./docs/monorepo.md",
 			"/multi-tenancy": "./docs/multi-tenancy.md",
 			"/server-side-rendering": "./docs/server-side-rendering.md",
 			"/compiling-messages": "./docs/compiling-messages.md",

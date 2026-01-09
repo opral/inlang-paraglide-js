@@ -1,6 +1,6 @@
 ---
-imports:
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
+title: File Formats
+description: Message file formats and inlang plugins for Paraglide.
 ---
 
 # Message file formats
@@ -11,7 +11,7 @@ By default, Paraglide JS uses the [inlang-message-format](https://inlang.com/m/r
 
 ```mermaid
 graph LR;
-    
+
     subgraph "Pipeline"
         A[Inlang Project] -->|Opened by| B[Paraglide Compiler]
         B -->|Compiles| C[Code]
@@ -33,9 +33,8 @@ All plugins can be found on https://inlang.com/c/plugins. Here are some popular 
 
 Add the link of the plugin to the `modules` in the `settings.json` file.
 
-<doc-callout type="info">
-  Refer to the documentation of the plugin for the link and installation guide.
-</doc-callout>
+> [!NOTE]
+> Refer to the documentation of the plugin for the link and installation guide.
 
 ```diff
 {
@@ -66,10 +65,10 @@ You can use multiple plugins in your project.
 
 ## Implementation Details
 
-We [learned the hard way](https://opral.substack.com/p/focus-shift-from-inlang-to-lix) that a binary `.inlang` file is needed to make localization simple. Unfortunately, git can't store binary files without losing the benefits of version control. 
+We [learned the hard way](https://opral.substack.com/p/focus-shift-from-inlang-to-lix) that a binary `.inlang` file is needed to make localization simple. Unfortunately, git can't store binary files without losing the benefits of version control.
 
 Hence, for now, unpacking `.inlang` files into directories and creating an in-memory sqlite on each load is the way to go.
 
 ## Good-to-know: `.inlang` files
 
-The long-term vision is to use `.inlang` files directly without depending on external message files and plugins. 
+The long-term vision is to use `.inlang` files directly without depending on external message files and plugins.
