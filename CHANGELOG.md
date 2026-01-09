@@ -1,5 +1,48 @@
 # @inlang/paraglide-js
 
+## 2.8.0
+
+### Minor Changes
+
+- 07e17c0: Emit a `README.md` in the compiled output to help LLMs understand the generated code. The README includes usage examples, runtime API documentation, and links to further resources. Can be disabled with `emitReadme: false`.
+- 991c314: Improve watch mode to monitor directories so newly added translation files trigger recompiles in the CLI and bundler plugin.
+- 4a75259: Update inlang SDK to v2.6.0 with improved project structure and forward-compatibility.
+
+  **New `.meta.json` file in inlang projects:**
+
+  The SDK now writes a `.meta.json` file to track which SDK version last modified the project. This enables safe forward migrations and prevents accidental downgrades when switching between SDK versions.
+
+  ```
+  project.inlang/
+    settings.json
+    README.md
+    .gitignore
+    .meta.json   <-- new
+  ```
+
+  **Updated `.gitignore` handling:**
+
+  Inlang projects now manage their own `.gitignore` that ignores everything except `settings.json`. If you see the `.gitignore` file inside your `.inlang` project folder showing up as changed in git, run these commands to fix it:
+
+  ```bash
+  # Remove the tracked .gitignore from git's index
+  git rm --cached '**/*.inlang/.gitignore'
+
+  # Commit the change
+  git commit -m "fix: remove tracked .gitignore from inlang project"
+  ```
+
+  This is a one-time fix. The inlang SDK handles the `.gitignore` automatically starting with v2.5.
+
+### Patch Changes
+
+- ec7f3e3: Add a `--watch` flag to the CLI `compile` command to recompile on changes.
+- be10228: Strip sourcemap references from generated runtime and server outputs to avoid missing map warnings. (https://github.com/opral/paraglide-js/issues/581)
+- e75e2a3: Add documentation for avoiding redirect loops with frameworks that handle URL localization themselves (e.g., TanStack Router).
+  - Added JSDoc example in `paraglideMiddleware()` explaining when to use the original request vs the modified request
+  - Added troubleshooting section in SSR docs explaining the redirect loop issue and solution
+  - Updated TanStack Start example README with an important callout about using the original request
+
 ## 2.7.2
 
 ### Patch Changes
