@@ -194,9 +194,11 @@ export const compileCommand = new Command()
 						logger.success("Successfully compiled inlang project.");
 					}
 				} catch (e) {
-					clearReadFiles();
-					for (const filePath of previouslyReadFiles) {
-						readFiles.add(filePath);
+					if (previouslyReadFiles.size > 0) {
+						clearReadFiles();
+						for (const filePath of previouslyReadFiles) {
+							readFiles.add(filePath);
+						}
 					}
 					previousCompilation = undefined;
 					logger.error("Error while compiling inlang project.");
