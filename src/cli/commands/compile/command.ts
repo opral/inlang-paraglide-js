@@ -108,6 +108,18 @@ export const compileCommand = new Command()
 					}
 				}
 
+				const attachWatcherErrorHandler = (
+					watcher: fs.FSWatcher,
+					targetPath: string,
+					targetType: "file" | "directory"
+				) => {
+					watcher.on("error", (error) => {
+						logger.warn(
+							`Watch ${targetType} error for ${targetPath}: ${(error as Error).message}`
+						);
+					});
+				};
+
 				for (const filePath of nextFiles) {
 					if (fileWatchers.has(filePath)) {
 						continue;
@@ -117,6 +129,7 @@ export const compileCommand = new Command()
 						const watcher = fs.watch(filePath, () => {
 							scheduleCompile(filePath);
 						});
+						attachWatcherErrorHandler(watcher, filePath, "file");
 						fileWatchers.set(filePath, watcher);
 					} catch (error) {
 						logger.warn(`Failed to watch file: ${filePath}`);
@@ -141,6 +154,7 @@ export const compileCommand = new Command()
 							}
 							scheduleCompile(changedPath);
 						});
+						attachWatcherErrorHandler(watcher, directoryPath, "directory");
 						directoryWatchers.set(directoryPath, watcher);
 					} catch (error) {
 						logger.warn(`Failed to watch directory: ${directoryPath}`);
