@@ -12,7 +12,7 @@ export const promptForOutdir: CliStep<
 		outdir: string;
 	}
 > = async (ctx) => {
-	const response = await prompt("Where should the compiled files be placed?", {
+	const response = await prompt("Which outdir should Paraglide write generated files to?", {
 		type: "text",
 		initial: DEFAULT_OUTDIR,
 		default: DEFAULT_OUTDIR,

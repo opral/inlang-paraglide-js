@@ -18,11 +18,11 @@ import { maybeAddMachineTranslation } from "../../steps/maybe-add-machine-transl
 
 export const initCommand = new Command()
 	.name("init")
-	.summary("Initializes inlang Paraglide-JS.")
+	.summary("Initializes Paraglide-JS.")
 	.action(async () => {
 		const logger = new Logger({ silent: false, prefix: false });
 
-		logger.box("Welcome to inlang Paraglide JS 🪂");
+		logger.box("Welcome to Paraglide JS 🪂");
 
 		const ctx = {
 			logger,
@@ -130,9 +130,6 @@ const addCompileStepToPackageJSON: CliStep<
 
 			ctx.logger.success(
 				"Added the compile command to the build step in package.json."
-			);
-			ctx.logger.info(
-				`If you use a bundler like Vite, Rolldown, or Webpack, you can use a bundler plugin instead and remove the compile command from the build script.`
 			);
 			ctx.logger.info(
 				`Visit https://inlang.com/m/gerre34r/library-inlang-paraglideJs/compiling-messages for more information.`
