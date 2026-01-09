@@ -65,5 +65,11 @@ function injectCode(path: string): string {
 	const code = fs.readFileSync(new URL(path, import.meta.url), "utf-8");
 	// Regex to match single-line and multi-line imports
 	const importRegex = /import\s+[\s\S]*?from\s+['"][^'"]+['"]\s*;?/g;
-	return code.replace(importRegex, "").trim();
+	const sourceMapRegex = /\/\/# sourceMappingURL=.*$/gm;
+	const blockSourceMapRegex = /\/\*# sourceMappingURL=.*?\*\//g;
+	return code
+		.replace(importRegex, "")
+		.replace(sourceMapRegex, "")
+		.replace(blockSourceMapRegex, "")
+		.trim();
 }
