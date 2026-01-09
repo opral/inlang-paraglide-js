@@ -13,15 +13,27 @@ export const maybeAddSherlock: CliStep<
 	unknown
 > = async (ctx) => {
 	const isCertainlyVsCode = process?.env?.TERM_PROGRAM === "vscode";
+	let isUsingVsCode = isCertainlyVsCode;
 
-	let response = isCertainlyVsCode;
 	if (!isCertainlyVsCode) {
-		response = await prompt(`Are you using Visual Studio Code?`, {
+		isUsingVsCode = await prompt(
+			`Are you using Visual Studio Code or a compatible fork (like Cursor)?`,
+			{
+				type: "confirm",
+				initial: true,
+			}
+		);
+	}
+	if (isUsingVsCode === false) return ctx;
+
+	const shouldAddSherlock = await prompt(
+		`Do you want to use the Sherlock VSCode (or Cursor) extension for a better DX?`,
+		{
 			type: "confirm",
 			initial: true,
-		});
-	}
-	if (response === false) return ctx;
+		}
+	);
+	if (shouldAddSherlock === false) return ctx;
 
 	const settings = await ctx.project.settings.get();
 

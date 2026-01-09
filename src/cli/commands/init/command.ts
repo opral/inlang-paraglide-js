@@ -18,11 +18,11 @@ import { maybeAddMachineTranslation } from "../../steps/maybe-add-machine-transl
 
 export const initCommand = new Command()
 	.name("init")
-	.summary("Initializes inlang Paraglide-JS.")
+	.summary("Initializes Paraglide-JS.")
 	.action(async () => {
 		const logger = new Logger({ silent: false, prefix: false });
 
-		logger.box("Welcome to inlang Paraglide JS 🪂");
+		logger.box("Welcome to Paraglide JS 🪂");
 
 		const ctx = {
 			logger,
@@ -61,14 +61,11 @@ export const initCommand = new Command()
 		}
 
 		const successMessage = [
-			`inlang Paraglide-JS has been set up sucessfully.`,
+			"Setup complete! Run `npm install` and then `npm run build`.",
+			`Docs: https://inlang.com/m/gerre34r/library-inlang-paraglideJs/basics`,
 			"\n",
-			`1. Run your install command (npm i, yarn install, etc)`,
-			`2. Run the build script (npm run build, or similar.)`,
-			`3. Visit https://inlang.com/m/gerre34r/library-inlang-paraglideJs/basics to get started.`,
-			"\n",
-			`For questions and feedback, visit`,
-			`https://github.com/opral/inlang-paraglide-js/issues`,
+			"For questions and feedback, visit",
+			"https://github.com/opral/paraglide-js/issues",
 		].join("\n");
 		ctx.logger.box(successMessage);
 		process.exit(0);
@@ -85,7 +82,7 @@ const addParaglideJsToDevDependencies: CliStep<
 	const ctx1 = await updatePackageJson({
 		devDependencies: async (devDeps) => ({
 			...devDeps,
-			"@inlang/paraglide-js": ENV_VARIABLES.PARJS_PACKAGE_VERSION,
+			"@inlang/paraglide-js": `^${ENV_VARIABLES.PARJS_PACKAGE_VERSION}`,
 		}),
 	})(ctx);
 	ctx.logger.success(
@@ -133,9 +130,6 @@ const addCompileStepToPackageJSON: CliStep<
 
 			ctx.logger.success(
 				"Added the compile command to the build step in package.json."
-			);
-			ctx.logger.info(
-				`If you use a bundler like Vite, Rolldown, or Webpack, you can use a bundler plugin instead and remove the compile command from the build script.`
 			);
 			ctx.logger.info(
 				`Visit https://inlang.com/m/gerre34r/library-inlang-paraglideJs/compiling-messages for more information.`

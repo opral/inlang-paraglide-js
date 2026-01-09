@@ -1,10 +1,16 @@
+---
+title: Comparison
+description: How Paraglide JS compares to i18next, React-Intl, and other i18n libraries.
+---
+
 # Comparison
 
 Paraglide's compiler approach enables optimizations that are not possible with runtime libraries. Below is a comparison of Paraglide JS with other popular i18n libraries.
 
 If you are looking for a benchmark, check out the [interactive benchmark](/m/gerre34r/library-inlang-paraglideJs/benchmark).
 
-<doc-callout type="info">Please open a pull request if the comparison is outdated, incorrect, or can be improved.</doc-callout>
+> [!NOTE]
+> Please open a pull request if the comparison is outdated, incorrect, or can be improved.
 
 ## Basic Features
 
@@ -12,7 +18,7 @@ If you are looking for a benchmark, check out the [interactive benchmark](/m/ger
 | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **Architecture**                                           | 🏗️ Compiler                                                                               | 🏃 Runtime                                                                 | 🏃 Runtime                                                                                                        |
 | **Tree-shaking**                                           | ✅ Yes                                                                                    | ❌ No                                                                      | ❌ No                                                                                                             |
-| **Runtime Size**                                           | ✅ Tiny (as small as 300B)                                                                | ⚠️ Large (10kB+)                                                           | ⚠️ Large (8kB+)                                                                                                   |
+| **Bundle Size**                                            | ✅ [Up to 70% smaller](/m/gerre34r/library-inlang-paraglideJs/benchmark) via tree-shaking | ⚠️ Ships all messages                                                      | ⚠️ Ships all messages                                                                                             |
 | **Type Safety**                                            | ✅ Yes                                                                                    | [🟠 Via workarounds](https://www.i18next.com/overview/typescript)          | ❌ No                                                                                                             |
 | **Pluralization**                                          | [✅ Yes](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/variants#pluralization) | [✅ Yes](https://www.i18next.com/translation-function/plurals)             | [✅ Yes](https://formatjs.github.io/docs/core-concepts/icu-syntax#plural-format)                                  |
 | **Framework agnostic (React, Svelte, Vue, ...)**           | ✅ Yes                                                                                    | [🟠 Wrappers needed](https://github.com/i18next/react-i18next)             | [🟠 Wrappers needed](https://formatjs.github.io/docs/react-intl/#the-react-intl-package)                          |

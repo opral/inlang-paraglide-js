@@ -1,11 +1,14 @@
 ---
-imports:
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
+title: Strategy
+description: Configure locale detection strategies - URL, cookie, localStorage, and custom strategies.
 ---
 
 # Strategy
 
 Paraglide JS comes with various strategies to determine the locale out of the box.
+
+> [!TIP]
+> For server-side integration details and framework examples, see the [Middleware Guide](./middleware-guide.md).
 
 The strategy is defined with the `strategy` option. **Strategies are evaluated in order** - the first strategy that successfully returns a locale will be used, and subsequent strategies won't be checked. Think of the array as a simple fallback chain: each strategy is attempted until one succeeds, keeping the API predictable.
 
@@ -147,26 +150,24 @@ compile({
 
 The URL-based strategy uses the web standard [URLPattern](https://developer.mozilla.org/en-US/docs/Web/API/URL_Pattern_API) to match and localize URLs based on your `urlPatterns` configuration. See [URL Patterns configuration below](#locale-prefixing) for detailed examples.
 
-<doc-callout type="info">
-**Default URL Patterns**: If you don't specify `urlPatterns`, Paraglide uses a default pattern with a wildcard `/:path(.*)?` that matches any path. For paths without a locale prefix, this resolves to your base locale. This is why the `url` strategy always finds a match by default.
-</doc-callout>
+> [!NOTE]
+> **Default URL Patterns**: If you don't specify `urlPatterns`, Paraglide uses a default pattern with a wildcard `/:path(.*)?` that matches any path. For paths without a locale prefix, this resolves to your base locale. This is why the `url` strategy always finds a match by default.
 
-<doc-callout type="tip">Use https://urlpattern.com/ to test your URL patterns.</doc-callout>
+> [!TIP]
+> Use https://urlpattern.com/ to test your URL patterns.
 
-<doc-callout type="warning">
-**URL Strategy with Wildcards**: When using wildcard patterns like `/:path(.*)?` (which is the default), the URL strategy will **always** resolve to a locale (typically the base locale for paths without a locale prefix). This makes it act as an "end condition" in your strategy array - any strategies placed after it will never be evaluated.
-
-If you want to prioritize user preferences (from localStorage, cookies, etc.) over the URL, place those strategies **before** the URL strategy in your array:
-
-```js
-// ✅ User preference is checked first
-strategy: ["localStorage", "preferredLanguage", "url"];
-
-// ❌ localStorage will never be checked because URL always resolves
-strategy: ["url", "localStorage", "preferredLanguage"];
-```
-
-</doc-callout>
+> [!WARNING]
+> **URL Strategy with Wildcards**: When using wildcard patterns like `/:path(.*)?` (which is the default), the URL strategy will **always** resolve to a locale (typically the base locale for paths without a locale prefix). This makes it act as an "end condition" in your strategy array - any strategies placed after it will never be evaluated.
+>
+> If you want to prioritize user preferences (from localStorage, cookies, etc.) over the URL, place those strategies **before** the URL strategy in your array:
+>
+> ```js
+> // ✅ User preference is checked first
+> strategy: ["localStorage", "preferredLanguage", "url"];
+>
+> // ❌ localStorage will never be checked because URL always resolves
+> strategy: ["url", "localStorage", "preferredLanguage"];
+> ```
 
 #### Client-side redirects
 
@@ -259,6 +260,44 @@ compile({
 Adding the dedicated root pattern ensures the homepage resolves directly to the
 correct locale prefix without an extra redirect loop, while the wildcard keeps
 handling every other route.
+
+#### Routes without locale prefix
+
+Some routes (like `/dashboard` or `/app`) may need i18n but shouldn't have a locale prefix in the URL. Configure these by using the same path for all locales:
+
+```js
+compile({
+	project: "./project.inlang",
+	outdir: "./src/paraglide",
+	strategy: ["url", "cookie", "baseLocale"],
+	urlPatterns: [
+		// Dashboard routes - no locale prefix
+		{
+			pattern: "/dashboard/:path(.*)?",
+			localized: [
+				["en", "/dashboard/:path(.*)?"],
+				["de", "/dashboard/:path(.*)?"],  // Same path for all locales
+			],
+		},
+		// Other routes - use locale prefix
+		{
+			pattern: "/:path(.*)?",
+			localized: [
+				["de", "/de/:path(.*)?"],
+				["en", "/:path(.*)?"],
+			],
+		},
+	],
+});
+```
+
+With this setup:
+- `/dashboard/*` URLs stay the same regardless of locale
+- Locale is determined by cookie or other fallback strategies
+- Other routes like `/about` use URL-based locale (`/de/about`)
+
+> [!TIP]
+> For routes that don't need i18n at all (like `/api`), bypass the middleware entirely instead. See [Excluding Routes from Middleware](./middleware-guide.md#excluding-routes-from-middleware).
 
 #### Translated pathnames
 

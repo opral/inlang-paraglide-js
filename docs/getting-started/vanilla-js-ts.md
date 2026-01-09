@@ -1,6 +1,6 @@
 ---
-imports:
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
+title: Vanilla JS/TS
+description: Set up Paraglide JS in a vanilla JavaScript or TypeScript project.
 ---
 
 # Vanilla JavaScript/TypeScript Setup

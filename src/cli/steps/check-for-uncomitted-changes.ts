@@ -13,15 +13,12 @@ export const checkForUncommittedChanges: CliStep<
 		}
 
 		ctx.logger.info(
-			`You have uncommitted changes.\n\nPlease commit your changes before initializing inlang Paraglide-JS. Committing outstanding changes ensures that you don't lose any work, and see the changes the paraglide-js init command introduces.`
+			`You have uncommitted changes.\n\nCommitting outstanding changes ensures that you don't lose any work, and see the changes the paraglide-js init command introduces.`
 		);
-		const response = await prompt(
-			"Do you want to initialize inlang Paraglide-JS without committing your current changes?",
-			{
-				type: "confirm",
-				initial: false,
-			}
-		);
+		const response = await prompt("Continue without committing?", {
+			type: "confirm",
+			initial: false,
+		});
 		if (response === true) {
 			return ctx;
 		} else {

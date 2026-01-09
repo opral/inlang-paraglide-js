@@ -1,6 +1,6 @@
 ---
-imports:
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
+title: Compiling Messages
+description: How to compile Paraglide messages - CLI, bundler plugins, and programmatic compilation.
 ---
 
 # Compiling Messages
@@ -11,16 +11,24 @@ There are three ways to invoke the Paraglide JS compiler:
 2. Via a bundler plugin
 3. Programatically
 
-<doc-callout type="tip">
-	Bundler plugins are the recommend approach. They are more flexible and can be integrated into your build pipeline.
-</doc-callout>
+> [!TIP]
+> Bundler plugins are the recommended approach. They are more flexible and can be integrated into your build pipeline.
 
 ## Via the Paraglide CLI
+
+> [!TIP]
+> For a complete setup guide using CLI compilation with Express, Hono, Fastify, or Elysia, see [Standalone Servers](./getting-started/standalone-servers.md). For monorepo setups, see [Monorepo Setup](./monorepo.md).
 
 To compile your messages via the CLI, run the following command:
 
 ```bash
 npx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/paraglide
+```
+
+To watch files and recompile on change, add the `--watch` flag:
+
+```bash
+npx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/paraglide --watch
 ```
 
 Use `--help` to see all available options:

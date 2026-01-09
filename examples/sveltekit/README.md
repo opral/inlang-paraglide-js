@@ -1,11 +1,11 @@
 ---
-imports:
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
+title: SvelteKit
+description: Set up Paraglide JS with SvelteKit for SSR, SSG, and CSR.
 ---
 
-<img src="https://cdn.jsdelivr.net/gh/opral/monorepo@latest/inlang/packages/paraglide/paraglide-js/examples/sveltekit/sveltekit-banner.png" alt="i18n library for SvelteKit" width="10000000px" />
+<img src="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/sveltekit/sveltekit-banner.png" alt="i18n library for SvelteKit" width="10000000px" />
 
-This example shows how to use Paraglide with SvelteKit.The source code can be found [here](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/examples/sveltekit).
+This example shows how to use Paraglide with SvelteKit. The source code can be found [here](https://github.com/opral/paraglide-js/tree/main/examples/sveltekit).
 
 | Feature      | Supported |
 | ------------ | --------- |
@@ -25,9 +25,8 @@ npx @inlang/paraglide-js@latest init
 
 ### Add the `paraglideVitePlugin()` to `vite.config.js`.
 
-<doc-callout type="info">
-	You can define strategy however you need. 
-</doc-callout>
+> [!NOTE]
+> You can define strategy however you need.
 
 ```diff
 import { sveltekit } from '@sveltejs/kit/vite';
@@ -127,9 +126,8 @@ Then add "invisble" anchor tags in `routes/+layout.svelte` to generate all pages
 
 If you're deploying to SvelteKit's Edge adapter like Vercel Edge or Cloudflare Pages, you can disable AsyncLocalStorage to avoid issues with Node.js dependencies not available in those environments:
 
-<doc-callout type="warning">
-	⚠️ Only use this option in serverless environments where each request gets its own isolated runtime context. Using it in multi-request server environments could lead to data leakage between concurrent requests.
-</doc-callout>
+> [!WARNING]
+> Only use this option in serverless environments where each request gets its own isolated runtime context. Using it in multi-request server environments could lead to data leakage between concurrent requests.
 
 ```diff
 // vite.config.js
