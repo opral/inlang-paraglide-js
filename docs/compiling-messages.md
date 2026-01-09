@@ -26,6 +26,12 @@ To compile your messages via the CLI, run the following command:
 npx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/paraglide
 ```
 
+To watch files and recompile on change, add the `--watch` flag:
+
+```bash
+npx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/paraglide --watch
+```
+
 Use `--help` to see all available options:
 
 ```bash

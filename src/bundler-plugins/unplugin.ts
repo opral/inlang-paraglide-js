@@ -1,10 +1,9 @@
 import type { UnpluginFactory } from "unplugin";
 import { compile, type CompilationResult } from "../compiler/compile.js";
-import fs from "node:fs";
-import { resolve, relative } from "node:path";
-import { nodeNormalizePath } from "../utilities/node-normalize-path.js";
+import { relative } from "node:path";
 import { Logger } from "../services/logger/index.js";
 import type { CompilerOptions } from "../compiler/compiler-options.js";
+import { createTrackedFs } from "../services/file-watching/tracked-fs.js";
 
 const PLUGIN_NAME = "unplugin-paraglide-js";
 
@@ -16,6 +15,7 @@ const logger = new Logger();
 let isServer: string | undefined;
 
 let previousCompilation: CompilationResult | undefined;
+const { fs: trackedFs, readFiles, clearReadFiles } = createTrackedFs();
 
 export const unpluginFactory: UnpluginFactory<CompilerOptions> = (args) => ({
 	name: PLUGIN_NAME,
@@ -29,7 +29,7 @@ export const unpluginFactory: UnpluginFactory<CompilerOptions> = (args) => ({
 			(isProduction ? "message-modules" : "locale-modules");
 		try {
 			previousCompilation = await compile({
-				fs: wrappedFs,
+				fs: trackedFs,
 				previousCompilation,
 				outputStructure,
 				// webpack invokes the `buildStart` api in watch mode,
@@ -46,8 +46,8 @@ export const unpluginFactory: UnpluginFactory<CompilerOptions> = (args) => ({
 			if (isProduction) throw error;
 		} finally {
 			// in any case add the files to watch
-			for (const path of Array.from(readFiles)) {
-				this.addWatchFile(path);
+			for (const filePath of Array.from(readFiles)) {
+				this.addWatchFile(filePath);
 			}
 		}
 	},
@@ -73,10 +73,10 @@ export const unpluginFactory: UnpluginFactory<CompilerOptions> = (args) => ({
 			);
 
 			// Clear readFiles to track fresh file reads
-			readFiles.clear();
+			clearReadFiles();
 
 			previousCompilation = await compile({
-				fs: wrappedFs,
+				fs: trackedFs,
 				previousCompilation,
 				outputStructure,
 				cleanOutdir: false,
@@ -91,7 +91,10 @@ export const unpluginFactory: UnpluginFactory<CompilerOptions> = (args) => ({
 				this.addWatchFile(filePath);
 			}
 		} catch (e) {
-			readFiles = previouslyReadFiles;
+			clearReadFiles();
+			for (const filePath of previouslyReadFiles) {
+				readFiles.add(filePath);
+			}
 			// Reset compilation result on error
 			previousCompilation = undefined;
 			logger.warn("Failed to re-compile project:", (e as Error).message);
@@ -123,7 +126,7 @@ export const unpluginFactory: UnpluginFactory<CompilerOptions> = (args) => ({
 				(isProduction ? "message-modules" : "locale-modules");
 			try {
 				previousCompilation = await compile({
-					fs: wrappedFs,
+					fs: trackedFs,
 					previousCompilation,
 					outputStructure,
 					// clean dir needs to be false. otherwise webpack get's into a race condition
@@ -141,39 +144,3 @@ export const unpluginFactory: UnpluginFactory<CompilerOptions> = (args) => ({
 		});
 	},
 });
-
-let readFiles = new Set<string>();
-
-// Create a wrapper around the fs object to intercept and store read files
-const wrappedFs: typeof import("node:fs") = {
-	...fs,
-	// @ts-expect-error - Node's fs has too many overloads
-	readFile: (
-		path: fs.PathLike | number,
-		options: { encoding?: null; flag?: string } | null | undefined,
-		callback: (err: NodeJS.ErrnoException | null, data: Buffer) => void
-	) => {
-		readFiles.add(nodeNormalizePath(resolve(process.cwd(), path.toString())));
-		return fs.readFile(path, options, callback);
-	},
-	// @ts-expect-error - Node's fs has too many overloads
-	readFileSync: (
-		path: fs.PathLike | number,
-		options?: { encoding?: null; flag?: string } | null | undefined
-	) => {
-		readFiles.add(nodeNormalizePath(resolve(process.cwd(), path.toString())));
-		return fs.readFileSync(path, options);
-	},
-	promises: {
-		...fs.promises,
-		// @ts-expect-error - Node's fs.promises has too many overloads
-		readFile: async (
-			path: fs.PathLike,
-			options?: { encoding?: null; flag?: string } | null
-		): Promise<Buffer> => {
-			readFiles.add(nodeNormalizePath(resolve(process.cwd(), path.toString())));
-			return fs.promises.readFile(path, options);
-		},
-	},
-	// Add other fs methods as needed
-};
