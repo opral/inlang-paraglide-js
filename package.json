@@ -28,7 +28,7 @@
 	"scripts": {
 		"dev": "tsc --watch",
 		"bench": "vitest bench --run",
-		"build:examples": "pnpm -r --filter \"./examples/**\" --if-present build",
+		"build:examples": "pnpm -r --filter \"./examples/**\" --if-present --workspace-concurrency=1 build",
 		"build": "npm run env-variables && tsc --build && npm run generate-api-docs",
 		"changeset": "changeset",
 		"version-packages": "changeset version",

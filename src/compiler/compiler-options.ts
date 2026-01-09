@@ -5,6 +5,7 @@ export const defaultCompilerOptions = {
 	emitGitIgnore: true,
 	includeEslintDisableComment: true,
 	emitPrettierIgnore: true,
+	emitReadme: true,
 	emitTsDeclarations: false,
 	cleanOutdir: true,
 	disableAsyncLocalStorage: false,
@@ -167,6 +168,23 @@ export type CompilerOptions = {
 	 * @default true
 	 */
 	emitPrettierIgnore?: boolean;
+	/**
+	 * If `emitReadme` is set to `true` a `README.md` file will be emitted in the output directory. Defaults to `true`.
+	 *
+	 * The README helps LLMs understand the compiled output.
+	 * See https://llmstxt.org/ for format guidelines.
+	 *
+	 * ```diff
+	 *   - outdir/
+	 *     - messages/
+	 * +   - README.md
+	 *     - messages.js
+	 *     - runtime.js
+	 * ```
+	 *
+	 * @default true
+	 */
+	emitReadme?: boolean;
 	/**
 	 * Emit `.d.ts` files for the generated output using the TypeScript compiler.
 	 *

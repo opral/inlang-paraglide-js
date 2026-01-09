@@ -1,4 +1,6 @@
 packages:
   - "."
   - "examples/*"
+  - "!examples/next-js-ssg"
+  - "!examples/next-js-ssr"
   - "benchmark"

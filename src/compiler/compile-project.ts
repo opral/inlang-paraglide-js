@@ -11,6 +11,7 @@ import { createRuntimeFile } from "./runtime/create-runtime.js";
 import { createServerFile } from "./server/create-server-file.js";
 import { createRegistry } from "./registry.js";
 import { emitTsDeclarations } from "./emit-ts-declarations.js";
+import { createReadme } from "./create-readme.js";
 
 const outputStructures = {
 	"locale-modules": localeModules,
@@ -24,11 +25,12 @@ const outputStructures = {
  * You can adjust the output structure and get the compiled files as a return value.
  *
  * @example
- *   const output = await compileProject({ project });
+ *   const output = await compileProject({ project, projectPath: "./project.inlang" });
  *   await writeOutput('path', output, fs.promises);
  */
 export const compileProject = async (args: {
 	project: InlangProject;
+	projectPath?: string;
 	compilerOptions?: Omit<CompilerOptions, "fs" | "project" | "outdir">;
 }): Promise<Record<string, string>> => {
 	const optionsWithDefaults = {
@@ -84,6 +86,10 @@ export const compileProject = async (args: {
 
 	if (optionsWithDefaults.emitPrettierIgnore) {
 		output[".prettierignore"] = ignoreDirectory;
+	}
+
+	if (optionsWithDefaults.emitReadme) {
+		output["README.md"] = createReadme({ projectPath: args.projectPath });
 	}
 
 	for (const [filename, content] of Object.entries(
