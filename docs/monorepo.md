@@ -34,7 +34,7 @@ monorepo/
       vite.config.ts
 ```
 
-Each package compiles from the shared project (see [Compiling Messages](./compiling-messages.md) for all options):
+Each package compiles from the shared project (see [Compiling Messages](./compiling-messages) for all options):
 
 ```bash
 # From packages/web
@@ -82,5 +82,5 @@ import { getLocale } from "@myorg/i18n/runtime";
 
 ## See Also
 
-- [Compiling Messages](./compiling-messages.md) - CLI, bundler plugins, and programmatic compilation
-- [Strategy Configuration](./strategy.md) - Configure locale detection strategies
+- [Compiling Messages](./compiling-messages) - CLI, bundler plugins, and programmatic compilation
+- [Strategy Configuration](./strategy) - Configure locale detection strategies

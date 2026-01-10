@@ -17,7 +17,7 @@ There are three ways to invoke the Paraglide JS compiler:
 ## Via the Paraglide CLI
 
 > [!TIP]
-> For a complete setup guide using CLI compilation with Express, Hono, Fastify, or Elysia, see [Standalone Servers](./getting-started/standalone-servers.md). For monorepo setups, see [Monorepo Setup](./monorepo.md).
+> For a complete setup guide using CLI compilation with Express, Hono, Fastify, or Elysia, see [Standalone Servers](./getting-started/standalone-servers). For monorepo setups, see [Monorepo Setup](./monorepo).
 
 To compile your messages via the CLI, run the following command:
 

@@ -8,7 +8,7 @@ imports:
 Paraglide JS provides first-class support for server-side rendering (SSR) and static site generation (SSG) through the `paraglideMiddleware()`.
 
 > [!TIP]
-> For middleware setup, framework examples, and troubleshooting, see the [Middleware Guide](./middleware-guide.md).
+> For middleware setup, framework examples, and troubleshooting, see the [Middleware Guide](./middleware-guide).
 
 ## Server Side Rendering (SSR)
 
@@ -24,7 +24,7 @@ app.get("*", async (request) => {
 });
 ```
 
-The middleware handles locale detection, URL delocalization, and request isolation automatically. See the [Middleware Guide](./middleware-guide.md) for details.
+The middleware handles locale detection, URL delocalization, and request isolation automatically. See the [Middleware Guide](./middleware-guide) for details.
 
 <doc-video src="https://youtu.be/RO_pMjSHgpI"></doc-video>
 
@@ -89,5 +89,5 @@ If invisible anchor tags are not an option, some frameworks provide APIs to disc
 
 ## See Also
 
-- [Middleware Guide](./middleware-guide.md) - Framework examples, troubleshooting, AsyncLocalStorage
-- [Strategy Configuration](./strategy.md) - Configure locale detection strategies
+- [Middleware Guide](./middleware-guide) - Framework examples, troubleshooting, AsyncLocalStorage
+- [Strategy Configuration](./strategy) - Configure locale detection strategies

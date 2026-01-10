@@ -62,7 +62,7 @@ import { localizeHref } from "./paraglide/runtime.js";
 ```
 
 > [!NOTE]
-> If you route to a different locale, ensure a reload happens afterwards. See [switching locales via links](./errors.md#switching-locales-via-links-doesnt-work).
+> If you route to a different locale, ensure a reload happens afterwards. See [switching locales via links](./errors#switching-locales-via-links-doesnt-work).
 
 ---
 
@@ -118,7 +118,7 @@ m.user_profile_title();       // Recommended
 m["user.profile.title"]();    // Also works
 ```
 
-See [message keys](./message-keys.md) for best practices.
+See [message keys](./message-keys) for best practices.
 
 ### Dynamic messages
 
@@ -150,6 +150,6 @@ function PageTitle(props: { title: LocalizedString }) {
 
 ## Next steps
 
-- [Strategy](./strategy.md) - Configure locale detection
-- [Middleware](./middleware-guide.md) - Server-side integration
-- [Server-side rendering](./server-side-rendering.md) - SSR/SSG setup
+- [Strategy](./strategy) - Configure locale detection
+- [Middleware](./middleware-guide) - Server-side integration
+- [Server-side rendering](./server-side-rendering) - SSR/SSG setup

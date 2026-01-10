@@ -190,6 +190,6 @@ npx @inlang/paraglide-js compile \
 
 ## See Also
 
-- [Middleware Guide](../middleware-guide.md) - Middleware lifecycle and troubleshooting
-- [Strategy Configuration](../strategy.md) - Configure locale detection
-- [Compiling Messages](../compiling-messages.md) - CLI and programmatic options
+- [Middleware Guide](../middleware-guide) - Middleware lifecycle and troubleshooting
+- [Strategy Configuration](../strategy) - Configure locale detection
+- [Compiling Messages](../compiling-messages) - CLI and programmatic options

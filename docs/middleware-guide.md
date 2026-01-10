@@ -427,7 +427,7 @@ Custom strategies must be named `custom-<name>` and are evaluated in order with 
 
 ## See Also
 
-- [Standalone Servers](./getting-started/standalone-servers.md) - Full setup for Express, Hono, Fastify, Elysia
-- [Strategy Configuration](./strategy.md) - Configure locale detection strategies
-- [Server-Side Rendering](./server-side-rendering.md) - SSR/SSG setup
-- [Compiling Messages](./compiling-messages.md) - Build configuration
+- [Standalone Servers](./getting-started/standalone-servers) - Full setup for Express, Hono, Fastify, Elysia
+- [Strategy Configuration](./strategy) - Configure locale detection strategies
+- [Server-Side Rendering](./server-side-rendering) - SSR/SSG setup
+- [Compiling Messages](./compiling-messages) - Build configuration
