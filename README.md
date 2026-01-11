@@ -48,13 +48,13 @@ The compiler generates typed message functions. Your bundler tree-shakes unused 
 
 ## Why Paraglide?
 
-|                           |                                                                            |
-| ------------------------- | -------------------------------------------------------------------------- |
-| **Smaller Bundle Sizes**  | Up to 70% smaller than runtime i18n libraries.                             |
-| **Tree-Shakable**         | Unused messages are eliminated by your bundler.                            |
-| **Fully Typesafe**        | Autocomplete for message keys and parameters. Typos become compile errors. |
-| **Framework Agnostic**    | Works with React, Vue, Svelte, Solid, TanStack, or vanilla JS/TS.          |
-| **Built-in i18n Routing** | URL-based locale detection and localized paths out of the box.             |
+|                           |                                                                                                                                                                                                                |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Smaller Bundle Sizes**  | Up to 70% smaller than runtime i18n libraries.                                                                                                                                                                 |
+| **Tree-Shakable**         | Unused messages are eliminated by your bundler.                                                                                                                                                                |
+| **Fully Typesafe**        | Autocomplete for message keys and parameters. Typos become compile errors.                                                                                                                                     |
+| **Framework Agnostic**    | Works with React, Vue, Svelte, Solid, TanStack, or vanilla JS/TS.                                                                                                                                              |
+| **Built-in i18n Routing** | URL-based locale detection and localized paths out of the box.                                                                                                                                                 |
 | **Built on inlang**       | Integrates with [Sherlock](https://inlang.com/m/r7kp499g/app-inlang-ideExtension) (VS Code extension), [Fink](https://inlang.com/m/tdozzpar/app-inlang-finkLocalizationEditor) (translation editor), and more. |
 
 ## Works With Your Stack
@@ -162,6 +162,10 @@ Message format is **plugin-based** — use the default inlang format, or switch 
 > **"I was messing with various i18n frameworks and must say Paraglide was the smoothest experience. SSG and SSR worked out of the box."**
 >
 > Dalibor Hon · Discord
+
+> **"I migrated from i18next. Paraglide reduced my i18n bundle from 40KB to ~2KB."**
+>
+> Daniel · [Why I Replaced i18next with Paraglide JS](https://dropanote.de/en/blog/20250726-why-i-replaced-i18next-with-paraglide-js/)
 
 ## Talks
 
