@@ -5,12 +5,12 @@ description: Add multi-language support to React Router v7 apps with Paraglide J
 
 # React Router v7 (framework) example
 
-Paraglide JS is the best i18n library for React Router v7 in framework mode (using Vite).
+Paraglide JS is the best i18n library for React Router v7 in framework mode (using Vite), with first-class i18n routing via URL-based localization built in.
 
 It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
 
 - Fully type-safe with IDE autocomplete
-- SEO-friendly localized URLs
+- SEO-friendly localized URLs with the [i18n routing strategy](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy#url)
 - Works with CSR and SSR
 
 [Source code](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/examples/react-router)
@@ -47,30 +47,28 @@ Run the app and start translating. See the [basics documentation](/m/gerre34r/li
 
 ## Server side rendering using middleware
 
-In your middleware file:
+Enable the middleware flag in `react-router.config.ts`:
+
 ```ts
-import { paraglideMiddleware } from "~/paraglide/server";
-import type { Route } from "../+types/root";
-
-const localeMiddleware: Route.unstable_MiddlewareFunction = async (
-  { request },
-  next,
-) => {
-  return await paraglideMiddleware(request, () => {
-    return next();
-  }, { onRedirect: (response) => { throw response } });
-};
-
-export { localeMiddleware };
-
+export default {
+	ssr: true,
+	future: {
+		v8_middleware: true,
+	},
+} satisfies Config;
 ```
 
-In `root.tsx`:
+Define the middleware inline in `root.tsx`:
 ```ts
-export const unstable_middleware = [localeMiddleware];
+import { type MiddlewareFunction } from "react-router";
+import { paraglideMiddleware } from "./paraglide/server.js";
+
+export const middleware: MiddlewareFunction[] = [
+	(ctx, next) => paraglideMiddleware(ctx.request, () => next()),
+];
 ```
 
-In `routes.ts`: 
+In `routes.ts`:
 
 ```diff
 import {
@@ -88,6 +86,9 @@ export default [
 	// * make sure that the pattern you define here matches
 	// * with the urlPatterns of paraglide JS if you use
 	// * the `url` strategy
+	//
+	// React Router middleware doesn't allow passing a rewritten
+	// Request to loaders yet, so keep the locale prefix here.
 +	...prefix(":locale?", [
 		index("routes/home.tsx"),
 		route("about", "routes/about.tsx"),
@@ -97,9 +98,9 @@ export default [
 
 Now you can use `getLocale` function anywhere in your project.
 
-## Server side rendering without middleware
+## Server side rendering without middleware (legacy)
 
-If you use React Router v7 with SSR you will need to add the following code:
+If you can't use middleware yet, you can still wire SSR manually:
 
 In `root.tsx`:
 

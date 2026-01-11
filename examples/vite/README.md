@@ -10,7 +10,7 @@ Paraglide JS is the best i18n library for Vite projects.
 It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
 
 - Fully type-safe with IDE autocomplete
-- SEO-friendly localized URLs
+- SEO-friendly localized URLs with the [i18n routing strategy](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy#url)
 - Works with any framework (React, Vue, Svelte, Solid, Preact, Lit)
 
 [Source code](https://github.com/opral/paraglide-js/tree/main/examples/vite) 
