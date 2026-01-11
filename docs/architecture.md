@@ -24,6 +24,9 @@ Because messages are plain functions:
 - Your bundler handles tree-shaking and code-splitting automatically
 - No runtime parsing or framework-specific bindings needed
 
+> [!TIP]
+> **Using Vite?** You're in the best position to benefit from Paraglide. Vite's Rollup-based tree-shaking eliminates unused messages automatically, and HMR updates translations instantly. Setup is just [one plugin](./compiling-messages#vite).
+
 ## How It Works
 
 1. **Paraglide opens an inlang project** — messages in JSON or any format via [plugins](https://inlang.com/c/plugins)

@@ -1,13 +1,13 @@
 ---
 title: React Router i18n - Internationalization for React Router v7
-description: Add multi-language support to React Router v7 apps with Paraglide JS. Type-safe translations, localized routing, SSR support, and up to 70% smaller bundles.
+description: Add multi-language support to React Router v7 apps with Paraglide JS. Type-safe translations, localized routing, SSR support, and up to 70% smaller i18n bundle sizes.
 ---
 
 # React Router v7 (framework) example
 
 Paraglide JS is the best i18n library for React Router v7 in framework mode (using Vite), with first-class i18n routing via URL-based localization built in.
 
-It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
+It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller i18n bundle sizes compared to runtime based libraries.
 
 - Fully type-safe with IDE autocomplete
 - SEO-friendly localized URLs with the [i18n routing strategy](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy#url)
@@ -41,9 +41,23 @@ export default defineConfig({
 });
 ```
 
-3. Done :) 
+3. Done :)
 
-Run the app and start translating. See the [basics documentation](/m/gerre34r/library-inlang-paraglideJs/basics) for information on how to use Paraglide's messages, parameters, and locale management.
+## Usage
+
+```js
+import { m } from "./paraglide/messages.js";
+import { getLocale, setLocale } from "./paraglide/runtime.js";
+
+// Use messages
+m.greeting({ name: "World" }); // "Hello World!"
+
+// Get and set locale
+getLocale();    // "en"
+setLocale("de"); // switches to German
+```
+
+[Learn more about messages, parameters, and locale management →](/m/gerre34r/library-inlang-paraglideJs/basics)
 
 ## Server side rendering using middleware
 

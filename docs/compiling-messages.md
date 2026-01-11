@@ -59,6 +59,9 @@ See [unplugin](https://unplugin.unjs.io/) for the full list of supported bundler
 
 ### Vite
 
+> [!TIP]
+> **Vite is the ideal bundler for Paraglide.** Vite's built-in tree-shaking (via Rollup) automatically eliminates unused messages, and HMR gives you instant feedback when editing translations. Setup is just one plugin—no extra configuration needed.
+
 ```ts
 import { defineConfig } from "vite";
 import { paraglideVitePlugin } from "@inlang/paraglide-js";

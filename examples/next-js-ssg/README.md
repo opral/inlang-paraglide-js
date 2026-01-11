@@ -1,13 +1,13 @@
 ---
 title: Next.js i18n with SSG - Static Site Internationalization
-description: Build statically generated multi-language Next.js sites with Paraglide JS. Type-safe translations, SEO-friendly localized pages, and up to 70% smaller bundles.
+description: Build statically generated multi-language Next.js sites with Paraglide JS. Type-safe translations, SEO-friendly localized pages, and up to 70% smaller i18n bundle sizes.
 ---
 
 # Next JS SSG example
 
 Paraglide JS brings type-safe, tree-shakable translations to statically generated Next.js sites.
 
-It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
+It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller i18n bundle sizes compared to runtime based libraries.
 
 - Fully type-safe with IDE autocomplete
 - SEO-friendly localized URLs with the [i18n routing strategy](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy#url)
@@ -118,3 +118,19 @@ export default async function RootLayout({
 	);
 }
 ```
+
+## Usage
+
+```js
+import { m } from "../paraglide/messages.js";
+import { getLocale, setLocale } from "../paraglide/runtime.js";
+
+// Use messages
+m.greeting({ name: "World" }); // "Hello World!"
+
+// Get and set locale
+getLocale();    // "en"
+setLocale("de"); // switches to German
+```
+
+[Learn more about messages, parameters, and locale management →](/m/gerre34r/library-inlang-paraglideJs/basics)

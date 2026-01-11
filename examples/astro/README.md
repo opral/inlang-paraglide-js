@@ -1,6 +1,6 @@
 ---
 title: Astro i18n - Lightweight Internationalization for Content Sites
-description: Add multi-language support to your Astro site with Paraglide JS. Type-safe translations, localized routing, and up to 70% smaller bundles than traditional i18n libraries.
+description: Add multi-language support to your Astro site with Paraglide JS. Type-safe translations, localized routing, and up to 70% smaller i18n bundle sizes than traditional i18n libraries.
 image: https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/astro/assets/banner.png
 ---
 
@@ -8,7 +8,7 @@ image: https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/astro/asse
 
 Paraglide JS is the ideal i18n library for Astro's content-focused sites.
 
-It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
+It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller i18n bundle sizes compared to runtime based libraries.
 
 - Fully type-safe with IDE autocomplete
 - SEO-friendly localized URLs with the [i18n routing strategy](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy#url)
@@ -63,7 +63,19 @@ You can read more about about Astro's middleware [here](https://docs.astro.build
 
 ## Usage
 
-See the [basics documentation](/m/gerre34r/library-inlang-paraglideJs/basics) for more information on how to use Paraglide's messages, parameters, and locale management.
+```js
+import { m } from "./paraglide/messages.js";
+import { getLocale, setLocale } from "./paraglide/runtime.js";
+
+// Use messages
+m.greeting({ name: "World" }); // "Hello World!"
+
+// Get and set locale
+getLocale();    // "en"
+setLocale("de"); // switches to German
+```
+
+[Learn more about messages, parameters, and locale management →](/m/gerre34r/library-inlang-paraglideJs/basics)
 
 ## Disabling AsyncLocalStorage in serverless environments
 

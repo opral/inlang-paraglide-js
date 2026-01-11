@@ -1,6 +1,6 @@
 ---
 title: SvelteKit i18n - The Official Internationalization Solution
-description: Paraglide JS is SvelteKit's officially recommended i18n library. Add type-safe translations, localized URLs, and SEO-friendly multi-language support with up to 70% smaller bundle sizes.
+description: Paraglide JS is SvelteKit's officially recommended i18n library. Add type-safe translations, localized URLs, and SEO-friendly multi-language support with up to 70% smaller i18n bundle sizes.
 image: https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/sveltekit/sveltekit-banner.png
 ---
 
@@ -8,7 +8,7 @@ image: https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/sveltekit/
 
 Paraglide JS is SvelteKit's [official i18n integration](https://svelte.dev/docs/cli/paraglide).
 
-It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
+It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller i18n bundle sizes compared to runtime based libraries.
 
 - Fully type-safe with IDE autocomplete
 - SEO-friendly localized URLs with the [i18n routing strategy](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy#url)
@@ -93,7 +93,19 @@ export const reroute: Reroute = (request) => {
 
 ## Usage
 
-See the [basics documentation](/m/gerre34r/library-inlang-paraglideJs/basics) for more information on how to use Paraglide's messages, parameters, and locale management.
+```js
+import { m } from "$lib/paraglide/messages.js";
+import { getLocale, setLocale } from "$lib/paraglide/runtime.js";
+
+// Use messages
+m.greeting({ name: "World" }); // "Hello World!"
+
+// Get and set locale
+getLocale();    // "en"
+setLocale("de"); // switches to German
+```
+
+[Learn more about messages, parameters, and locale management →](/m/gerre34r/library-inlang-paraglideJs/basics)
 
 ## Static site generation (SSG)
 

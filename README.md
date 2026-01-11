@@ -5,7 +5,7 @@
 
 <h1 align="center">🪂 Paraglide JS</h1>
 <p align="center">
-  <strong>Compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes.</strong>
+  <strong>Compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller i18n bundle sizes.</strong>
 </p>
 
 <p align="center">
@@ -44,13 +44,13 @@ import { m } from "./paraglide/messages.js";
 m.greeting({ name: "World" }); // "Hello World!" — fully typesafe
 ```
 
-The compiler generates typed message functions. Your bundler tree-shakes unused messages. Expect [**up to 70% smaller bundle sizes**](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/benchmark) compared to runtime i18n libraries (e.g. 47 KB vs 205 KB).
+The compiler generates typed message functions. Your bundler tree-shakes unused messages. Expect [**up to 70% smaller i18n bundle sizes**](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/benchmark) compared to runtime i18n libraries (e.g. 47 KB vs 205 KB).
 
 ## Why Paraglide?
 
 |                           |                                                                                                                                                                                                                |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Smaller Bundle Sizes**  | Up to 70% smaller than runtime i18n libraries.                                                                                                                                                                 |
+| **Smaller i18n Bundle**   | Up to 70% smaller i18n bundle size than runtime i18n libraries.                                                                                                                                                                 |
 | **Tree-Shakable**         | Unused messages are eliminated by your bundler.                                                                                                                                                                |
 | **Fully Typesafe**        | Autocomplete for message keys and parameters. Typos become compile errors.                                                                                                                                     |
 | **Framework Agnostic**    | Works with React, Vue, Svelte, Solid, TanStack, or vanilla JS/TS.                                                                                                                                              |
@@ -68,6 +68,9 @@ The compiler generates typed message functions. Your bundler tree-shakes unused 
   <a href="https://inlang.com/m/gerre34r/library-inlang-paraglideJs/astro"><img src="https://cdn.simpleicons.org/astro/FF5D01" alt="Astro" width="18" height="18" /> Astro</a> ·
   <a href="https://inlang.com/m/gerre34r/library-inlang-paraglideJs/vanilla-js-ts"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JavaScript" width="18" height="18" /> Vanilla JS/TS</a>
 </p>
+
+> [!TIP]
+> <img src="https://vitejs.dev/logo.svg" alt="Vite" width="16" height="16" /> **Paraglide is ideal for any Vite based app.** Setup is just one plugin and Vite's tree-shaking eliminates unused messages automatically. [Get started →](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/vite)
 
 ## Quick Start
 
@@ -141,7 +144,7 @@ Message format is **plugin-based** — use the default inlang format, or switch 
 
 | Feature                | Paraglide                          | i18next               | react-intl            |
 | ---------------------- | ---------------------------------- | --------------------- | --------------------- |
-| **Bundle size**        | Up to 70% smaller via tree-shaking | ❌ Ships all messages | ❌ Ships all messages |
+| **i18n bundle size**   | Up to 70% smaller via tree-shaking | ❌ Ships all messages | ❌ Ships all messages |
 | **Tree-shakable**      | ✅                                 | ❌                    | ❌                    |
 | **Typesafe**           | ✅                                 | Partial               | ❌                    |
 | **Framework agnostic** | ✅                                 | Wrappers needed       | React only            |

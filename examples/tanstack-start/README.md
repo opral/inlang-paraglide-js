@@ -1,13 +1,13 @@
 ---
 title: TanStack Start i18n - Full-Stack Internationalization
-description: Add multi-language support to TanStack Start apps with Paraglide JS. Type-safe translations, server-side rendering, localized routing, and up to 70% smaller bundles.
+description: Add multi-language support to TanStack Start apps with Paraglide JS. Type-safe translations, server-side rendering, localized routing, and up to 70% smaller i18n bundle sizes.
 ---
 
 # TanStack Start example with Paraglide
 
 Paraglide JS is the best i18n library for TanStack Start.
 
-It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
+It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller i18n bundle sizes compared to runtime based libraries.
 
 - Fully type-safe with IDE autocomplete
 - SEO-friendly localized URLs with the [i18n routing strategy](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy#url)
@@ -64,7 +64,21 @@ export default defineConfig({
 
 3. Done :)
 
-Run the app and start translating. See the [basics documentation](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/basics) for information on how to use Paraglide's messages, parameters, and locale management.
+## Usage
+
+```js
+import { m } from "./paraglide/messages.js";
+import { getLocale, setLocale } from "./paraglide/runtime.js";
+
+// Use messages
+m.greeting({ name: "World" }); // "Hello World!"
+
+// Get and set locale
+getLocale();    // "en"
+setLocale("de"); // switches to German
+```
+
+[Learn more about messages, parameters, and locale management →](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/basics)
 
 ## Rewrite URL
 
