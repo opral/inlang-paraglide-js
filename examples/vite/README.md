@@ -5,14 +5,15 @@ description: Add multi-language support to any Vite project with Paraglide JS. W
 
 # Paraglide JS Vite setup
 
-Paraglide JS provides a plugin for Vite. 
+Paraglide JS is the best i18n library for Vite projects.
 
-If you use Vite in your project, Paraglide JS is almost certainly the best i18n library you can adopt. Check out the [comparison page](/m/gerre34r/library-inlang-paraglideJs/comparison):
+It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
 
-- Simple one plugin setup.
-- Automatic re-compilation with HMR.
-- Supports any framework (React, Vue, Svelte, Solid JS, Preact, Lit).
-- Supports any Vite-based metaframework (React Router, TanStack Start, SvelteKit, Nuxt, ...). 
+- Fully type-safe with IDE autocomplete
+- SEO-friendly localized URLs
+- Works with any framework (React, Vue, Svelte, Solid, Preact, Lit)
+
+[Source code](https://github.com/opral/paraglide-js/tree/main/examples/vite) 
 
 ## Getting started
 

@@ -6,15 +6,15 @@ image: https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/sveltekit/
 
 <img src="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/sveltekit/sveltekit-banner.png" alt="i18n library for SvelteKit" width="10000000px" />
 
-This example shows how to use Paraglide with SvelteKit. The source code can be found [here](https://github.com/opral/paraglide-js/tree/main/examples/sveltekit).
+Paraglide JS is SvelteKit's [official i18n integration](https://svelte.dev/docs/cli/paraglide).
 
-| Feature      | Supported |
-| ------------ | --------- |
-| CSR          | ✅        |
-| SSR          | ✅        |
-| SSG          | ✅        |
-| URLPattern   | ✅        |
-| Any Strategy | ✅        |
+It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
+
+- Fully type-safe with IDE autocomplete
+- SEO-friendly localized URLs
+- Works with CSR, SSR, and SSG
+
+[Source code](https://github.com/opral/paraglide-js/tree/main/examples/sveltekit)
 
 ## Getting started
 

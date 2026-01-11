@@ -5,7 +5,15 @@ description: Add multi-language support to React Router v7 apps with Paraglide J
 
 # React Router v7 (framework) example
 
-This example shows how to use Paraglide with React Router v7. The source code can be found [here](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/examples/react-router).
+Paraglide JS is the best i18n library for React Router v7 in framework mode (using Vite).
+
+It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
+
+- Fully type-safe with IDE autocomplete
+- SEO-friendly localized URLs
+- Works with CSR and SSR
+
+[Source code](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/examples/react-router)
 
 ## Getting started
 

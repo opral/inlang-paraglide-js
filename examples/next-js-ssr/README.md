@@ -5,26 +5,21 @@ description: Implement server-rendered multi-language support in Next.js with Pa
 
 # Next JS SSR example
 
-This is an example of how to use Paraglide with Next JS with SSR. The source code can be found [here](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/examples/next-js-ssr).
+Paraglide JS brings type-safe, tree-shakable translations to Next.js with SSR.
+
+It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
+
+- Fully type-safe with IDE autocomplete
+- SEO-friendly localized URLs
+- Works with CSR and SSR
+
+[Source code](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/examples/next-js-ssr)
 
 > [!TIP]
-> NextJS is tech-debt plagued. If you start your app or website from scratch, we highly recommend using a vite-based framework. [Read](https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658) this comment.
+> If you start from scratch, we recommend using a Vite-based framework. [Read why](https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658).
 
 > [!WARNING]
-> The setup has been reported as fragile for advances use-cases [#407](https://github.com/opral/inlang-paraglide-js/issues/407). Official NodeJS middleware support of NextJS could solve these problems. Use [next-intl](https://next-intl.dev/) if you need a more stable setup.
-
-## Features
-
-| Feature      | Supported |
-| ------------ | --------- |
-| CSR          | ✅        |
-| SSR          | ✅        |
-| SSG          | ❌        |
-| URLPattern   | ✅        |
-| Any Strategy | ✅        |
-
-> [!TIP]
-> Pull requests that improve this example are welcome.
+> The setup has been reported as fragile for advanced use-cases [#407](https://github.com/opral/inlang-paraglide-js/issues/407). Use [next-intl](https://next-intl.dev/) if you need a more stable setup.
 
 ## Getting started
 

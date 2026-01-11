@@ -5,26 +5,21 @@ description: Build statically generated multi-language Next.js sites with Paragl
 
 # Next JS SSG example
 
-This is an example of how to use Paraglide with Next JS with SSG. The source code can be found [here](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/examples/next-js-ssg).
+Paraglide JS brings type-safe, tree-shakable translations to statically generated Next.js sites.
+
+It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
+
+- Fully type-safe with IDE autocomplete
+- SEO-friendly localized URLs
+- Works with CSR, SSR, and SSG
+
+[Source code](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/examples/next-js-ssg)
 
 > [!TIP]
-> NextJS is tech-debt plagued. If you start your app or website from scratch, we highly recommend using a vite-based framework. [Read](https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658) this comment.
-
-## Features
-
-| Feature      | Supported |
-| ------------ | --------- |
-| CSR          | ✅        |
-| SSR          | ✅        |
-| SSG          | ✅        |
-| URLPattern   | ❌        |
-| Any Strategy | ❌        |
+> If you start from scratch, we recommend using a Vite-based framework. [Read why](https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658).
 
 > [!WARNING]
-> The SSG example relies on having the locale prefixed in the path like `/en/page`.
-
-> [!TIP]
-> Pull requests that improve this example are welcome.
+> This SSG example requires the locale prefixed in the path like `/en/page`.
 
 ## Getting started
 

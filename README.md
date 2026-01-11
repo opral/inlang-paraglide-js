@@ -3,10 +3,6 @@
 [![Contributors](https://img.shields.io/github/contributors/opral/paraglide-js?logo=github)](https://github.com/opral/paraglide-js/graphs/contributors)
 [![Discord](https://img.shields.io/discord/897438559458430986?logo=discord&logoColor=white&label=discord)](https://discord.gg/gdMPPWy57R)
 
-<p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/assets/header.png" alt="Paraglide JS" width="600" />
-</p>
-
 <h1 align="center">🪂 Paraglide JS</h1>
 <p align="center">
   <strong>Compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes.</strong>
@@ -29,7 +25,7 @@
 
 <p align="center">
   <sub>Trusted by framework authors</sub><br/><br/>
-  <a href="https://svelte.dev/docs/cli/paraglide"><img src="https://cdn.simpleicons.org/svelte/FF3E00" alt="Svelte" height="14" /> Svelte's official i18n recommendation</a><br/>
+  <a href="https://svelte.dev/docs/cli/paraglide"><img src="https://cdn.simpleicons.org/svelte/FF3E00" alt="Svelte" height="14" /> SvelteKit's official i18n integration</a><br/>
   <a href="https://github.com/TanStack/router/tree/main/e2e/react-router/i18n-paraglide"><img src="https://tanstack.com/images/logos/logo-color-100.png" alt="TanStack" height="14" /> Part of TanStack's CI pipeline</a>
 </p>
 
@@ -59,7 +55,7 @@ The compiler generates typed message functions. Your bundler tree-shakes unused 
 | **Fully Typesafe**        | Autocomplete for message keys and parameters. Typos become compile errors. |
 | **Framework Agnostic**    | Works with React, Vue, Svelte, Solid, TanStack, or vanilla JS/TS.          |
 | **Built-in i18n Routing** | URL-based locale detection and localized paths out of the box.             |
-| **Built on inlang**       | Integrates with VS Code extension, CLI, and translation editor.            |
+| **Built on inlang**       | Integrates with [Sherlock](https://inlang.com/m/r7kp499g/app-inlang-ideExtension) (VS Code extension), [Fink](https://inlang.com/m/tdozzpar/app-inlang-finkLocalizationEditor) (translation editor), and more. |
 
 ## Works With Your Stack
 
@@ -104,14 +100,26 @@ setLocale("de"); // switches to German
 
 ## How It Works
 
+Paraglide compiles an [inlang project](https://inlang.com/docs/introduction#how-it-works) into tree-shakable message functions. Your bundler eliminates unused messages at build time.
+
 ```
-┌────────────────┐      ┌────────────────────┐      ┌──────────────────────────┐
-│ Inlang Project │ ───▶ │ Paraglide Compiler │ ───▶ │ ./paraglide/messages.js  │
-└────────────────┘      └────────────────────┘      │ ./paraglide/runtime.js   │
-                                                    └──────────────────────────┘
+       ┌────────────────┐
+       │ Inlang Project │
+       └───────┬────────┘
+               │
+               ▼
+  ┌────────────────────────┐
+  │  Paraglide Compiler    │
+  └───────────┬────────────┘
+              │
+              ▼
+ ┌──────────────────────────┐
+ │ ./paraglide/messages.js  │
+ │ ./paraglide/runtime.js   │
+ └──────────────────────────┘
 ```
 
-Paraglide compiles an [inlang project](https://inlang.com/docs/introduction#how-it-works) into tree-shakable message functions. Your bundler eliminates unused messages at build time.
+[Watch: How Paraglide JS works in 6 minutes →](https://www.youtube.com/watch?v=PBhdb5AS0mk)
 
 ## Message Format
 
@@ -131,13 +139,13 @@ Message format is **plugin-based** — use the default inlang format, or switch 
 
 ## Comparison
 
-| Feature                | Paraglide   | i18next         | react-intl |
-| ---------------------- | ----------- | --------------- | ---------- |
+| Feature                | Paraglide                          | i18next               | react-intl            |
+| ---------------------- | ---------------------------------- | --------------------- | --------------------- |
 | **Bundle size**        | Up to 70% smaller via tree-shaking | ❌ Ships all messages | ❌ Ships all messages |
-| **Tree-shakable**      | ✅          | ❌              | ❌         |
-| **Typesafe**           | ✅          | Partial         | ❌         |
-| **Framework agnostic** | ✅          | Wrappers needed | React only |
-| **i18n routing**       | ✅ Built-in | ❌              | ❌         |
+| **Tree-shakable**      | ✅                                 | ❌                    | ❌                    |
+| **Typesafe**           | ✅                                 | Partial               | ❌                    |
+| **Framework agnostic** | ✅                                 | Wrappers needed       | React only            |
+| **i18n routing**       | ✅ Built-in                        | ❌                    | ❌                    |
 
 **[Full Comparison →](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/comparison)**
 

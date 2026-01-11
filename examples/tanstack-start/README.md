@@ -5,10 +5,15 @@ description: Add multi-language support to TanStack Start apps with Paraglide JS
 
 # TanStack Start example with Paraglide
 
-This example shows how to use Paraglide with TanStack Start.
+Paraglide JS is the best i18n library for TanStack Start.
 
-- [TanStack Router Docs](https://tanstack.com/router)
-- [Paraglide Documentation](https://inlang.com/m/gerre34r/library-inlang-paraglideJs)
+It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
+
+- Fully type-safe with IDE autocomplete
+- SEO-friendly localized URLs
+- Works with CSR and SSR
+
+[Source code](https://github.com/opral/paraglide-js/tree/main/examples/tanstack-start) | [TanStack Router Docs](https://tanstack.com/router)
 
 ## Start a new project based on this example
 

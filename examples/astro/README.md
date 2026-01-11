@@ -6,19 +6,18 @@ image: https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/astro/asse
 
 <img src="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/astro/assets/banner.png" alt="i18n library for astro" width="10000000px" />
 
-This example demonstrates how to use Paraglide JS with Astro in SSR mode. The source code can be found [here](https://github.com/opral/paraglide-js/tree/main/examples/astro).
+Paraglide JS is the ideal i18n library for Astro's content-focused sites.
 
+It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
 
-| Feature      | Supported |
-| ------------ | --------- |
-| CSR          | ✅        |
-| SSR          | ✅        |
-| SSG          | ❌        |
-| URLPattern   | ✅        |
-| Any Strategy | ✅        |
+- Fully type-safe with IDE autocomplete
+- SEO-friendly localized URLs
+- Works with CSR and SSR
+
+[Source code](https://github.com/opral/paraglide-js/tree/main/examples/astro)
 
 > [!NOTE]
-> You can integrate Paraglide JS yourself to achieve SSG. PR with an example is welcome.
+> SSG is not yet supported out of the box. You can integrate Paraglide JS yourself to achieve SSG. PR with an example is welcome.
 
 ## Setup
 

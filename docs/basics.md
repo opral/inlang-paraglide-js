@@ -5,6 +5,8 @@ description: How to use Paraglide JS - importing messages, using parameters, and
 
 # Basics
 
+New to Paraglide? [Watch how it works in 6 minutes →](https://www.youtube.com/watch?v=PBhdb5AS0mk)
+
 ## Using messages
 
 Import messages from the generated `messages.js` file:
