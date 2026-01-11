@@ -1,5 +1,11 @@
 # @inlang/paraglide-js
 
+## 2.8.1
+
+### Patch Changes
+
+- 9ae2381: Add `@see` documentation links to runtime and server APIs, making it easier for developers to find relevant documentation directly from their IDE.
+
 ## 2.8.0
 
 ### Minor Changes
