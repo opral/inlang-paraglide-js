@@ -15,6 +15,8 @@ import * as runtime from "./runtime.js";
  * - If URL doesn't match the determined locale, redirects to localized URL (only for document requests)
  * - De-localizes URLs before passing to server (e.g., `/fr/about` → `/about`)
  *
+ * @see https://inlang.com/m/gerre34r/library-inlang-paraglideJs/middleware
+ *
  * @template T - The return type of the resolve function
  *
  * @param {Request} request - The incoming request object

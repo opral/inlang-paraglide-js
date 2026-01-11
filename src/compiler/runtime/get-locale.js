@@ -33,6 +33,12 @@ let localeInitiallySet = false;
 /**
  * Get the current locale.
  *
+ * The locale is resolved using your configured strategies (URL, cookie, localStorage, etc.)
+ * in the order they are defined. In SSR contexts, the locale is retrieved from AsyncLocalStorage
+ * which is set by the `paraglideMiddleware()`.
+ *
+ * @see https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy - Configure locale detection strategies
+ *
  * @example
  *   if (getLocale() === 'de') {
  *     console.log('Germany 🇩🇪');
@@ -116,17 +122,17 @@ export let getLocale = () => {
 };
 
 /**
- * Overwrite the \`getLocale()\` function.
+ * Overwrite the `getLocale()` function.
  *
- * Use this function to overwrite how the locale is resolved. For example,
- * you can resolve the locale from the browser's preferred language,
- * a cookie, env variable, or a user's preference.
+ * Use this function to overwrite how the locale is resolved. This is useful
+ * for custom locale resolution or advanced use cases like SSG with concurrent rendering.
+ *
+ * @see https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy
  *
  * @example
  *   overwriteGetLocale(() => {
- *     // resolve the locale from a cookie. fallback to the base locale.
  *     return Cookies.get('locale') ?? baseLocale
- *   }
+ *   });
  *
  * @type {(fn: () => Locale) => void}
  */

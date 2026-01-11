@@ -13,6 +13,8 @@ import { deLocalizeUrl, localizeUrl } from "./localize-url.js";
  * - Automatically detects current locale if not specified
  * - Handles string input/output instead of URL objects
  *
+ * @see https://inlang.com/m/gerre34r/library-inlang-paraglideJs/i18n-routing
+ *
  * @example
  * ```typescript
  * // In a React/Vue/Svelte component
@@ -75,6 +77,8 @@ export function localizeHref(href, options) {
  * - Returns relative paths when possible
  * - Handles string input/output instead of URL objects
  *
+ * @see https://inlang.com/m/gerre34r/library-inlang-paraglideJs/i18n-routing
+ *
  * @example
  * ```typescript
  * // In a React/Vue/Svelte component
@@ -102,7 +106,6 @@ export function localizeHref(href, options) {
  *
  * @param {string} href - The href to de-localize (can be relative or absolute)
  * @returns {string} The de-localized href, relative if input was relative
- * @see deLocalizeUrl - For low-level URL de-localization in server contexts
  */
 export function deLocalizeHref(href) {
 	const url = new URL(href, getUrlOrigin());

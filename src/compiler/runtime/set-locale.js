@@ -37,13 +37,15 @@ const navigateOrReload = (newLocation) => {
 /**
  * Set the locale.
  *
- * Set locale reloads the site by default on the client. Reloading
- * can be disabled by passing \`reload: false\` as an option. If
- * reloading is disabled, you need to ensure that the UI is updated
- * to reflect the new locale.
+ * Updates the locale using your configured strategies (cookie, localStorage, URL, etc.).
+ * By default, this reloads the page on the client to reflect the new locale. Reloading
+ * can be disabled by passing `reload: false` as an option, but you'll need to ensure
+ * the UI updates to reflect the new locale.
  *
- * If any custom strategy's \`setLocale\` function is async, then this
- * function will become async as well.
+ * If any custom strategy's `setLocale` function is async, then this function
+ * will become async as well.
+ *
+ * @see https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy
  *
  * @example
  *   setLocale('en');

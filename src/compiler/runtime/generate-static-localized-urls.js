@@ -7,26 +7,47 @@ import {
 } from "./variables.js";
 
 /**
- * Generates a list of localized URLs for all provided URLs.
+ * Generates localized URL variants for all provided URLs based on your configured locales and URL patterns.
  *
- * This is useful for SSG (Static Site Generation) and sitemap generation.
- * NextJS and other frameworks use this function for SSG.
+ * This function is essential for Static Site Generation (SSG) where you need to tell your framework
+ * which pages to pre-render at build time. It's also useful for generating sitemaps and
+ * `<link rel="alternate" hreflang>` tags for SEO.
+ *
+ * The function respects your `urlPatterns` configuration - if you have translated pathnames
+ * (e.g., `/about` → `/ueber-uns` for German), it will generate the correct localized paths.
+ *
+ * @see https://inlang.com/m/gerre34r/library-inlang-paraglideJs/static-site-generation
  *
  * @example
- * ```typescript
- * const urls = generateStaticLocalizedUrls([
- *   "https://example.com/about",
- *   "https://example.com/blog",
+ * // Basic usage - generate all locale variants for a list of paths
+ * const localizedUrls = generateStaticLocalizedUrls([
+ *   "/",
+ *   "/about",
+ *   "/blog/post-1",
  * ]);
- * urls[0].href // => "https://example.com/about"
- * urls[1].href // => "https://example.com/blog"
- * urls[2].href // => "https://example.com/de/about"
- * urls[3].href // => "https://example.com/de/blog"
- * ...
- * ```
+ * // Returns URL objects for each locale:
+ * // ["/en/", "/de/", "/en/about", "/de/about", "/en/blog/post-1", "/de/blog/post-1"]
  *
- * @param {(string | URL)[]} urls - List of URLs to generate localized versions for. Can be absolute URLs or paths.
- * @returns {URL[]} List of localized URLs as URL objects
+ * @example
+ * // Use with framework SSG APIs
+ * // SvelteKit
+ * export function entries() {
+ *   const paths = ["/", "/about", "/contact"];
+ *   return generateStaticLocalizedUrls(paths).map(url => ({
+ *     locale: extractLocaleFromUrl(url)
+ *   }));
+ * }
+ *
+ * @example
+ * // Sitemap generation
+ * const allPages = ["/", "/about", "/blog"];
+ * const sitemapUrls = generateStaticLocalizedUrls(allPages);
+ *
+ * @param {(string | URL)[]} urls - List of canonical URLs or paths to generate localized versions for.
+ *   Can be absolute URLs (`https://example.com/about`) or paths (`/about`).
+ *   Paths are resolved against `http://localhost` internally.
+ * @returns {URL[]} Array of URL objects representing all localized variants.
+ *   The order follows each input URL with all its locale variants before moving to the next URL.
  */
 export function generateStaticLocalizedUrls(urls) {
 	const localizedUrls = new Set();
