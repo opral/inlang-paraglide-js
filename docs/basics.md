@@ -155,4 +155,5 @@ function PageTitle(props: { title: LocalizedString }) {
 - [Strategy](./strategy) - Configure locale detection
 - [i18n Routing](./i18n-routing) - URL patterns, translated pathnames, domain-based routing
 - [Middleware](./middleware-guide) - Server-side integration
-- [Server-side rendering](./server-side-rendering) - SSR/SSG setup
+- [Server-Side Rendering](./server-side-rendering) - Dynamic rendering with middleware
+- [Static Site Generation](./static-site-generation) - Build-time page generation

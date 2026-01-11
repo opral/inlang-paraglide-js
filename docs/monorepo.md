@@ -7,11 +7,11 @@ description: How to set up Paraglide in a monorepo - shared translations with is
 
 Two patterns for using Paraglide in a monorepo:
 
-|                           | Pattern 1 | Pattern 2 |
-| ------------------------- | :-------: | :-------: |
-| Shared translations       |     ✓     |     ✓     |
-| Isolated compiler options |     ✓     |     ✗     |
-| Single compile step       |     ✗     |     ✓     |
+|                             | Pattern 1 | Pattern 2 |
+| --------------------------- | :-------: | :-------: |
+| Shared translations         |     ✓     |     ✓     |
+| Per-package strategy/config |     ✓     |     ✗     |
+| Single compile step         |     ✗     |     ✓     |
 
 **Use Pattern 1** unless you specifically need a single compilation step.
 
@@ -48,6 +48,9 @@ npx @inlang/paraglide-js compile --project ../../project.inlang --outdir ./src/p
 
 Create a dedicated i18n package that compiles once. Other packages import from it.
 
+> [!WARNING]
+> All consuming packages must use the same locale detection strategy since compilation happens once. If your web app needs URL-based routing while your mobile app needs cookie-based detection, use Pattern 1 instead.
+
 ```
 monorepo/
   packages/
@@ -64,8 +67,11 @@ monorepo/
 // packages/i18n/package.json
 {
 	"name": "@myorg/i18n",
+	"devDependencies": {
+		"@inlang/paraglide-js": "latest"
+	},
 	"scripts": {
-		"build": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide"
+		"build": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide --emit-ts-declarations"
 	},
 	"exports": {
 		"./messages": "./src/paraglide/messages.js",
@@ -73,6 +79,9 @@ monorepo/
 	}
 }
 ```
+
+> [!NOTE]
+> The `--emit-ts-declarations` flag generates `.d.ts` files so TypeScript consumers get proper type checking. This requires the `typescript` package to be installed.
 
 ```ts
 // packages/web/src/app.ts

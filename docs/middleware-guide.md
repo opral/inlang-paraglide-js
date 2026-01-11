@@ -430,5 +430,6 @@ Custom strategies must be named `custom-<name>` and are evaluated in order with 
 - [Standalone Servers](./getting-started/standalone-servers) - Full setup for Express, Hono, Fastify, Elysia
 - [Strategy Configuration](./strategy) - Configure locale detection strategies
 - [i18n Routing](./i18n-routing) - URL patterns, translated pathnames, domain-based routing
-- [Server-Side Rendering](./server-side-rendering) - SSR/SSG setup
+- [Server-Side Rendering](./server-side-rendering) - Dynamic rendering with middleware
+- [Static Site Generation](./static-site-generation) - Build-time page generation
 - [Compiling Messages](./compiling-messages) - Build configuration

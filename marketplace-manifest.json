@@ -45,6 +45,7 @@
 			"/monorepo": "./docs/monorepo.md",
 			"/multi-tenancy": "./docs/multi-tenancy.md",
 			"/server-side-rendering": "./docs/server-side-rendering.md",
+			"/static-site-generation": "./docs/static-site-generation.md",
 			"/compiling-messages": "./docs/compiling-messages.md",
 			"/incremental-migration": "./examples/incremental-migration/README.md"
 		},
