@@ -35,6 +35,7 @@
 		},
 		"Usage": {
 			"/basics": "./docs/basics.md",
+			"/compiling-messages": "./docs/compiling-messages.md",
 			"/message-keys": "./docs/message-keys.md",
 			"/strategy": "./docs/strategy.md",
 			"/i18n-routing": "./docs/i18n-routing.md",
@@ -46,7 +47,6 @@
 			"/multi-tenancy": "./docs/multi-tenancy.md",
 			"/server-side-rendering": "./docs/server-side-rendering.md",
 			"/static-site-generation": "./docs/static-site-generation.md",
-			"/compiling-messages": "./docs/compiling-messages.md",
 			"/incremental-migration": "./examples/incremental-migration/README.md"
 		},
 		"Reference": {
@@ -62,7 +62,7 @@
 			"Fink web editor": "/m/tdozzpar/app-inlang-finkLocalizationEditor"
 		}
 	},
-	"repository":"https://github.com/opral/paraglide-js",
+	"repository": "https://github.com/opral/paraglide-js",
 	"keywords": [
 		"paraglide js",
 		"libraries",
