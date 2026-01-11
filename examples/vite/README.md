@@ -1,3 +1,8 @@
+---
+title: Vite i18n - Internationalization for Any Vite Project
+description: Add multi-language support to any Vite project with Paraglide JS. Works with React, Vue, Svelte, Solid, and more. Type-safe translations with up to 70% smaller bundles.
+---
+
 # Paraglide JS Vite setup
 
 Paraglide JS provides a plugin for Vite. 

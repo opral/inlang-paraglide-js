@@ -1,6 +1,6 @@
 ---
-imports:
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
+title: React Router i18n - Internationalization for React Router v7
+description: Add multi-language support to React Router v7 apps with Paraglide JS. Type-safe translations, localized routing, SSR support, and up to 70% smaller bundles.
 ---
 
 # React Router v7 (framework) example

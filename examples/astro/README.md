@@ -1,6 +1,7 @@
 ---
-title: Astro
-description: Set up Paraglide JS with Astro for SSR.
+title: Astro i18n - Lightweight Internationalization for Content Sites
+description: Add multi-language support to your Astro site with Paraglide JS. Type-safe translations, localized routing, and up to 70% smaller bundles than traditional i18n libraries.
+image: https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/astro/assets/banner.png
 ---
 
 <img src="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/astro/assets/banner.png" alt="i18n library for astro" width="10000000px" />

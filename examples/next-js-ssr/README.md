@@ -1,15 +1,17 @@
 ---
-imports:
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
+title: Next.js i18n with SSR - Server-Side Internationalization
+description: Implement server-rendered multi-language support in Next.js with Paraglide JS. Type-safe translations, automatic locale detection, and up to 70% smaller bundles.
 ---
 
 # Next JS SSR example
 
 This is an example of how to use Paraglide with Next JS with SSR. The source code can be found [here](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/examples/next-js-ssr).
 
-<doc-callout type="tip">NextJS is tech-debt plagued. If you start your app or website from scratch, we highly recommend using a vite-based framework. [Read](https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658) this comment. </doc-callout>
+> [!TIP]
+> NextJS is tech-debt plagued. If you start your app or website from scratch, we highly recommend using a vite-based framework. [Read](https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658) this comment.
 
-<doc-callout type="warning">The setup has been reported as fragile for advances use-cases [#407](https://github.com/opral/inlang-paraglide-js/issues/407). Official NodeJS middleware support of NextJS could solve these problems. Use [next-intl](https://next-intl.dev/) if you need a more stable setup.</doc-callout>
+> [!WARNING]
+> The setup has been reported as fragile for advances use-cases [#407](https://github.com/opral/inlang-paraglide-js/issues/407). Official NodeJS middleware support of NextJS could solve these problems. Use [next-intl](https://next-intl.dev/) if you need a more stable setup.
 
 ## Features
 
@@ -21,7 +23,8 @@ This is an example of how to use Paraglide with Next JS with SSR. The source cod
 | URLPattern   | ✅        |
 | Any Strategy | ✅        |
 
-<doc-callout type="tip">Pull requests that improve this example are welcome.</doc-callout>
+> [!TIP]
+> Pull requests that improve this example are welcome.
 
 ## Getting started
 
@@ -33,7 +36,8 @@ npx @inlang/paraglide-js@latest init
 
 ### Add the webpack plugin to the `next.config.js` file:
 
-<doc-callout type="info">The URL Pattern ensures that `localizeHref()` includes the locale in the path.</doc-callout>
+> [!NOTE]
+> The URL Pattern ensures that `localizeHref()` includes the locale in the path.
 
 ```diff
 import { paraglideWebpackPlugin } from "@inlang/paraglide-js";
@@ -82,7 +86,8 @@ export function middleware(request: NextRequest) {
 
 NextJS does not support AsyncLocalStorage. Hence, we need to use a workaround to render the correct locale. Please upvote this issue https://github.com/vercel/next.js/issues/69298.
 
-<doc-callout type="info">The warning for "headers must be async" has no effect on production. NextJS needs to fix their API or introduce AsyncLocalStorage. More context here https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658</doc-callout>
+> [!NOTE]
+> The warning for "headers must be async" has no effect on production. NextJS needs to fix their API or introduce AsyncLocalStorage. More context here https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658
 
 ```diff
 +import {

@@ -1,6 +1,7 @@
 ---
-title: SvelteKit
-description: Set up Paraglide JS with SvelteKit for SSR, SSG, and CSR.
+title: SvelteKit i18n - The Official Internationalization Solution
+description: Paraglide JS is SvelteKit's officially recommended i18n library. Add type-safe translations, localized URLs, and SEO-friendly multi-language support with up to 70% smaller bundle sizes.
+image: https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/sveltekit/sveltekit-banner.png
 ---
 
 <img src="https://cdn.jsdelivr.net/gh/opral/paraglide-js@latest/examples/sveltekit/sveltekit-banner.png" alt="i18n library for SvelteKit" width="10000000px" />

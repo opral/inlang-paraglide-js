@@ -1,13 +1,14 @@
 ---
-imports:
-  - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-callout.js
+title: Next.js i18n with SSG - Static Site Internationalization
+description: Build statically generated multi-language Next.js sites with Paraglide JS. Type-safe translations, SEO-friendly localized pages, and up to 70% smaller bundles.
 ---
 
 # Next JS SSG example
 
 This is an example of how to use Paraglide with Next JS with SSG. The source code can be found [here](https://github.com/opral/monorepo/tree/main/inlang/packages/paraglide/paraglide-js/examples/next-js-ssg).
 
-<doc-callout type="tip">NextJS is tech-debt plagued. If you start your app or website from scratch, we highly recommend using a vite-based framework. [Read](https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658) this comment. </doc-callout>
+> [!TIP]
+> NextJS is tech-debt plagued. If you start your app or website from scratch, we highly recommend using a vite-based framework. [Read](https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658) this comment.
 
 ## Features
 
@@ -19,9 +20,11 @@ This is an example of how to use Paraglide with Next JS with SSG. The source cod
 | URLPattern   | ❌        |
 | Any Strategy | ❌        |
 
-<doc-callout type="warning">The SSG example is relies on having the locale prefixed in the path like `/en/page`.</doc-callout>
+> [!WARNING]
+> The SSG example relies on having the locale prefixed in the path like `/en/page`.
 
-<doc-callout type="tip">Pull requests that improve this example are welcome.</doc-callout>
+> [!TIP]
+> Pull requests that improve this example are welcome.
 
 ## Getting started
 
@@ -33,7 +36,8 @@ npx @inlang/paraglide-js@latest init
 
 ### Add the webpack plugin to the `next.config.js` file:
 
-<doc-callout type="info">The URL Pattern ensures that `localizeHref()` includes the locale in the path.</doc-callout>
+> [!NOTE]
+> The URL Pattern ensures that `localizeHref()` includes the locale in the path.
 
 ```diff
 import { paraglideWebpackPlugin } from "@inlang/paraglide-js";

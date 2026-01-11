@@ -1,3 +1,8 @@
+---
+title: TanStack Start i18n - Full-Stack Internationalization
+description: Add multi-language support to TanStack Start apps with Paraglide JS. Type-safe translations, server-side rendering, localized routing, and up to 70% smaller bundles.
+---
+
 # TanStack Start example with Paraglide
 
 This example shows how to use Paraglide with TanStack Start.
