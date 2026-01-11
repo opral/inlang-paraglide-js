@@ -1,6 +1,7 @@
 ---
 title: Architecture
-description: Paraglide uses a compiler to generate translations - learn how it works.
+og:title: How It Works
+description: How Paraglide JS works - a compiler that generates tree-shakable translation functions for any JavaScript framework.
 imports:
   - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-video.js
 ---
@@ -9,11 +10,28 @@ imports:
 
 <doc-video src="https://youtu.be/PBhdb5AS0mk"></doc-video>
 
-Paraglide uses a compiler to generate JS functions from your messages. We call these "message functions".
+Paraglide is a compiler-based i18n library. It compiles your translation files into JavaScript functions that you import and call like any other code.
 
-Message Functions are fully typed and TypeScript compatible using JSDoc. They are exported individually from the `messages.js` file making them tree-shakable. When called, they return a translated string. Message functions aren't reactive in any way, if you want a translation in another language you will need to re-call them.
+```js
+import { m } from "./paraglide/messages.js";
 
-This design avoids many edge cases with reactivity, lazy-loading, and namespacing that other i18n libraries have to work around.
+m.greeting({ name: "World" }); // "Hello World!"
+```
+
+Because messages are plain functions:
+
+- They work in any framework—React, Vue, Svelte, Node.js, or vanilla JS
+- Your bundler handles tree-shaking and code-splitting automatically
+- No runtime parsing or framework-specific bindings needed
+
+## How It Works
+
+1. **Paraglide opens an inlang project** — messages in JSON or any format via [plugins](https://inlang.com/c/plugins)
+2. **Compiler generates functions** — one per message, fully typed
+3. **You import and call them** — like any other function
+4. **Bundler optimizes automatically** — tree-shaking, code-splitting, minification
+
+That's it. No runtime overhead. No framework lock-in.
 
 ```mermaid
 flowchart TD
@@ -47,10 +65,10 @@ flowchart TD
 
 Paraglide consists of four main parts:
 
-| Part         | Description                                              |
-| ------------ | -------------------------------------------------------- |
-| **Compiler** | Compiles messages into tree-shakable message functions   |
-| **Messages** | The compiled tree-shakable message functions             |
-| **Runtime**  | A runtime that resolves the locale based on the strategy |
-| **Strategy** | The strategy to detect the locale of a user              |
+| Part         | File           | Key Exports                                  |
+| ------------ | -------------- | -------------------------------------------- |
+| **Compiler** | CLI / Plugin   | `compile()`, bundler plugins                 |
+| **Messages** | `messages.js`  | `m.hello_world()`, `m.greeting()`, etc.      |
+| **Runtime**  | `runtime.js`   | `getLocale()`, `setLocale()`, `locales`      |
+| **[Strategy](./strategy)** | `runtime.js`   | `strategy`, `localizeHref()`, `urlPatterns`  |
 

@@ -1,11 +1,11 @@
 ---
-title: Strategy
-description: Configure locale detection strategies - cookie, localStorage, URL, browser preferences, and custom strategies.
+title: Locale Detection
+description: Configure Paraglide JS locale detection - URL, cookies, localStorage, Accept-Language header, and custom strategies.
 ---
 
 # Strategy
 
-Paraglide JS comes with various strategies to determine the locale out of the box.
+Paraglide JS comes with various strategies to determine the locale of a user.
 
 > [!TIP]
 > For server-side integration details and framework examples, see the [Middleware Guide](./middleware-guide).

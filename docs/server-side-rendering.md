@@ -1,4 +1,6 @@
 ---
+title: Server-Side Rendering
+description: Server-side rendering with Paraglide JS - AsyncLocalStorage, streaming SSR, hydration, and framework integration.
 imports:
   - https://cdn.jsdelivr.net/npm/@opral/markdown-wc-doc-elements/dist/doc-video.js
 ---

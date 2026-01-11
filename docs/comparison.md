@@ -1,6 +1,7 @@
 ---
 title: Comparison
-description: How Paraglide JS compares to i18next, React-Intl, and other i18n libraries.
+og:title: vs i18next, React-Intl & Others
+description: How Paraglide JS compares to i18next, React-Intl, and other i18n libraries - bundle size, type safety, and tree-shaking.
 ---
 
 # Comparison

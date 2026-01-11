@@ -1,13 +1,11 @@
 ---
-title: File Formats
-description: Message file formats and inlang plugins for Paraglide.
+title: Translation File Formats
+description: Paraglide JS works with any translation file format via inlang plugins - JSON, YAML, i18next, and more.
 ---
 
-# Message file formats
+# Translation File Formats
 
-You can use any message syntax and file formats with Paraglide JS via [inlang plugins](https://inlang.com/c/plugins).
-
-By default, Paraglide JS uses the [inlang-message-format](https://inlang.com/m/reootnfj/plugin-inlang-messageFormat) plugin, but you can use any other plugin that suits your needs. Mixing & matching is also possible.
+Paraglide JS works with any message syntax and file format via [inlang plugins](https://inlang.com/c/plugins). This means you can use JSON, YAML, i18next format, or any other format that has a plugin.
 
 ```mermaid
 graph LR;
@@ -21,54 +19,94 @@ graph LR;
     D <-.->|Reads & Writes| E[Translation File]
 ```
 
-## Available plugins
+## Choosing a Plugin
 
-All plugins can be found on https://inlang.com/c/plugins. Here are some popular plugins:
+| Plugin                                                                             | Best For                                  | File Format              |
+| ---------------------------------------------------------------------------------- | ----------------------------------------- | ------------------------ |
+| [Inlang Message Format](https://inlang.com/m/reootnfj/plugin-inlang-messageFormat) | New projects, full inlang feature support | `messages/{locale}.json` |
+| [i18next](https://inlang.com/m/3i8bor92/plugin-inlang-i18next)                     | Migrating from i18next                    | `locales/{locale}.json`  |
+| [JSON](https://inlang.com/m/ig84ng0o/plugin-inlang-json)                           | Simple key-value translations             | `{locale}.json`          |
 
-- [Inlang Message Format](https://inlang.com/m/reootnfj/plugin-inlang-messageFormat)
-- [JSON](https://inlang.com/m/ig84ng0o/plugin-inlang-json)
-- [i18next](https://inlang.com/m/3i8bor92/plugin-inlang-i18next)
+Browse all plugins at [inlang.com/c/plugins](https://inlang.com/c/plugins).
 
-## Installing a plugin
+## Message Syntax Examples
 
-Add the link of the plugin to the `modules` in the `settings.json` file.
+### Inlang Message Format
+
+`messages/en.json`
+
+```json
+{
+	"greeting": "Hello {name}!",
+	"items_count": "{count, plural, one {# item} other {# items}}",
+	"welcome_message": "Welcome to {appName}, {username}!"
+}
+```
+
+`messages/de.json`
+
+```json
+{
+	"greeting": "Hallo {name}!",
+	"items_count": "{count, plural, one {# Artikel} other {# Artikel}}",
+	"welcome_message": "Willkommen bei {appName}, {username}!"
+}
+```
+
+### i18next Format
+
+`locales/en.json`
+
+```json
+{
+	"greeting": "Hello {{name}}!",
+	"items_count": "{{count}} item",
+	"items_count_plural": "{{count}} items"
+}
+```
+
+### Simple JSON
+
+`en.json`
+
+```json
+{
+	"greeting": "Hello!",
+	"goodbye": "Goodbye!"
+}
+```
+
+## Installing a Plugin
+
+Add the plugin URL to the `modules` array in your `project.inlang/settings.json`:
 
 > [!NOTE]
-> Refer to the documentation of the plugin for the link and installation guide.
+> Refer to each plugin's documentation for specific configuration options.
 
 ```diff
 {
   "baseLocale": "en",
   "locales": ["en", "de"],
   "modules": [
-     "other plugins...",
-+    "https://cdn.jsdelivr.net/npm/@inlang/plugin-message-format@latest/dist/index.js"
+-    "https://cdn.jsdelivr.net/npm/@inlang/plugin-message-format@latest/dist/index.js"
++    "https://cdn.jsdelivr.net/npm/@inlang/plugin-i18next@latest/dist/index.js"
   ]
 }
 ```
 
-## Using multiple plugins
+## Using Multiple Plugins
 
-You can use multiple plugins in your project.
+You can use multiple plugins to support different file formats in the same project:
 
-```diff
+```json
 {
-  "baseLocale": "en",
-  "locales": ["en", "de"],
-  "modules": [
-     "other plugins...",
-+     "https://cdn.jsdelivr.net/npm/@inlang/plugin-message-format@latest/dist/index.js"
-+     "https://cdn.jsdelivr.net/npm/@inlang/plugin-i18next@latest/dist/index.js"
-  ]
+	"baseLocale": "en",
+	"locales": ["en", "de"],
+	"modules": [
+		"https://cdn.jsdelivr.net/npm/@inlang/plugin-message-format@latest/dist/index.js",
+		"https://cdn.jsdelivr.net/npm/@inlang/plugin-i18next@latest/dist/index.js"
+	]
 }
 ```
 
-## Implementation Details
-
-We [learned the hard way](https://opral.substack.com/p/focus-shift-from-inlang-to-lix) that a binary `.inlang` file is needed to make localization simple. Unfortunately, git can't store binary files without losing the benefits of version control.
-
-Hence, for now, unpacking `.inlang` files into directories and creating an in-memory sqlite on each load is the way to go.
-
-## Good-to-know: `.inlang` files
-
-The long-term vision is to use `.inlang` files directly without depending on external message files and plugins.
+This is useful when migrating from one format to another, or when different parts of your app use different translation formats.

@@ -1,6 +1,6 @@
 ---
 title: Vanilla JS/TS
-description: Set up Paraglide JS in a vanilla JavaScript or TypeScript project.
+description: Add i18n to vanilla JavaScript or TypeScript with Paraglide JS - no framework required, fully tree-shakable.
 ---
 
 # Vanilla JavaScript/TypeScript Setup

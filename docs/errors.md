@@ -1,6 +1,6 @@
 ---
 title: Errors
-description: Common Paraglide errors and how to fix them.
+description: Fix common Paraglide JS errors - locale not found, strategy issues, middleware problems, and debugging tips.
 ---
 
 # Errors
@@ -95,7 +95,7 @@ setLocale("de");
 // ❌ this will not work in client side routing
 <a href={localizeHref("/page", { locale: "de" })}>Deutsch</a>
 
-// 🟠 your framework might expose a reload attribute which 
+// 🟠 your framework might expose a reload attribute which
 //    would make locale switching via links work
 <a
   href={localizeHref("/page", { locale: "de" })}

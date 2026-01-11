@@ -1,6 +1,7 @@
 ---
 title: Scaling
-description: Paraglide delivers up to 70% smaller bundle sizes than runtime i18n libraries through tree-shaking.
+og:title: Bundle Size & Performance
+description: Paraglide JS delivers smaller bundles than runtime i18n libraries through tree-shaking - see benchmarks and scaling analysis.
 ---
 
 # Scaling

@@ -1,6 +1,6 @@
 ---
 title: Basics
-description: How to use Paraglide JS - importing messages, using parameters, and managing locales.
+description: Learn Paraglide JS basics - import messages, use parameters, manage locales, and add type-safe i18n to any app.
 ---
 
 # Basics
@@ -36,11 +36,16 @@ getLocale(); // "en"
 setLocale("de"); // Changes locale and reloads page
 ```
 
-To change without reload (you'll need to handle UI updates yourself):
+> [!NOTE]
+> `setLocale()` triggers a page reload by default. This is a deliberate design choice that keeps the implementation simple without framework-specific logic for preserving form state, scroll position, etc. A user switches the language once, so optimizing for instant locale switching is a poor trade-off. YouTube and other major sites work the same way.
+
+To change without reload:
 
 ```js
 setLocale("de", { reload: false });
 ```
+
+You'll need to trigger a re-render of your component tree using your framework's reactivity (e.g., React state, Svelte stores, Vue refs).
 
 ## Forcing a locale
 
@@ -55,11 +60,16 @@ m.greeting({ name: "Samuel" }, { locale: "de" }); // "Hallo Samuel!"
 
 ## Routing
 
-Use `localizeHref()` for URL localization:
+Use `localizeHref()` for URL localization. Works with any framework:
 
-```tsx
+```js
 import { localizeHref } from "./paraglide/runtime.js";
 
+localizeHref("/blog"); // "/en/blog" or "/de/blog" depending on locale
+```
+
+```html
+<!-- React/Solid/Vue/Svelte/etc. -->
 <a href={localizeHref("/blog")}>Blog</a>
 ```
 
@@ -72,15 +82,17 @@ import { localizeHref } from "./paraglide/runtime.js";
 
 Messages are stored in `messages/{locale}.json`:
 
+`messages/en.json`
+
 ```json
-// messages/en.json
 {
   "greeting": "Hello {name}!"
 }
 ```
 
+`messages/de.json`
+
 ```json
-// messages/de.json
 {
   "greeting": "Hallo {name}!"
 }
@@ -108,16 +120,28 @@ Add locales in `project.inlang/settings.json`:
 
 Paraglide supports nested keys through bracket notation but recommends flat keys:
 
+Flat keys (recommended):
+
 ```json
 {
-  "user_profile_title": "User Profile",
+  "user_profile_title": "User Profile"
+}
+```
+
+```js
+m.user_profile_title();
+```
+
+Nested keys:
+
+```json
+{
   "user": { "profile": { "title": "User Profile" } }
 }
 ```
 
 ```js
-m.user_profile_title();       // Recommended
-m["user.profile.title"]();    // Also works
+m["user.profile.title"]();
 ```
 
 See [message keys](./message-keys) for best practices.
@@ -137,7 +161,7 @@ messages["greeting"](); // "Hello World!"
 
 ### Type-safe localized strings
 
-Message functions return `LocalizedString`, a branded type that helps TypeScript distinguish translated from untranslated strings:
+Message functions return `LocalizedString`, a special string type that TypeScript uses to distinguish translated text from regular strings:
 
 ```ts
 import type { LocalizedString } from "./paraglide/runtime.js";

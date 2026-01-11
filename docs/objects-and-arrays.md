@@ -1,3 +1,8 @@
+---
+title: Objects and Arrays
+description: Store and retrieve arrays and objects in Paraglide JS translations using JSON.parse - with i18next comparison.
+---
+
 # Objects and Arrays
 
 ## Use case

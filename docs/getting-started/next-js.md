@@ -1,6 +1,6 @@
 ---
 title: Next.js
-description: Set up Paraglide JS with Next.js for SSR and SSG.
+description: Add i18n to Next.js with Paraglide JS - App Router, server components, SSR, SSG, and type-safe translations.
 imports:
   - https://cdn.jsdelivr.net/npm/@opral/markdown-wc/dist/markdown-wc-embed.js
 ---
