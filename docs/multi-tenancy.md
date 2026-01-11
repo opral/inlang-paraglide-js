@@ -4,12 +4,17 @@ description: Serve different localization configurations per tenant, domain, or 
 ---
 
 # Multi-Tenancy
+
+Each tenant can have different default locales and URL structures:
+
 ```
-https://customer1.com/about -> de
-https://customer2.de/en/about -> en
-https://customer3.com/fr/about -> fr
+https://customer1.com/about      → de (German default)
+https://customer2.de/en/about    → en (English via path)
+https://customer3.com/fr/about   → fr (French via path)
 ```
 
+> [!TIP]
+> This guide builds on URL pattern concepts. See [i18n Routing](./i18n-routing) for the fundamentals.
 
 Multi-tenancy in i18n refers to serving different localization configurations. This is particularly useful when:
 
@@ -35,14 +40,23 @@ Multi-tenancy allows you to handle all these cases with a single configuration.
 
 ## Configuration
 
-URLPatterns can be used to configure multi-tenancy in your application. Here is an example configuration:
+Use `urlPatterns` to define different routing rules per tenant domain:
 
-```javascript
-await compile({
+```js
+compile({
 	project: "./project.inlang",
-	strategy: ["url"],
+	outdir: "./src/paraglide",
+	strategy: ["url", "baseLocale"],
 	urlPatterns: [
-		// 1) customer1.fr => root locale is fr, sub-locale is /en/
+		// Localhost for development (use path prefixes)
+		{
+			pattern: "http://localhost::port?/:path(.*)?",
+			localized: [
+				["fr", "http://localhost::port?/fr/:path(.*)?"],
+				["en", "http://localhost::port?/:path(.*)?"],
+			],
+		},
+		// customer1.fr => French default, English via /en/
 		{
 			pattern: "https://customer1.fr/:path(.*)?",
 			localized: [
@@ -50,7 +64,7 @@ await compile({
 				["en", "https://customer1.fr/en/:path(.*)?"],
 			],
 		},
-		// 2) customer2.com => root locale is en, sub-locale is /fr/
+		// customer2.com => English default, French via /fr/
 		{
 			pattern: "https://customer2.com/:path(.*)?",
 			localized: [
@@ -58,36 +72,31 @@ await compile({
 				["fr", "https://customer2.com/fr/:path(.*)?"],
 			],
 		},
-		// 3) Any other domain => path-based for en/fr
-		{
-			pattern: "https://:domain(.*)/:path(.*)?",
-			localized: [
-				["en", "https://:domain(.*)/en/:path(.*)?"],
-				["fr", "https://:domain(.*)/fr/:path(.*)?"],
-			],
-		},
 	],
 });
 ```
+
+> [!NOTE]
+> Adding `baseLocale` to the strategy array ensures a locale is always resolved, even if no pattern matches.
 
 ### Customer 1
 
 - Localizing French to French:
 
-  ```javascript
+  ```js
   localizeHref("https://customer1.fr/about", { locale: "fr" })
   // Output: "https://customer1.fr/about"
   ```
 
 - Localizing from French to English:
 
-  ```javascript
+  ```js
   localizeHref("https://customer1.fr/about", { locale: "en" })
   // Output: "https://customer1.fr/en/about"
   ```
 
 - De-localizing English:
-  ```javascript
+  ```js
   deLocalizeHref("https://customer1.fr/en/about");
   // Output: "https://customer1.fr/about"
   ```
@@ -96,69 +105,48 @@ await compile({
 
 - Localizing English to English:
 
-  ```javascript
+  ```js
   localizeHref("https://customer2.com/about", { locale: "en" })
   // Output: "https://customer2.com/about"
   ```
 
 - Localizing from English to French:
 
-  ```javascript
+  ```js
   localizeHref("https://customer2.com/about", { locale: "fr" })
   // Output: "https://customer2.com/fr/about"
   ```
 
 - De-localizing French:
-  ```javascript
+  ```js
   deLocalizeHref("https://customer2.com/fr/about");
   // Output: "https://customer2.com/about"
   ```
 
-### Other Domains
-
-For any other domain, the path-based localization will be used for English and French.
-
-```javascript
-localizeHref("https://example.com/about", { locale: "fr" })
-// Output: "https://example.com/fr/about"
-
-localizeHref("https://example.com/fr/about", { locale: "en" })
-// Output: "https://example.com/en/about"
-
-```
-
 ## Disabling Specific Locales for Tenants
 
-In multi-tenant applications, you might need to restrict certain locales for specific tenants. For example:
+You might need to restrict certain locales for specific tenants:
 
 - Customer A only supports English and German
 - Customer B only supports French and Spanish
 - Customer C supports all locales
 
-You can implement this by redirecting unsupported locales to a 404 page or any other error page using the `null` or 404 redirect pattern:
+Redirect unsupported locales to a 404 page:
 
-```javascript
-await compile({
+```js
+compile({
 	project: "./project.inlang",
-	strategy: ["url"],
+	outdir: "./src/paraglide",
+	strategy: ["url", "baseLocale"],
 	urlPatterns: [
-		// Define 404 pages for each tenant
-		{
-			pattern: "https://customer1.com/404",
-			localized: [
-				["en", "https://customer1.com/404"],
-				["de", "https://customer1.com/de/404"],
-				// No fr pattern - will use the en pattern as fallback
-			],
-		},
 		// Customer1 - only supports en and de
 		{
 			pattern: "https://customer1.com/:path(.*)?",
 			localized: [
 				["en", "https://customer1.com/:path(.*)?"],
 				["de", "https://customer1.com/de/:path(.*)?"],
-				["fr", "https://customer1.com/404"],  // Redirect fr to 404
-				["es", "https://customer1.com/404"],  // Redirect es to 404
+				["fr", "https://customer1.com/404"],  // Unsupported → 404
+				["es", "https://customer1.com/404"],
 			],
 		},
 		// Customer2 - only supports fr and es
@@ -167,8 +155,8 @@ await compile({
 			localized: [
 				["fr", "https://customer2.com/:path(.*)?"],
 				["es", "https://customer2.com/es/:path(.*)?"],
-				["en", "https://customer2.com/404"],  // Redirect en to 404
-				["de", "https://customer2.com/404"],  // Redirect de to 404
+				["en", "https://customer2.com/404"],  // Unsupported → 404
+				["de", "https://customer2.com/404"],
 			],
 		},
 		// Customer3 - supports all locales
@@ -187,7 +175,7 @@ await compile({
 
 When a user tries to access a URL with an unsupported locale for a specific tenant, they will be redirected to the 404 page:
 
-```javascript
+```js
 // Customer1 doesn't support French
 localizeHref("https://customer1.com/about", { locale: "fr" })
 // Output: "https://customer1.com/404"
@@ -211,41 +199,33 @@ This approach allows you to:
 
 ## Tenant-Specific Locale Switchers
 
-When implementing a language/locale switcher in a multi-tenant application, it's essential to only display the locales that are supported by the current tenant. 
+Only display locales that the current tenant supports. This prevents users from clicking links that lead to 404 pages.
 
-This prevents users from clicking on links that would lead to 404 pages or unsupported content.
+Filter available locales based on the current tenant before rendering your switcher. In production, this mapping typically comes from a config file or API rather than hardcoded values.
 
-### Filtering Available Locales
+#### React
 
-You should filter the available locales based on the current tenant before rendering your locale switcher:
+```jsx
+import { localizeHref, getLocale } from "./paraglide/runtime.js";
 
-```javascript
-// Example of filtering locales for a language switcher
-function getTenantSupportedLocales(hostname) {
-  // Determine which tenant we're on based on hostname
-  if (hostname.includes('customer1.com')) {
-    // Customer1 only supports English and German
-    return ['en', 'de'];
-  } else if (hostname.includes('customer2.com')) {
-    // Customer2 only supports French and Spanish
-    return ['fr', 'es'];
-  } else if (hostname.includes('customer3.com')) {
-    // Customer3 supports all locales
-    return ['en', 'de', 'fr', 'es'];
-  }
-}
+const TENANT_LOCALES = {
+  "customer1.com": ["en", "de"],
+  "customer2.com": ["fr", "es"],
+  "customer3.com": ["en", "de", "fr", "es"],
+};
 
-// In your language switcher component
 function LanguageSwitcher() {
   const hostname = window.location.hostname;
-  const supportedLocales = getTenantSupportedLocales(hostname);
-  
+  const currentLocale = getLocale();
+  const supportedLocales = TENANT_LOCALES[hostname] ?? ["en"];
+
   return (
     <div className="language-switcher">
       {supportedLocales.map(locale => (
-        <a 
-          key={locale} 
+        <a
+          key={locale}
           href={localizeHref(window.location.href, { locale })}
+          aria-current={locale === currentLocale ? "page" : undefined}
         >
           {locale.toUpperCase()}
         </a>

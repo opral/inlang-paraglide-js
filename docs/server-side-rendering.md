@@ -91,3 +91,4 @@ If invisible anchor tags are not an option, some frameworks provide APIs to disc
 
 - [Middleware Guide](./middleware-guide) - Framework examples, troubleshooting, AsyncLocalStorage
 - [Strategy Configuration](./strategy) - Configure locale detection strategies
+- [i18n Routing](./i18n-routing) - URL patterns, translated pathnames, domain-based routing
