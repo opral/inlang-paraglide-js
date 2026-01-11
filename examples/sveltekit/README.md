@@ -11,7 +11,7 @@ Paraglide JS is SvelteKit's [official i18n integration](https://svelte.dev/docs/
 It's a compiler-based i18n library that emits tree-shakable translations, leading to up to 70% smaller bundle sizes compared to runtime based libraries.
 
 - Fully type-safe with IDE autocomplete
-- SEO-friendly localized URLs
+- SEO-friendly localized URLs with the [i18n routing strategy](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy#url)
 - Works with CSR, SSR, and SSG
 
 [Source code](https://github.com/opral/paraglide-js/tree/main/examples/sveltekit)

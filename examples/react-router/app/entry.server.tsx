@@ -1,18 +1,11 @@
 import { PassThrough } from "node:stream";
 
-import { createContext, useContext } from "react";
 import type { AppLoadContext, EntryContext } from "react-router";
 import { createReadableStreamFromReadable } from "@react-router/node";
 import { ServerRouter } from "react-router";
 import { isbot } from "isbot";
 import type { RenderToPipeableStreamOptions } from "react-dom/server";
 import { renderToPipeableStream } from "react-dom/server";
-import {
-  assertIsLocale,
-  baseLocale,
-  isLocale,
-  overwriteGetLocale,
-} from "./paraglide/runtime";
 
 export const streamTimeout = 5_000;
 
@@ -25,15 +18,6 @@ export default function handleRequest(
   _loadContext: AppLoadContext
 ) {
   return new Promise((resolve, reject) => {
-    const url = new URL(request.url);
-    const pathSegment = url.pathname.split("/")[1];
-    const locale = isLocale(pathSegment) ? pathSegment : baseLocale;
-    const LocaleContextSSR = createContext(baseLocale);
-
-    if (import.meta.env.SSR) {
-      overwriteGetLocale(() => assertIsLocale(useContext(LocaleContextSSR)));
-    }
-
     let shellRendered = false;
     const userAgent = request.headers.get("user-agent");
 
@@ -45,9 +29,7 @@ export default function handleRequest(
         : "onShellReady";
 
     const { pipe, abort } = renderToPipeableStream(
-      <LocaleContextSSR.Provider value={locale}>
-        <ServerRouter context={routerContext} url={request.url} />
-      </LocaleContextSSR.Provider>,
+      <ServerRouter context={routerContext} url={request.url} />,
       {
         [readyOption]() {
           shellRendered = true;

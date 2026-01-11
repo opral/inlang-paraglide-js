@@ -1,10 +1,20 @@
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
+import {
+	Links,
+	Meta,
+	Outlet,
+	Scripts,
+	ScrollRestoration,
+	type MiddlewareFunction,
+} from "react-router";
 import { getLocale } from "./paraglide/runtime";
+import { paraglideMiddleware } from "./paraglide/server.js";
+
+export const middleware: MiddlewareFunction[] = [
+	(ctx, next) => paraglideMiddleware(ctx.request, () => next()),
+];
 
 export default function App() {
-	return (
-		<Outlet />
-	);
+	return <Outlet />;
 }
 
 export function Layout(props: { children: React.ReactNode }) {
