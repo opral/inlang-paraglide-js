@@ -36,8 +36,21 @@ If you are looking for a benchmark, check out the [interactive benchmark](/m/ger
 | **Variants** [ℹ️](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/variants)</sup>                    | [✅ Yes](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/variants)                                                                | ❌ No                                                                                                            | ❌ No                                                                                            |
 | **Multi-tenancy** [ℹ️](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/multi-tenancy)</sup>          | [✅ Yes](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/multi-tenancy)                                                           | ❌ No                                                                                                            | ❌ No                                                                                            |
 | **Message syntax agnostic** [ℹ️](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/file-formats)</sup> | [✅ Via inlang plugins](https://inlang.com/c/plugins)                                                                                      | [✅ Via different backends](https://www.i18next.com/how-to/add-or-load-translations#load-using-a-backend-plugin) | ❌ Only ICU                                                                                      |
-| **Scales well over 15 locales**                                                                               | [🟠 Experimental split locale option](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/benchmark)                                  | [✅ Via HTTP backend](https://github.com/i18next/i18next-http-backend)                                           | ❌ No                                                                                            |
+| **Lazy locale loading** [ℹ️](#lazy-locale-loading)                                                            | [🟠 Experimental](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/benchmark)                                                      | [✅ HTTP backend](https://github.com/i18next/i18next-http-backend)                                               | ❌ No                                                                                            |
 | **Component interpolation**                                                                                   | [❌ Upvote issue #240](https://github.com/opral/inlang-sdk/issues/240)                                                                     | [🟠 Only for React](https://react.i18next.com/legacy-v9/trans-component)                                         | [🟠 Only for React](https://formatjs.github.io/docs/react-intl/components/#rich-text-formatting) |
+
+### Lazy locale loading
+
+Paraglide compiles messages into functions that contain all locales. Lazy locale loading instead fetches only the current locale's messages on-demand.
+
+**When does this matter?**
+
+Under ~20 locales, tree-shaking unused messages outweighs the cost of bundling all locales per message—Paraglide remains more efficient. Beyond ~20 locales, lazy loading may become beneficial depending on your app's message usage patterns.
+
+Paraglide has an [experimental locale splitting option](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/benchmark) for apps that need lazy locale loading.
+
+> [!NOTE]
+> **There is no locale limit in Paraglide.** The library works fine with any number of locales. Lazy loading is an optimization, not a requirement.
 
 ## Further Reading
 
