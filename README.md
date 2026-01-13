@@ -64,7 +64,7 @@ The compiler generates typed message functions. Your bundler tree-shakes unused 
   <a href="https://inlang.com/m/gerre34r/library-inlang-paraglideJs/vite"><img src="https://cdn.simpleicons.org/vuedotjs/4FC08D" alt="Vue" width="18" height="18" /> Vue</a> ·
   <a href="https://github.com/TanStack/router/tree/main/examples/react/start-i18n-paraglide"><img src="https://tanstack.com/images/logos/logo-color-100.png" alt="TanStack" width="18" height="18" /> TanStack Start</a> ·
   <a href="https://inlang.com/m/gerre34r/library-inlang-paraglideJs/sveltekit"><img src="https://cdn.simpleicons.org/svelte/FF3E00" alt="Svelte" width="18" height="18" /> SvelteKit</a> ·
-  <a href="https://inlang.com/m/gerre34r/library-inlang-paraglideJs/next-js"><img src="https://cdn.simpleicons.org/nextdotjs" alt="Next.js" width="18" height="18" /> Next.js</a> ·
+  <a href="https://inlang.com/m/gerre34r/library-inlang-paraglideJs/react-router"><img src="https://cdn.simpleicons.org/reactrouter/CA4245" alt="React Router" width="18" height="18" /> React Router</a> ·
   <a href="https://inlang.com/m/gerre34r/library-inlang-paraglideJs/astro"><img src="https://cdn.simpleicons.org/astro/FF5D01" alt="Astro" width="18" height="18" /> Astro</a> ·
   <a href="https://inlang.com/m/gerre34r/library-inlang-paraglideJs/vanilla-js-ts"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JavaScript" width="18" height="18" /> Vanilla JS/TS</a>
 </p>
@@ -191,7 +191,7 @@ Paraglide is built on the [open inlang format](https://github.com/opral/inlang-s
 ## Documentation
 
 - [Getting Started](https://inlang.com/m/gerre34r/library-inlang-paraglideJs)
-- [Framework Guides](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/next-js) (Next.js, SvelteKit, Astro, etc.)
+- [Framework Guides](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/react-router) (React Router, SvelteKit, Astro, etc.)
 - [Message Syntax & Pluralization](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/variants)
 - [Routing & SSR](https://inlang.com/m/gerre34r/library-inlang-paraglideJs/server-side-rendering)
 - [API Reference](https://inlang.com/m/gerre34r/library-inlang-paraglideJs)
