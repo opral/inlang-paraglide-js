@@ -2,7 +2,7 @@
 
 > **CompilerOptions** = `object`
 
-Defined in: [compiler-options.ts:21](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:21](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 ### Properties
 
@@ -10,7 +10,7 @@ Defined in: [compiler-options.ts:21](https://github.com/opral/monorepo/tree/main
 
 > `optional` **additionalFiles**: `Record`\<`string`, `string`\>
 
-Defined in: [compiler-options.ts:156](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:156](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 The `additionalFiles` option is an array of paths to additional files that should be copied to the output directory.
 
@@ -40,7 +40,7 @@ The output will look like this:
 
 > `optional` **cleanOutdir**: `boolean`
 
-Defined in: [compiler-options.ts:302](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:302](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 Whether to clean the output directory before writing the new files.
 
@@ -54,7 +54,7 @@ true
 
 > `optional` **cookieDomain**: `string`
 
-Defined in: [compiler-options.ts:130](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:130](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 The host to which the cookie will be sent.
 If undefined or empty, the domain attribute is omitted from the cookie, scoping it to the exact current domain only (no subdomains).
@@ -83,7 +83,7 @@ cookieDomain: "example.com" // Cookie: "PARAGLIDE_LOCALE=en; path=/; max-age=345
 
 > `optional` **cookieMaxAge**: `number`
 
-Defined in: [compiler-options.ts:110](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:110](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 The max-age in seconds of the cookie until it expires.
 
@@ -97,7 +97,7 @@ The max-age in seconds of the cookie until it expires.
 
 > `optional` **cookieName**: `string`
 
-Defined in: [compiler-options.ts:104](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:104](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 The name of the cookie to use for the cookie strategy.
 
@@ -111,7 +111,7 @@ The name of the cookie to use for the cookie strategy.
 
 > `optional` **disableAsyncLocalStorage**: `boolean`
 
-Defined in: [compiler-options.ts:231](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:231](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 Replaces AsyncLocalStorage with a synchronous implementation.
 
@@ -126,7 +126,7 @@ leak into another concurrent request.
 
 > `optional` **emitGitIgnore**: `boolean`
 
-Defined in: [compiler-options.ts:245](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:245](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 If `emitGitIgnore` is set to `true` a `.gitignore` file will be emitted in the output directory. Defaults to `true`.
 
@@ -148,7 +148,7 @@ true
 
 > `optional` **emitPrettierIgnore**: `boolean`
 
-Defined in: [compiler-options.ts:170](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:170](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 If `emitPrettierIgnore` is set to `true` a `.prettierignore` file will be emitted in the output directory. Defaults to `true`.
 
@@ -170,7 +170,7 @@ true
 
 > `optional` **emitReadme**: `boolean`
 
-Defined in: [compiler-options.ts:187](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:187](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 If `emitReadme` is set to `true` a `README.md` file will be emitted in the output directory. Defaults to `true`.
 
@@ -195,7 +195,7 @@ true
 
 > `optional` **emitTsDeclarations**: `boolean`
 
-Defined in: [compiler-options.ts:210](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:210](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 Emit `.d.ts` files for the generated output using the TypeScript compiler.
 
@@ -227,7 +227,7 @@ false
 
 > `optional` **experimentalMiddlewareLocaleSplitting**: `boolean`
 
-Defined in: [compiler-options.ts:79](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:79](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 Whether or not to use experimental middleware locale splitting.
 
@@ -251,7 +251,7 @@ false
 
 > `optional` **fs**: `any`
 
-Defined in: [compiler-options.ts:309](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:309](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 The file system to use. Defaults to `await import('node:fs')`.
 
@@ -261,7 +261,7 @@ Useful for testing the paraglide compiler by mocking the fs.
 
 > `optional` **includeEslintDisableComment**: `boolean`
 
-Defined in: [compiler-options.ts:220](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:220](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 Whether to include an eslint-disable comment at the top of each .js file.
 
@@ -275,7 +275,7 @@ true
 
 > `optional` **isServer**: `string`
 
-Defined in: [compiler-options.ts:98](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:98](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 Tree-shaking flag if the code is running on the server.
 
@@ -299,7 +299,7 @@ typeof window === "undefined"
 
 > `optional` **localStorageKey**: `string`
 
-Defined in: [compiler-options.ts:85](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:85](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 The name of the localStorage key to use for the localStorage strategy.
 
@@ -313,7 +313,7 @@ The name of the localStorage key to use for the localStorage strategy.
 
 > **outdir**: `string`
 
-Defined in: [compiler-options.ts:45](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:45](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 The path to the output directory.
 
@@ -330,7 +330,7 @@ await compile({
 
 > `optional` **outputStructure**: `"locale-modules"` \| `"message-modules"`
 
-Defined in: [compiler-options.ts:296](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:296](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 The `outputStructure` defines how modules are structured in the output.
 
@@ -389,7 +389,7 @@ The benefit are substantially fewer files which is needed in large projects.
 
 > **project**: `string`
 
-Defined in: [compiler-options.ts:33](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:33](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 The path to the inlang project.
 
@@ -406,7 +406,7 @@ await compile({
 
 > `optional` **strategy**: [`Runtime`](runtime/type/README.md#runtime)\[`"strategy"`\]
 
-Defined in: [compiler-options.ts:63](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:63](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 The strategy to use for getting the locale.
 
@@ -432,7 +432,7 @@ Custom strategies with the pattern `custom-[A-Za-z0-9]+` are supported.
 
 > `optional` **urlPatterns**: [`Runtime`](runtime/type/README.md#runtime)\[`"urlPatterns"`\]
 
-Defined in: [compiler-options.ts:214](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:214](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy#url
 
@@ -442,7 +442,7 @@ https://inlang.com/m/gerre34r/library-inlang-paraglideJs/strategy#url
 
 > `const` **defaultCompilerOptions**: `object`
 
-Defined in: [compiler-options.ts:3](https://github.com/opral/monorepo/tree/main/src/compiler/compiler-options.ts)
+Defined in: [compiler-options.ts:3](https://github.com/opral/paraglide-js/tree/main/src/compiler/compiler-options.ts)
 
 ### Type Declaration
 

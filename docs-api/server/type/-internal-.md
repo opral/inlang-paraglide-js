@@ -2,7 +2,7 @@
 
 > **paraglideMiddleware**\<`T`\>(`request`, `resolve`, `callbacks?`): `Promise`\<`Response`\>
 
-Defined in: [server/middleware.js:100](https://github.com/opral/monorepo/tree/main/src/compiler/server/middleware.js)
+Defined in: [server/middleware.js:102](https://github.com/opral/paraglide-js/tree/main/src/compiler/server/middleware.js)
 
 Server middleware that handles locale-based routing and request processing.
 
@@ -55,6 +55,10 @@ Callbacks to handle events from middleware
 ### Returns
 
 `Promise`\<`Response`\>
+
+### See
+
+https://inlang.com/m/gerre34r/library-inlang-paraglideJs/middleware
 
 ### Examples
 

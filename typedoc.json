@@ -14,5 +14,5 @@
 	"hideBreadcrumbs": true,
 	"hideGroupHeadings": true,
 	"hidePageTitle": true,
-	"sourceLinkTemplate": "https://github.com/opral/monorepo/tree/main/{path}"
+	"sourceLinkTemplate": "https://github.com/opral/paraglide-js/tree/main/{path}"
 }
