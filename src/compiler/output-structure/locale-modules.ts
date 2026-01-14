@@ -3,8 +3,10 @@ import type { CompiledBundleWithMessages } from "../compile-bundle.js";
 import { toSafeModuleId } from "../safe-module-id.js";
 import { inputsType } from "../jsdoc-types.js";
 
+const localeImportPrefix = "__";
+
 export function messageReferenceExpression(locale: string, bundleId: string) {
-	return `${toSafeModuleId(locale)}.${toSafeModuleId(bundleId)}`;
+	return `${localeImportPrefix}${toSafeModuleId(locale)}.${toSafeModuleId(bundleId)}`;
 }
 
 export function generateOutput(
@@ -18,7 +20,7 @@ export function generateOutput(
 		settings.locales
 			.map(
 				(locale) =>
-					`import * as ${toSafeModuleId(locale)} from "./${locale}.js"`
+					`import * as ${localeImportPrefix}${toSafeModuleId(locale)} from "./${locale}.js"`
 			)
 			.join("\n"),
 		compiledBundles.map(({ bundle }) => bundle.code).join("\n"),

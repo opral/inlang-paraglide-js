@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { generateOutput } from "./locale-modules.js";
+import { generateOutput, messageReferenceExpression } from "./locale-modules.js";
 import type { Bundle, Message, ProjectSettings } from "@inlang/sdk";
 import type { CompiledBundleWithMessages } from "../compile-bundle.js";
 
@@ -124,4 +124,39 @@ test("should handle case sensitivity in message IDs correctly", () => {
 	const content = output["messages/en.js"];
 	expect(content).toContain("export const sad_penguin_bundle");
 	expect(content).toContain("export const sad_penguin_bundle1"); // or some other unique name
+});
+
+test("prefixes locale imports to avoid message name collisions", () => {
+	// https://github.com/opral/paraglide-js/issues/492
+	const bundles: CompiledBundleWithMessages[] = [
+		{
+			bundle: {
+				code: "const no = () => 'No';",
+				node: {
+					id: "no",
+				} as unknown as Bundle,
+			},
+			messages: {
+				no: {
+					code: "const no = () => 'Nei';",
+					node: {} as unknown as Message,
+				},
+			},
+		},
+	];
+
+	const settings: Pick<ProjectSettings, "locales" | "baseLocale"> = {
+		locales: ["no"],
+		baseLocale: "no",
+	};
+
+	const output = generateOutput(bundles, settings, {});
+
+	expect(output["messages/_index.js"]).toContain(
+		`import * as __no from "./no.js"`
+	);
+	expect(output["messages/_index.js"]).not.toContain(
+		`import * as no from "./no.js"`
+	);
+	expect(messageReferenceExpression("no", "no")).toBe("__no.no");
 });
