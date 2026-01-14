@@ -26,7 +26,7 @@
 <p align="center">
   <sub>Trusted by framework authors</sub><br/><br/>
   <a href="https://svelte.dev/docs/cli/paraglide"><img src="https://cdn.simpleicons.org/svelte/FF3E00" alt="Svelte" height="14" /> SvelteKit's official i18n integration</a><br/>
-  <a href="https://github.com/TanStack/router/tree/main/e2e/react-router/i18n-paraglide"><img src="https://tanstack.com/images/logos/logo-color-100.png" alt="TanStack" height="14" /> Part of TanStack's CI pipeline</a>
+  <a href="https://inlang.com/blog/tanstack-ci"><img src="https://tanstack.com/images/logos/logo-color-100.png" alt="TanStack" height="14" /> Part of TanStack's CI pipeline</a>
 </p>
 
 ## Code Preview
