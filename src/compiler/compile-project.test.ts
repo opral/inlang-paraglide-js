@@ -167,6 +167,27 @@ test("emitReadme includes project path", async () => {
 	expect(output["README.md"]).toContain("Paraglide JS");
 });
 
+// https://github.com/opral/paraglide-js/issues/539
+test("omits async_hooks import when disableAsyncLocalStorage is true", async () => {
+	const project = await loadProjectInMemory({
+		blob: await newProject({
+			settings: {
+				locales: ["en", "de"],
+				baseLocale: "en",
+			},
+		}),
+	});
+
+	const output = await compileProject({
+		project,
+		compilerOptions: { disableAsyncLocalStorage: true },
+	});
+
+	expect(output["server.js"]).not.toContain(
+		'const { AsyncLocalStorage } = await import("async_hooks");'
+	);
+});
+
 // https://github.com/opral/paraglide-js/issues/544
 test("fallback map should not create cycles for language-only + regional baseLocale", () => {
 	const fallbackMap = getFallbackMap(["it", "it-IT", "fr", "fr-FR"], "it-IT");
