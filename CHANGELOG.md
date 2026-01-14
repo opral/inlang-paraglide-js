@@ -1,5 +1,44 @@
 # @inlang/paraglide-js
 
+## 2.9.0
+
+### Minor Changes
+
+- badca6a: Add the experimental `experimentalStaticLocale` compiler option for per-locale tree-shaking (see https://github.com/opral/paraglide-js/issues/88#issuecomment-3634754638).
+- a0c5665: Prune async_hooks import from generated server output when async local storage is disabled (fixes https://github.com/opral/paraglide-js/issues/539).
+
+### Patch Changes
+
+- 9ae2381: Add `@see` documentation links to runtime and server APIs, making it easier for developers to find relevant documentation directly from their IDE.
+- 867ea44: Avoid cyclic fallback maps when a language-only locale exists alongside a regional base locale.
+
+  Previously, a setup like `locales: ["it", "it-IT"]` with `baseLocale: "it-IT"` could create a fallback cycle (`it → it-IT → it`) and throw a runtime error. The compiler now breaks that cycle by making the `baseLocale` terminal, so `it-IT` no longer falls back to `it` while `it` still falls back to `it-IT`.
+
+  Issue: https://github.com/opral/paraglide-js/issues/544
+
+- 3cbdd75: Fix message compilation for input names with non-identifier characters (like `half!`).
+
+  Before: i18next-style placeholders with symbols produced invalid JS because we emitted `i.half!` in patterns, local variables, and match conditions (syntax error).
+  Now: Paraglide quotes the key in JSDoc and uses bracket access in generated code (e.g. `i["half!"]`), so the same message compiles and runs correctly.
+
+  ```diff
+  -// before (invalid JS)
+  -// input: { "half!": "1st" }
+  -return `${i.half!} Half - Corner Handicap`
+  +// after (valid JS)
+  +// input: { "half!": "1st" }
+  +return `${i["half!"]} Half - Corner Handicap`
+  ```
+
+  Issue: https://github.com/opral/paraglide-js/issues/514
+
+- deb9877: Avoid locale/message name collisions in the locale-modules output structure by prefixing locale imports.
+
+  Previously, a locale like `no` could collide with a message key `no`, causing duplicate symbol errors in the generated `messages/_index.js`.
+  Now, locale imports are prefixed (e.g. `__no`), keeping message exports intact and avoiding the conflict.
+
+  Issue: https://github.com/opral/paraglide-js/issues/492
+
 ## 2.8.0
 
 ### Minor Changes
