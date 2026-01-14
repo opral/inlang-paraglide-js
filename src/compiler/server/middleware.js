@@ -100,12 +100,7 @@ import * as runtime from "./runtime.js";
  * ```
  */
 export async function paraglideMiddleware(request, resolve, callbacks) {
-	if (!runtime.disableAsyncLocalStorage && !runtime.serverAsyncLocalStorage) {
-		const { AsyncLocalStorage } = await import("async_hooks");
-		runtime.overwriteServerAsyncLocalStorage(new AsyncLocalStorage());
-	} else if (!runtime.serverAsyncLocalStorage) {
-		runtime.overwriteServerAsyncLocalStorage(createMockAsyncLocalStorage());
-	}
+	// %async-local-storage
 
 	const decision = await runtime.shouldRedirect({ request });
 	const locale = decision.locale;
@@ -235,6 +230,9 @@ function createMockAsyncLocalStorage() {
 		},
 	};
 }
+
+// Used in generated server.js when async local storage is disabled.
+void createMockAsyncLocalStorage;
 
 /**
  * The compiled messages for the server middleware.

@@ -91,6 +91,9 @@ export async function createParaglide(
 			experimentalMiddlewareLocaleSplitting:
 				args.experimentalMiddlewareLocaleSplitting ??
 				defaultCompilerOptions.experimentalMiddlewareLocaleSplitting,
+			disableAsyncLocalStorage:
+				args.disableAsyncLocalStorage ??
+				defaultCompilerOptions.disableAsyncLocalStorage,
 		},
 	})
 		.replace(`import * as runtime from "./runtime.js";`, "")
