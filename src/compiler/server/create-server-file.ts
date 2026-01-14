@@ -12,6 +12,9 @@ export function createServerFile(args: {
 		experimentalMiddlewareLocaleSplitting: NonNullable<
 			CompilerOptions["experimentalMiddlewareLocaleSplitting"]
 		>;
+		disableAsyncLocalStorage: NonNullable<
+			CompilerOptions["disableAsyncLocalStorage"]
+		>;
 	};
 }): string {
 	let code = `
@@ -20,6 +23,40 @@ import * as runtime from "./runtime.js";
 ${injectCode("./middleware.js")}
 `;
 
+	const asyncLocalStorageMarker = "// %async-local-storage";
+	const markerIndex = code.indexOf(asyncLocalStorageMarker);
+	if (markerIndex === -1) {
+		throw new Error(
+			"Expected a single %async-local-storage marker in server middleware."
+		);
+	}
+
+	const lineStart = code.lastIndexOf("\n", markerIndex) + 1;
+	const indent = code.slice(lineStart, markerIndex).replace(/\t/g, "  ");
+	const innerIndent = `${indent}  `;
+	const asyncLocalStorageBlock = args.compilerOptions.disableAsyncLocalStorage
+		? [
+				`${indent}if (!runtime.serverAsyncLocalStorage) {`,
+				`${innerIndent}runtime.overwriteServerAsyncLocalStorage(createMockAsyncLocalStorage());`,
+				`${indent}}`,
+			]
+		: [
+				`${indent}if (!runtime.disableAsyncLocalStorage && !runtime.serverAsyncLocalStorage) {`,
+				`${innerIndent}const { AsyncLocalStorage } = await import("async_hooks");`,
+				`${innerIndent}runtime.overwriteServerAsyncLocalStorage(new AsyncLocalStorage());`,
+				`${indent}} else if (!runtime.serverAsyncLocalStorage) {`,
+				`${innerIndent}runtime.overwriteServerAsyncLocalStorage(createMockAsyncLocalStorage());`,
+				`${indent}}`,
+			];
+
+	const lineEnd = code.indexOf("\n", markerIndex);
+	const endOfMarkerLine = lineEnd === -1 ? code.length : lineEnd + 1;
+
+	code =
+		code.slice(0, lineStart) +
+		`${asyncLocalStorageBlock.join("\n")}\n` +
+		code.slice(endOfMarkerLine);
+
 	if (args.compilerOptions.experimentalMiddlewareLocaleSplitting) {
 		code = code.replace(
 			"const compiledBundles = {};",
@@ -27,7 +64,7 @@ ${injectCode("./middleware.js")}
 		);
 	}
 
-	return code;
+	return code.replace(/\t/g, "  ");
 }
 
 function createCompiledMessagesObject(
