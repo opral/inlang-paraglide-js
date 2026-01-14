@@ -97,6 +97,17 @@ export type CompilerOptions = {
 	 */
 	isServer?: string;
 	/**
+	 * Compile-time locale constant used for per-locale tree-shaking.
+	 *
+	 * This is experimental and opt-in. It should be a JavaScript expression
+	 * (not a quoted literal) that resolves to a locale or `undefined` at build time.
+	 *
+	 * @example
+	 *   // Vite define
+	 *   experimentalStaticLocale: "typeof __PARAGLIDE_STATIC_LOCALE__ === 'undefined' ? undefined : __PARAGLIDE_STATIC_LOCALE__"
+	 */
+	experimentalStaticLocale?: string;
+	/**
 	 * The name of the cookie to use for the cookie strategy.
 	 *
 	 * @default 'PARAGLIDE_LOCALE'

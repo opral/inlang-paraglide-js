@@ -1,4 +1,5 @@
 import type { ProjectSettings } from "@inlang/sdk";
+import type { CompilerOptions } from "../compiler-options.js";
 import type { CompiledBundleWithMessages } from "../compile-bundle.js";
 import { toSafeModuleId } from "../safe-module-id.js";
 import { inputsType } from "../jsdoc-types.js";
@@ -10,10 +11,15 @@ export function messageReferenceExpression(locale: string, bundleId: string) {
 export function generateOutput(
 	compiledBundles: CompiledBundleWithMessages[],
 	settings: Pick<ProjectSettings, "locales" | "baseLocale">,
-	fallbackMap: Record<string, string | undefined>
+	fallbackMap: Record<string, string | undefined>,
+	compilerOptions?: Pick<CompilerOptions, "experimentalStaticLocale">
 ): Record<string, string> {
+	const staticLocaleImport =
+		compilerOptions?.experimentalStaticLocale !== undefined
+			? ", experimentalStaticLocale"
+			: "";
 	const indexFile = [
-		`import { getLocale, trackMessageCall, experimentalMiddlewareLocaleSplitting, isServer } from "../runtime.js"`,
+		`import { getLocale, trackMessageCall, experimentalMiddlewareLocaleSplitting, isServer${staticLocaleImport} } from "../runtime.js"`,
 		`/** @typedef {import('../runtime.js').LocalizedString} LocalizedString */`,
 		settings.locales
 			.map(

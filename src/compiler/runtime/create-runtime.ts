@@ -15,6 +15,7 @@ export function createRuntimeFile(args: {
 		urlPatterns?: CompilerOptions["urlPatterns"];
 		experimentalMiddlewareLocaleSplitting: CompilerOptions["experimentalMiddlewareLocaleSplitting"];
 		isServer: CompilerOptions["isServer"];
+		experimentalStaticLocale?: CompilerOptions["experimentalStaticLocale"];
 		localStorageKey: CompilerOptions["localStorageKey"];
 		disableAsyncLocalStorage: NonNullable<
 			CompilerOptions["disableAsyncLocalStorage"]
@@ -22,6 +23,13 @@ export function createRuntimeFile(args: {
 	};
 }): string {
 	const urlPatterns = args.compilerOptions.urlPatterns ?? [];
+	const experimentalStaticLocaleBlockRegex =
+		/\/\* experimental-static-locale-start \*\/[\s\S]*?\/\* experimental-static-locale-end \*\//;
+	const getLocaleCode = injectCode("./get-locale.js");
+	const getLocaleWithStaticLocale =
+		args.compilerOptions.experimentalStaticLocale !== undefined
+			? getLocaleCode
+			: getLocaleCode.replace(experimentalStaticLocaleBlockRegex, "");
 
 	let defaultUrlPatternUsed = false;
 
@@ -102,6 +110,10 @@ ${injectCode("./variables.js")
 		`export const isServer = ${args.compilerOptions.isServer};`
 	)
 	.replace(
+		`export const experimentalStaticLocale = undefined;`,
+		`export const experimentalStaticLocale = ${args.compilerOptions.experimentalStaticLocale ?? "undefined"};`
+	)
+	.replace(
 		`export const localStorageKey = "PARAGLIDE_LOCALE";`,
 		`export const localStorageKey = "${args.compilerOptions.localStorageKey}";`
 	)
@@ -112,7 +124,7 @@ ${injectCode("./variables.js")
 
 globalThis.__paraglide = {}
 
-${injectCode("./get-locale.js")}
+${getLocaleWithStaticLocale}
 
 ${injectCode("./set-locale.js")}
 

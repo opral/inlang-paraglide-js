@@ -70,6 +70,10 @@ export const experimentalMiddlewareLocaleSplitting = false;
 
 export const isServer = typeof window === "undefined";
 
+/** @type {Locale | undefined} */
+// @ts-ignore - injected by bundlers at compile time
+export const experimentalStaticLocale = undefined;
+
 /**
  * Sets the server side async local storage.
  *

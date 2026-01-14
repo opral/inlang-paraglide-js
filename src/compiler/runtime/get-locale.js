@@ -9,6 +9,7 @@ import {
 	isServer,
 	localStorageKey,
 	serverAsyncLocalStorage,
+	experimentalStaticLocale,
 	strategy,
 	TREE_SHAKE_COOKIE_STRATEGY_USED,
 	TREE_SHAKE_GLOBAL_VARIABLE_STRATEGY_USED,
@@ -49,6 +50,12 @@ let localeInitiallySet = false;
  * @type {() => Locale}
  */
 export let getLocale = () => {
+	/* experimental-static-locale-start */
+	if (experimentalStaticLocale !== undefined) {
+		return assertIsLocale(experimentalStaticLocale);
+	}
+	/* experimental-static-locale-end */
+
 	/** @type {string | undefined} */
 	let locale;
 
