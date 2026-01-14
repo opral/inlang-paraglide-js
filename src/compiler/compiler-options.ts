@@ -119,7 +119,7 @@ export type CompilerOptions = {
 	 *    serve dist/de/...  <----> serve dist/en/...
 	 *    (HTML + assets)          (HTML + assets)
 	 *
-	 * @see https://github.com/opral/paraglide-js/issues/88#issuecomment-3237774479
+	 * @see https://github.com/opral/paraglide-js/issues/88#issuecomment-3634754638
 	 *
 	 * @example
 	 *   // Vite define

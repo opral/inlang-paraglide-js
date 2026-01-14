@@ -277,7 +277,7 @@ client request (/)
 
 ##### See
 
-https://github.com/opral/paraglide-js/issues/88#issuecomment-3237774479
+https://github.com/opral/paraglide-js/issues/88#issuecomment-3634754638
 
 ##### Examples
 
