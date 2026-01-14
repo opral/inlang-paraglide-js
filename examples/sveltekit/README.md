@@ -94,15 +94,15 @@ export const reroute: Reroute = (request) => {
 ## Usage
 
 ```js
-import { m } from "$lib/paraglide/messages.js";
-import { getLocale, setLocale } from "$lib/paraglide/runtime.js";
+import { m } from '$lib/paraglide/messages.js';
+import { getLocale, setLocale } from '$lib/paraglide/runtime.js';
 
 // Use messages
-m.greeting({ name: "World" }); // "Hello World!"
+m.greeting({ name: 'World' }); // "Hello World!"
 
 // Get and set locale
-getLocale();    // "en"
-setLocale("de"); // switches to German
+getLocale(); // "en"
+setLocale('de'); // switches to German
 ```
 
 [Learn more about messages, parameters, and locale management →](/m/gerre34r/library-inlang-paraglideJs/basics)
@@ -133,6 +133,26 @@ Then add a locale switcher in `routes/+layout.svelte` to generate all pages duri
 </nav>
 
 <slot></slot>
+```
+
+If you use the static adapter with `ssr = false` (SPA mode), make asset paths absolute to avoid locale-prefixed 404s (see [paraglide-js#503](https://github.com/opral/paraglide-js/issues/503)):
+
+```diff
+// svelte.config.js
+import adapter from '@sveltejs/adapter-static';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+const config = {
+	preprocess: vitePreprocess(),
+	kit: {
+		adapter: adapter(),
++		paths: {
++			relative: false
++		}
+	}
+};
+
+export default config;
 ```
 
 ## Troubleshooting
