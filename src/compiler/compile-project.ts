@@ -120,6 +120,7 @@ export function getFallbackMap<T extends string>(
 ): Record<T, T | undefined> {
 	return Object.fromEntries(
 		locales.map((lang) => {
+			if (lang === baseLocale) return [lang, undefined];
 			const fallbackLanguage = lookup(lang, {
 				locales: locales.filter((l) => l !== lang),
 				baseLocale,

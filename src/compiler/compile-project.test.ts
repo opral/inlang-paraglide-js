@@ -15,7 +15,7 @@ import {
 	Pattern,
 	VariableReference,
 } from "@inlang/sdk";
-import { compileProject } from "./compile-project.js";
+import { compileProject, getFallbackMap } from "./compile-project.js";
 import virtual from "@rollup/plugin-virtual";
 import { rolldown } from "rolldown";
 
@@ -28,6 +28,22 @@ beforeEach(() => {
 	// @ts-expect-error - global variable definition
 	globalThis.window = undefined;
 });
+
+function hasFallbackCycle(
+	fallbackMap: Record<string, string | undefined>,
+	start: string
+): boolean {
+	const visited = new Set<string>();
+	let current: string | undefined = start;
+
+	while (current) {
+		if (visited.has(current)) return true;
+		visited.add(current);
+		current = fallbackMap[current];
+	}
+
+	return false;
+}
 
 test("emitGitignore", async () => {
 	const project = await loadProjectInMemory({
@@ -149,6 +165,16 @@ test("emitReadme includes project path", async () => {
 	expect(output["README.md"]).toContain(projectPath);
 	expect(output["README.md"]).toContain("Compiled from:");
 	expect(output["README.md"]).toContain("Paraglide JS");
+});
+
+// https://github.com/opral/paraglide-js/issues/544
+test("fallback map should not create cycles for language-only + regional baseLocale", () => {
+	const fallbackMap = getFallbackMap(["it", "it-IT", "fr", "fr-FR"], "it-IT");
+
+	expect(hasFallbackCycle(fallbackMap, "it")).toBe(false);
+	expect(hasFallbackCycle(fallbackMap, "it-IT")).toBe(false);
+	expect(fallbackMap["it"]).toBe("it-IT");
+	expect(fallbackMap["it-IT"]).toBeUndefined();
 });
 
 test("emitTsDeclarations generates declaration files", async () => {
