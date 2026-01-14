@@ -116,21 +116,23 @@ Enable [pre-renderering](https://svelte.dev/docs/kit/page-options#prerender) by 
 +export const prerender = true;
 ```
 
-Then add "invisble" anchor tags in `routes/+layout.svelte` to generate all pages during build time. SvelteKit crawls the anchor tags during the build and is, thereby, able to generate all pages statically.
+Then add a locale switcher in `routes/+layout.svelte` to generate all pages during build time. SvelteKit crawls anchor tags during the build and is, thereby, able to generate all pages statically. If you already have a visible locale switcher that links to every locale variant, nothing extra is required. Add `data-sveltekit-reload` (see [paraglide-js#472](https://github.com/opral/paraglide-js/issues/472)) so locale switches trigger a full reload and the new locale is applied.
 
 ```diff
 <script>
 	import { page } from '$app/state';
-+	import { locales, localizeHref } from '$lib/paraglide/runtime';
+	import { locales, localizeHref } from '$lib/paraglide/runtime';
 </script>
 
-<slot></slot>
+<nav class="locale-switcher" aria-label="Languages">
+	{#each locales as locale}
+		<a href={localizeHref(page.url.pathname, { locale })} data-sveltekit-reload>
+			{locale}
+		</a>
+	{/each}
+</nav>
 
-+<div style="display:none">
-+	{#each locales as locale}
-+		<a href={localizeHref(page.url.pathname, { locale })}>{locale}</a>
-+	{/each}
-+</div>
+<slot></slot>
 ```
 
 ## Troubleshooting
