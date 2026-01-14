@@ -12,6 +12,7 @@ export type Runtime = {
 	serverAsyncLocalStorage: typeof import("./variables.js").serverAsyncLocalStorage;
 	experimentalMiddlewareLocaleSplitting: typeof import("./variables.js").experimentalMiddlewareLocaleSplitting;
 	isServer: typeof import("./variables.js").isServer;
+	experimentalStaticLocale: typeof import("./variables.js").experimentalStaticLocale;
 	getLocale: typeof import("./get-locale.js").getLocale;
 	setLocale: typeof import("./set-locale.js").setLocale;
 	getUrlOrigin: typeof import("./get-url-origin.js").getUrlOrigin;

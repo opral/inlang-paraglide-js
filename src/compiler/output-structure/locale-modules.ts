@@ -13,7 +13,7 @@ export function generateOutput(
 	fallbackMap: Record<string, string | undefined>
 ): Record<string, string> {
 	const indexFile = [
-		`import { getLocale, trackMessageCall, experimentalMiddlewareLocaleSplitting, isServer } from "../runtime.js"`,
+		`import { getLocale, trackMessageCall, experimentalMiddlewareLocaleSplitting, isServer, experimentalStaticLocale } from "../runtime.js"`,
 		`/** @typedef {import('../runtime.js').LocalizedString} LocalizedString */`,
 		settings.locales
 			.map(

@@ -126,6 +126,11 @@ export const unpluginFactory: UnpluginFactory<CompilerOptions> = (args) => ({
 				isServer = "import.meta.env?.SSR ?? typeof window === 'undefined'";
 			},
 		},
+		configEnvironment: {
+			handler: () => {
+				isServer = "import.meta.env?.SSR ?? typeof window === 'undefined'";
+			},
+		},
 	},
 	webpack(compiler) {
 		compiler.options.resolve = {

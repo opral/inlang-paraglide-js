@@ -24,6 +24,21 @@ test("matching by strategy works", async () => {
 	expect(locale).toBe(baseLocale);
 });
 
+test("experimentalStaticLocale overrides runtime strategies", async () => {
+	const runtime = await createParaglide({
+		blob: await newProject({
+			settings: {
+				baseLocale: "en",
+				locales: ["en", "de"],
+			},
+		}),
+		strategy: ["cookie", "baseLocale"],
+		experimentalStaticLocale: JSON.stringify("de"),
+	});
+
+	expect(runtime.getLocale()).toBe("de");
+});
+
 test("throws if variable is used without baseLocale as fallback strategy", async () => {
 	const runtime = await createParaglide({
 		blob: await newProject({

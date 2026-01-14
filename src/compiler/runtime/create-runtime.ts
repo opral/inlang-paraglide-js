@@ -15,6 +15,7 @@ export function createRuntimeFile(args: {
 		urlPatterns?: CompilerOptions["urlPatterns"];
 		experimentalMiddlewareLocaleSplitting: CompilerOptions["experimentalMiddlewareLocaleSplitting"];
 		isServer: CompilerOptions["isServer"];
+		experimentalStaticLocale?: CompilerOptions["experimentalStaticLocale"];
 		localStorageKey: CompilerOptions["localStorageKey"];
 		disableAsyncLocalStorage: NonNullable<
 			CompilerOptions["disableAsyncLocalStorage"]
@@ -100,6 +101,10 @@ ${injectCode("./variables.js")
 	.replace(
 		`export const isServer = typeof window === "undefined";`,
 		`export const isServer = ${args.compilerOptions.isServer};`
+	)
+	.replace(
+		`export const experimentalStaticLocale = undefined;`,
+		`export const experimentalStaticLocale = ${args.compilerOptions.experimentalStaticLocale ?? "undefined"};`
 	)
 	.replace(
 		`export const localStorageKey = "PARAGLIDE_LOCALE";`,

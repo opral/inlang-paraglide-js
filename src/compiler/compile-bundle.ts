@@ -78,7 +78,6 @@ const compileBundleFunction = (args: {
 		(decl) => decl.type === "input-variable"
 	);
 	const hasInputs = inputs.length > 0;
-
 	const safeBundleId = toSafeModuleId(args.bundle.id);
 
 	const isSafeBundleId = safeBundleId === args.bundle.id;
@@ -100,7 +99,7 @@ ${isSafeBundleId ? "export " : ""}const ${safeBundleId} = (inputs${hasInputs ? "
 	if (experimentalMiddlewareLocaleSplitting && isServer === false) {
 		return /** @type {any} */ (globalThis).__paraglide_ssr.${safeBundleId}(inputs) 
 	}
-	const locale = options.locale ?? getLocale()
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	trackMessageCall("${safeBundleId}", locale)
 	${args.availableLocales
 		.map(

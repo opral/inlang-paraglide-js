@@ -106,7 +106,7 @@ export function generateOutput(
 
 		// add the imports and type reference (LocalizedString is defined in runtime.js)
 		output[filename] =
-			`import { getLocale, trackMessageCall, experimentalMiddlewareLocaleSplitting, isServer } from '../runtime.js';\n` +
+			`import { getLocale, trackMessageCall, experimentalMiddlewareLocaleSplitting, isServer, experimentalStaticLocale } from '../runtime.js';\n` +
 			`/** @typedef {import('../runtime.js').LocalizedString} LocalizedString */\n\n` +
 			output[filename];
 

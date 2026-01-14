@@ -282,6 +282,14 @@ Defined in: [runtime/variables.js:69](https://github.com/opral/paraglide-js/tree
 
 ***
 
+## experimentalStaticLocale
+
+> `const` **experimentalStaticLocale**: `any` = `undefined`
+
+Defined in: [runtime/variables.js:75](https://github.com/opral/paraglide-js/tree/main/src/compiler/runtime/variables.js)
+
+***
+
 ## isServer
 
 > `const` **isServer**: `boolean`
@@ -792,7 +800,7 @@ const sitemapUrls = generateStaticLocalizedUrls(allPages);
 
 > **getLocale**(): `any`
 
-Defined in: [runtime/get-locale.js:51](https://github.com/opral/paraglide-js/tree/main/src/compiler/runtime/get-locale.js)
+Defined in: [runtime/get-locale.js:52](https://github.com/opral/paraglide-js/tree/main/src/compiler/runtime/get-locale.js)
 
 Get the current locale.
 
@@ -1013,7 +1021,7 @@ localizeUrl(url, { locale: "de" });
 
 > **overwriteGetLocale**(`fn`): `void`
 
-Defined in: [runtime/get-locale.js:139](https://github.com/opral/paraglide-js/tree/main/src/compiler/runtime/get-locale.js)
+Defined in: [runtime/get-locale.js:144](https://github.com/opral/paraglide-js/tree/main/src/compiler/runtime/get-locale.js)
 
 Overwrite the `getLocale()` function.
 
@@ -1071,7 +1079,7 @@ define how the URL origin is resolved.
 
 > **overwriteServerAsyncLocalStorage**(`value`): `void`
 
-Defined in: [runtime/variables.js:83](https://github.com/opral/paraglide-js/tree/main/src/compiler/runtime/variables.js)
+Defined in: [runtime/variables.js:87](https://github.com/opral/paraglide-js/tree/main/src/compiler/runtime/variables.js)
 
 Sets the server side async local storage.
 
