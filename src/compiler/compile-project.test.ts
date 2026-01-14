@@ -173,8 +173,8 @@ test("fallback map should not create cycles for language-only + regional baseLoc
 
 	expect(hasFallbackCycle(fallbackMap, "it")).toBe(false);
 	expect(hasFallbackCycle(fallbackMap, "it-IT")).toBe(false);
-	expect(fallbackMap["it"]).toBeUndefined();
-	expect(fallbackMap["it-IT"]).toBe("it");
+	expect(fallbackMap["it"]).toBe("it-IT");
+	expect(fallbackMap["it-IT"]).toBeUndefined();
 });
 
 test("emitTsDeclarations generates declaration files", async () => {
