@@ -1,5 +1,4 @@
 import type { ProjectSettings } from "@inlang/sdk";
-import type { CompilerOptions } from "../compiler-options.js";
 import type { CompiledBundleWithMessages } from "../compile-bundle.js";
 import { escapeForSingleQuoteString } from "../../services/codegen/escape.js";
 import { toSafeModuleId } from "../safe-module-id.js";
@@ -12,12 +11,9 @@ export function messageReferenceExpression(locale: string, bundleId: string) {
 export function generateOutput(
 	compiledBundles: CompiledBundleWithMessages[],
 	settings: Pick<ProjectSettings, "locales" | "baseLocale">,
-	fallbackMap: Record<string, string | undefined>,
-	compilerOptions?: Pick<CompilerOptions, "experimentalStaticLocale">
+	fallbackMap: Record<string, string | undefined>
 ): Record<string, string> {
 	const output: Record<string, string> = {};
-	const includeStaticLocale =
-		compilerOptions?.experimentalStaticLocale !== undefined;
 
 	const moduleFilenames = new Set<string>();
 
@@ -109,11 +105,8 @@ export function generateOutput(
 		output[filename] = messages.join("\n\n") + "\n\n" + output[filename];
 
 		// add the imports and type reference (LocalizedString is defined in runtime.js)
-		const staticLocaleImport = includeStaticLocale
-			? ", experimentalStaticLocale"
-			: "";
 		output[filename] =
-			`import { getLocale, trackMessageCall, experimentalMiddlewareLocaleSplitting, isServer${staticLocaleImport} } from '../runtime.js';\n` +
+			`import { getLocale, trackMessageCall, experimentalMiddlewareLocaleSplitting, isServer, experimentalStaticLocale } from '../runtime.js';\n` +
 			`/** @typedef {import('../runtime.js').LocalizedString} LocalizedString */\n\n` +
 			output[filename];
 

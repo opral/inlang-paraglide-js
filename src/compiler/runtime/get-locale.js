@@ -50,11 +50,9 @@ let localeInitiallySet = false;
  * @type {() => Locale}
  */
 export let getLocale = () => {
-	/* experimental-static-locale-start */
 	if (experimentalStaticLocale !== undefined) {
 		return assertIsLocale(experimentalStaticLocale);
 	}
-	/* experimental-static-locale-end */
 
 	/** @type {string | undefined} */
 	let locale;

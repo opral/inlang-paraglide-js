@@ -23,13 +23,6 @@ export function createRuntimeFile(args: {
 	};
 }): string {
 	const urlPatterns = args.compilerOptions.urlPatterns ?? [];
-	const experimentalStaticLocaleBlockRegex =
-		/\/\* experimental-static-locale-start \*\/[\s\S]*?\/\* experimental-static-locale-end \*\//;
-	const getLocaleCode = injectCode("./get-locale.js");
-	const getLocaleWithStaticLocale =
-		args.compilerOptions.experimentalStaticLocale !== undefined
-			? getLocaleCode
-			: getLocaleCode.replace(experimentalStaticLocaleBlockRegex, "");
 
 	let defaultUrlPatternUsed = false;
 
@@ -124,7 +117,7 @@ ${injectCode("./variables.js")
 
 globalThis.__paraglide = {}
 
-${getLocaleWithStaticLocale}
+${injectCode("./get-locale.js")}
 
 ${injectCode("./set-locale.js")}
 

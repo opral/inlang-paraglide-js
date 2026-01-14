@@ -62,7 +62,7 @@ export const blue_moon_bottle = (inputs, options = {}) => {
 	if (experimentalMiddlewareLocaleSplitting && isServer === false) {
 		return /** @type {any} */ (globalThis).__paraglide_ssr.blue_moon_bottle(inputs) 
 	}
-	const locale = options.locale ?? getLocale()
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	trackMessageCall("blue_moon_bottle", locale)
 	if (locale === "en") return en.blue_moon_bottle(inputs)
 	return en_us2.blue_moon_bottle(inputs)
@@ -130,7 +130,7 @@ test("compiles to jsdoc with missing translation", async () => {
 			if (experimentalMiddlewareLocaleSplitting && isServer === false) {
 				return /** @type {any} */ (globalThis).__paraglide_ssr.blue_moon_bottle(inputs) 
 			}
-			const locale = options.locale ?? getLocale()
+			const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 			trackMessageCall("blue_moon_bottle", locale)
 			if (locale === "en") return en.blue_moon_bottle(inputs)
 			if (locale === "en-US") return en_us2.blue_moon_bottle(inputs)

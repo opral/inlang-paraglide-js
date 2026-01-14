@@ -27,7 +27,6 @@ export const compileBundle = (args: {
 	fallbackMap: Record<string, string | undefined>;
 	messageReferenceExpression: (locale: string, bundleId: string) => string;
 	settings?: ProjectSettings;
-	experimentalStaticLocale?: string;
 }): CompiledBundleWithMessages => {
 	const compiledMessages: Record<string, Compiled<Message>> = {};
 
@@ -52,7 +51,6 @@ export const compileBundle = (args: {
 			availableLocales: Object.keys(args.fallbackMap),
 			messageReferenceExpression: args.messageReferenceExpression,
 			settings: args.settings,
-			experimentalStaticLocale: args.experimentalStaticLocale,
 		}),
 		messages: compiledMessages,
 	};
@@ -75,17 +73,11 @@ const compileBundleFunction = (args: {
 	 * The project settings
 	 */
 	settings?: ProjectSettings;
-	/**
-	 * Compile-time locale expression for tree-shaking, if enabled.
-	 */
-	experimentalStaticLocale?: string;
 }): Compiled<Bundle> => {
 	const inputs = args.bundle.declarations.filter(
 		(decl) => decl.type === "input-variable"
 	);
 	const hasInputs = inputs.length > 0;
-	const includeStaticLocale = args.experimentalStaticLocale !== undefined;
-
 	const safeBundleId = toSafeModuleId(args.bundle.id);
 
 	const isSafeBundleId = safeBundleId === args.bundle.id;
@@ -107,7 +99,7 @@ ${isSafeBundleId ? "export " : ""}const ${safeBundleId} = (inputs${hasInputs ? "
 	if (experimentalMiddlewareLocaleSplitting && isServer === false) {
 		return /** @type {any} */ (globalThis).__paraglide_ssr.${safeBundleId}(inputs) 
 	}
-	const locale = ${includeStaticLocale ? "experimentalStaticLocale ?? " : ""}options.locale ?? getLocale()
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	trackMessageCall("${safeBundleId}", locale)
 	${args.availableLocales
 		.map(

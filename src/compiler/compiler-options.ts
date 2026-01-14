@@ -101,10 +101,33 @@ export type CompilerOptions = {
 	 *
 	 * This is experimental and opt-in. It should be a JavaScript expression
 	 * (not a quoted literal) that resolves to a locale or `undefined` at build time.
+	 * You can pass a string literal (e.g. `"de"`) for programmatic builds, or an
+	 * injected env/define expression for bundler-driven builds.
+	 *
+	 * High-level flow for per-locale builds:
+	 *
+	 * client request (/)
+	 *         |
+	 *         v
+	 *   +----------------------+
+	 *   | detect locale        |
+	 *   | (cookie/Accept-L)    |
+	 *   | pick build prefix    |
+	 *   +----------------------+
+	 *         | if "de"
+	 *         v
+	 *    serve dist/de/...  <----> serve dist/en/...
+	 *    (HTML + assets)          (HTML + assets)
+	 *
+	 * @see https://github.com/opral/paraglide-js/issues/88#issuecomment-3237774479
 	 *
 	 * @example
 	 *   // Vite define
 	 *   experimentalStaticLocale: "typeof __PARAGLIDE_STATIC_LOCALE__ === 'undefined' ? undefined : __PARAGLIDE_STATIC_LOCALE__"
+	 *
+	 * @example
+	 *   // Programmatic compile (literal)
+	 *   experimentalStaticLocale: '"de"'
 	 */
 	experimentalStaticLocale?: string;
 	/**
