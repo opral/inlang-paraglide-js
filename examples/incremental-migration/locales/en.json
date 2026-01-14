@@ -1,4 +1,7 @@
 {
 	"greeting": "Welcome {{name}}!",
+	"handicap-corner-winner": "Corner Handicap",
+	"handicap-half-corner-winner": "{{half!}} Half - Corner Handicap",
+	"handicap-half-winner": "{{half!}} Half - Handicap",
 	"non_existent_in_de": "This is a new message"
 }

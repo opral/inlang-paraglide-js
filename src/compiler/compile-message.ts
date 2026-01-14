@@ -4,6 +4,7 @@ import type { Compiled } from "./types.js";
 import { doubleQuote } from "../services/codegen/quotes.js";
 import { inputsType } from "./jsdoc-types.js";
 import { compileLocalVariable } from "./compile-local-variable.js";
+import { compileInputAccess } from "./variable-access.js";
 
 /**
  * Returns the compiled message as a string
@@ -103,7 +104,9 @@ function compileMessageWithMultipleVariants(
 				(decl) => decl.name === match.key
 			)?.type;
 			if (variableType === "input-variable") {
-				conditions.push(`i?.${match.key} == ${doubleQuote(match.value)}`);
+				conditions.push(
+					`${compileInputAccess(match.key)} == ${doubleQuote(match.value)}`
+				);
 			} else if (variableType === "local-variable") {
 				conditions.push(`${match.key} == ${doubleQuote(match.value)}`);
 			}

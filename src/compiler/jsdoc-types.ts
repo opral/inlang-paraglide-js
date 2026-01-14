@@ -1,4 +1,5 @@
 import type { InputVariable } from "@inlang/sdk";
+import { isValidIdentifier, quotePropertyKey } from "./variable-access.js";
 
 export function jsDocBundleFunctionTypes(args: {
 	inputs: InputVariable[];
@@ -36,7 +37,10 @@ export function inputsType(inputs: InputVariable[]): string {
 
 	const inputParams = uniqueInputs
 		.map((input) => {
-			return `${input.name}: NonNullable<unknown>`;
+			const name = isValidIdentifier(input.name)
+				? input.name
+				: quotePropertyKey(input.name);
+			return `${name}: NonNullable<unknown>`;
 		})
 		.join(", ");
 	return `{ ${inputParams} }`;

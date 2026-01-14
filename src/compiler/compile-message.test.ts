@@ -120,6 +120,50 @@ test("compiles a message with variants", async () => {
 	expect(some_message({ fistInput: 1, secondInput: 5 })).toBe("Catch all");
 });
 
+test("compiles a message with non-identifier input names", async () => {
+	const declarations: Declaration[] = [
+		{ type: "input-variable", name: "half!" },
+	];
+
+	const message: Message = {
+		locale: "en",
+		id: "special_input",
+		bundleId: "special_input",
+		selectors: [{ type: "variable-reference", name: "half!" }],
+	};
+
+	const variants: Variant[] = [
+		{
+			id: "1",
+			messageId: "special_input",
+			matches: [{ type: "literal-match", key: "half!", value: "1" }],
+			pattern: [{ type: "text", value: "First" }],
+		},
+		{
+			id: "2",
+			messageId: "special_input",
+			matches: [{ type: "catchall-match", key: "half!" }],
+			pattern: [
+				{ type: "text", value: "Value: " },
+				{
+					type: "expression",
+					arg: { type: "variable-reference", name: "half!" },
+				},
+			],
+		},
+	];
+
+	const compiled = compileMessage(declarations, message, variants);
+
+	const { special_input } = await import(
+		"data:text/javascript;base64," +
+			btoa("export const special_input = " + compiled.code)
+	);
+
+	expect(special_input({ "half!": "1" })).toBe("First");
+	expect(special_input({ "half!": "2" })).toBe("Value: 2");
+});
+
 test("compiles multi-variant message with a fallback in case the variants are not matched", async () => {
 	const declarations: Declaration[] = [
 		{ type: "input-variable", name: "fistInput" },

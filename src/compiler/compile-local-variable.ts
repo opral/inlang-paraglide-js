@@ -4,6 +4,7 @@ import type {
 	LocalVariable,
 	VariableReference,
 } from "@inlang/sdk";
+import { compileInputAccess } from "./variable-access.js";
 
 /**
  * Compiles a local variable.
@@ -59,6 +60,6 @@ function compileLiteralOrVarRef(value: Literal | VariableReference): string {
 		case "literal":
 			return `"${value.value}"`;
 		case "variable-reference":
-			return `i?.${value.name}`;
+			return compileInputAccess(value.name);
 	}
 }

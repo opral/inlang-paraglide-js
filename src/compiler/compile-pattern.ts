@@ -1,6 +1,7 @@
 import type { Declaration, Pattern, VariableReference } from "@inlang/sdk";
 import type { Compiled } from "./types.js";
 import { escapeForTemplateLiteral } from "../services/codegen/escape.js";
+import { compileInputAccess } from "./variable-access.js";
 
 /**
  * Compiles a pattern into a template literal string.
@@ -30,7 +31,7 @@ export const compilePattern = (args: {
 					(decl) => decl.name === (part.arg as VariableReference).name
 				);
 				if (declaration?.type === "input-variable") {
-					result += `\${i?.${part.arg.name}}`;
+					result += `\${${compileInputAccess(part.arg.name)}}`;
 				} else if (declaration?.type === "local-variable") {
 					result += `\${${part.arg.name}}`;
 				} else {

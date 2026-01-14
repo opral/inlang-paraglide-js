@@ -28,6 +28,21 @@ test("compiles a variable reference local variable", () => {
 	expect(code).toEqual("const myVar = i?.name;");
 });
 
+test("compiles a variable reference local variable with a non-identifier name", () => {
+	const code = compileLocalVariable({
+		locale: "en",
+		declaration: {
+			type: "local-variable",
+			name: "myVar",
+			value: {
+				type: "expression",
+				arg: { type: "variable-reference", name: "half!" },
+			},
+		},
+	});
+	expect(code).toEqual('const myVar = i?.["half!"];');
+});
+
 test("compiles a local variable with an annotation and empty options", () => {
 	const code = compileLocalVariable({
 		locale: "en",

@@ -19,6 +19,16 @@ test("inputsType generates unique parameter types even when the same input appea
 	);
 });
 
+test("inputsType quotes non-identifier input names", () => {
+	const inputs: InputVariable[] = [
+		{ name: "half!", type: "input-variable" },
+	];
+
+	const result = inputsType(inputs);
+
+	expect(result).toBe('{ "half!": NonNullable<unknown> }');
+});
+
 test("jsDocBundleFunctionTypes correctly handles messages with duplicate inputs", () => {
 	const inputs: InputVariable[] = [
 		{ name: "days", type: "input-variable" },

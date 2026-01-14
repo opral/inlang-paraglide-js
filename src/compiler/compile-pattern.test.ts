@@ -34,6 +34,26 @@ test("should compile a pattern with multiple VariableReference's", () => {
 	expect(code).toBe("`Hello ${i?.name}! You have ${i?.count} messages.`");
 });
 
+test("uses bracket notation for input variables with non-identifier names", () => {
+	const pattern: Pattern = [
+		{ type: "text", value: "Half " },
+		{
+			type: "expression",
+			arg: {
+				type: "variable-reference",
+				name: "half!",
+			},
+		},
+	];
+
+	const { code } = compilePattern({
+		pattern,
+		declarations: [{ type: "input-variable", name: "half!" }],
+	});
+
+	expect(code).toBe('`Half ${i?.["half!"]}`');
+});
+
 test("should escape backticks", () => {
 	const pattern: Pattern = [{ type: "text", value: "`Hello world`" }];
 	const { code } = compilePattern({ pattern, declarations: [] });
