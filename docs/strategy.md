@@ -14,6 +14,9 @@ The strategy is defined with the `strategy` option. **Strategies are evaluated i
 
 In the example below, the `cookie` strategy first determines the locale. If no cookie is found (returns `undefined`), the `baseLocale` is used as a fallback.
 
+> [!NOTE]
+> Add this to your compiler config. It will look slightly different depending on how you compile (bundler plugin, CLI, or programmatic). See [Compiling Messages](./compiling-messages) for the relevant setup.
+
 ```diff
 compile({
 	project: "./project.inlang",
