@@ -12,8 +12,8 @@ importers:
         specifier: ^0.2.1
         version: 0.2.1
       '@inlang/sdk':
-        specifier: 2.6.0
-        version: 2.6.0(babel-plugin-macros@3.1.0)
+        specifier: 2.6.2
+        version: 2.6.2(babel-plugin-macros@3.1.0)
       commander:
         specifier: 11.1.0
         version: 11.1.0
@@ -1366,8 +1366,8 @@ packages:
     resolution: {integrity: sha512-cvz/C1rF5WBxzHbEoiBoI6Sz6q6M+TdxfWkEGBYTD77opY8i8WN01prUWXEM87GPF4SZcyIySez9U0Ccm12oFQ==}
     engines: {node: '>=18.0.0'}
 
-  '@inlang/sdk@2.6.0':
-    resolution: {integrity: sha512-f4iVHVXyzOi0CXlXSAT7XPrReLBaVXy/po/qrOPf2OHh+hUwyD1bDx2EYC5KgrZ16z3ylWfqWVuc7o4l7/tuUQ==}
+  '@inlang/sdk@2.6.2':
+    resolution: {integrity: sha512-eOgAX+eQpHvD/H4BMILc4tZ85XviTlwr/51RKkKUHozVVthj5avUPKP+4N4vcTUrqSscl2atTh9NbNTuvoBN0A==}
     engines: {node: '>=18.0.0'}
 
   '@inquirer/external-editor@1.0.3':
@@ -6815,7 +6815,7 @@ snapshots:
     transitivePeerDependencies:
       - babel-plugin-macros
 
-  '@inlang/sdk@2.6.0(babel-plugin-macros@3.1.0)':
+  '@inlang/sdk@2.6.2(babel-plugin-macros@3.1.0)':
     dependencies:
       '@lix-js/sdk': 0.4.7(babel-plugin-macros@3.1.0)
       '@sinclair/typebox': 0.31.28
